@@ -1,0 +1,30 @@
+{
+  "name": "cerebro-todoist",
+  "version": "0.0.3",
+  "description": "Cerebro plugin for todoist.",
+  "author": "dubisdev",
+  "license": "MIT",
+  "repository": "dubisdev/cerebro-plugin-tds",
+  "dependencies": {
+    "axios": "0.21.1",
+    "react": "17.0.2",
+    "todoist-rest-client": "0.0.1",
+    "uuid": "3.4.0"
+  },
+  "devDependencies": {
+    "cerebro-scripts": "0.0.25"
+  },
+  "main": "dist/index.js",
+  "keywords": [
+    "cerebro",
+    "cerebro-plugin",
+    "todoist"
+  ],
+  "scripts": {
+    "start": "cerebro-scripts start",
+    "build": "cerebro-scripts build",
+    "test": "cerebro-scripts test",
+    "clear": "cerebro-scripts clear",
+    "prepublish": "yarn clear && yarn build"
+  }
+}
