@@ -2,8 +2,6 @@
 
 > [Cerebro](https://cerebroapp.com) plugin to create and manage todoist.
 
-![](screenshot.png)
-
 ## Usage
 
 In Cerebro, type `tds` and then one of the implemented commands (for now, only `new` is supported).
