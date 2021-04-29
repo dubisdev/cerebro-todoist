@@ -11,7 +11,9 @@ In Cerebro, type `tds` and then one of the implemented commands (for now, only `
 
 `tds new hello world` generates:
 
-![](/readme_files/new_note.png)
+<p align="center">
+  <img src="/readme_files/new_note.png">
+</p>
 
 ## Installation
 
