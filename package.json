@@ -1,6 +1,6 @@
 {
   "name": "cerebro-todoist",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Cerebro plugin for todoist.",
   "author": "dubisdev",
   "license": "MIT",
@@ -8,7 +8,7 @@
   "dependencies": {
     "axios": "0.21.1",
     "react": "17.0.2",
-    "todoist-rest-client": "0.0.1"
+    "todoist-rest-client": "0.0.2"
   },
   "//" :{"devDependencies": {
     "cerebro-scripts": "0.0.25"
