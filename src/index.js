@@ -1,59 +1,73 @@
-import AppActionsObject from "./core-engine/appActions";
 import { getSubCommand } from "./core-engine/commandManager";
-import icons from "./icons";
-import ReactComponent from "./ReactComponent";
+import { TodayTasks, ReactComponent } from "./components";
+import icon from "./icons";
+import initializeAsync from "./plugin-structure/initialize";
+import DisplayGetter from "./plugin-structure/DisplayGetter";
 
 //pide Acceso a notificaciones
 if (!Notification.permission) {
 	Notification.requestPermission();
 }
 
-// ----------------- Default settings --------------------- //
-let theme = "dark";
-const name = "Todoist Workflow";
-const keyword = "tds";
-const icon = icons[theme].general;
-// ----------------- END Default settings --------------------- //
-
-const getPreview = () => <ReactComponent />;
-
 const appNames = ["tds", "Todoist Workflow"];
+const appActionNames = ["New", "Today"];
 
-function plugin({ term, display, actions, config, settings }) {
-	theme = config.get("theme").includes("dark") ? "dark" : "light";
+let todayTasks;
+const onMessage = (info) => {
+	todayTasks = info;
+};
 
-	const myAppObject = new AppActionsObject({ apiToken: settings.token });
+function plugin({ term, display, actions, settings }) {
+	const displayGetter = new DisplayGetter({ apiToken: settings.token });
 
 	let match = appNames.some(
 		(appName) => appName.toLowerCase() === term.split(" ")[0].toLowerCase()
 	);
 
 	if (match) {
-		const appActions = myAppObject.getActions();
-		const displayArray = Object.keys(appActions)
+		const displayArray = appActionNames
 			.filter(
 				(action) =>
 					!getSubCommand(term) ||
 					action.toLowerCase().startsWith(getSubCommand(term))
 			)
-			.map((action, i) => ({
-				term: `tds ${action.toLowerCase()}`,
-				id: i.toString(),
-				icon: icons[theme]["general"],
-				title: `${name} ${action}`,
-				getPreview,
-				onSelect: (event) => appActions[action]({ text: term }),
-			}));
+			.map((action) => {
+				let getPreview;
+
+				switch (action.toLowerCase()) {
+					case "today":
+						getPreview = () => <TodayTasks content={todayTasks} />;
+						break;
+					case "new":
+						getPreview = () => <ReactComponent />;
+				}
+
+				return displayGetter.get({ action, getPreview, term });
+			});
+
 		display(displayArray);
 	}
 }
+
+// ----------------- Plugin settings --------------------- //
+const name = "Todoist Workflow";
+const keyword = "tds";
 
 let settings = {
 	token: {
 		type: "string",
 		defaultValue: "",
-		description: "Your todoist api Token",
+		description: "Your Todoist api Token",
 	},
 };
+// ----------------- END Plugin settings --------------------- //
 
-export { icon, name, keyword, plugin as fn, settings };
+export {
+	icon,
+	name,
+	keyword,
+	plugin as fn,
+	settings,
+	initializeAsync,
+	onMessage,
+};

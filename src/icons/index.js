@@ -1,7 +1,1 @@
-exports.light = {
-	general: require("./icon.png"),
-};
-
-exports.dark = {
-	general: require("./icon.png"),
-};
+export default require("./icon.png");

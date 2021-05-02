@@ -6,12 +6,6 @@ class apiInterface {
 		this.Client = new TDSClient(apiToken);
 	}
 
-	getAllNotes() {
-		return this.Client.getAll({ type: "task" }).then((res) => {
-			return res;
-		});
-	}
-
 	createTask({ text = "" } = {}) {
 		let task = getSubCommandText(text);
 		this.Client.create({ type: "task" }, { content: task });
