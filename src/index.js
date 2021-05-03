@@ -1,4 +1,4 @@
-import { getSubCommand } from "./core-engine/commandManager";
+import { getSubCommand } from "./core-engine/textUtilities";
 import { TodayTasks, ReactComponent } from "./components";
 import icon from "./icons";
 import initializeAsync from "./plugin-structure/initialize";
@@ -9,25 +9,36 @@ if (!Notification.permission) {
 	Notification.requestPermission();
 }
 
-const appNames = ["tds", "Todoist Workflow"];
-const appActionNames = ["New", "Today"];
-
 let todayTasks;
-const onMessage = (info) => {
+let error = false;
+const onMessage = ({ info, errorExists = false }) => {
+	error = errorExists;
 	todayTasks = info;
 };
 
 function plugin({ term, display, actions, settings }) {
-	const displayGetter = new DisplayGetter({ apiToken: settings.token });
+	let displayGetter;
 
+	//checks if the initialize function returns error (token missing)
+	if (error) {
+		displayGetter = new DisplayGetter({ noToken: true });
+	} else {
+		displayGetter = new DisplayGetter({ apiToken: settings.token });
+	}
+
+	//match === true if the input is any of the appnames
+	const appNames = ["tds", "Todoist Workflow"];
 	let match = appNames.some(
 		(appName) => appName.toLowerCase() === term.split(" ")[0].toLowerCase()
 	);
 
 	if (match) {
+		const appActionNames = ["New", "Today"];
+		//filters the action names
 		const displayArray = appActionNames
 			.filter(
 				(action) =>
+					//get subcomand gets the action "tds new" --> "new"
 					!getSubCommand(term) ||
 					action.toLowerCase().startsWith(getSubCommand(term))
 			)

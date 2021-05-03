@@ -4,9 +4,12 @@ const TodayTasks = ({ content }) => {
 	if (content) {
 		return (
 			<div>
-				{content.map((task) => {
-					return <p key={task}>{task}</p>;
-				})}
+				<h2>Today Tasks</h2>
+				<ul>
+					{content.map((task) => {
+						return <li key={task}>{task}</li>;
+					})}
+				</ul>
 			</div>
 		);
 	}
