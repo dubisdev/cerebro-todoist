@@ -1,4 +1,4 @@
-import TDSClient from "todoist-rest-client";
+import TDSClient, { Task } from "todoist-rest-client";
 import { getSubCommandText } from "./textUtilities.js";
 
 class apiInterface {
@@ -8,7 +8,10 @@ class apiInterface {
 
 	createTask({ text = "" } = {}) {
 		let task = getSubCommandText(text);
-		this.Client.create({ type: "task" }, { content: task });
+		this.Client.create(
+			{ type: "task" },
+			new Task({ content: task, due_string: "today", due_lang: "en" })
+		);
 		return new Notification("Task Created");
 	}
 }
