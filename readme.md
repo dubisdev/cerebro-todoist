@@ -45,7 +45,7 @@ Todoist "today" section:
 When you write `tds today`, you get:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/dubisdev/cerebro-todoist/master/readme_files/new_note.png">
+  <img src="https://raw.githubusercontent.com/dubisdev/cerebro-todoist/master/readme_files/today_cerebro.png">
 </p>
 
 ## Related
