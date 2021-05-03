@@ -41,7 +41,7 @@ Todoist "today" section:
 <p align="center">
   <img src="/readme_files/today_todoist.png">
 </p>
-When you write `tds today`, you will get:
+When you write `tds today` , you will get:
 
 <p align="center">
   <img src="/readme_files/today_cerebro.png">
