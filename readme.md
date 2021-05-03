@@ -9,7 +9,7 @@
 - Set your Todoist API token in the plugin settings --> `plugins todoist` - Select `settings` - `token`
 
 <p align="center">
-  <img src="/readme_files/settings_token.png">
+  <img src="https://github.com/dubisdev/cerebro-todoist/raw/master/readme_files/settings_token.png">
 </p>
 
 ## Usage
@@ -27,7 +27,7 @@ In Cerebro, type `tds` and then one of the [available commands](#available-comma
 `tds new hello world` generates:
 
 <p align="center">
-  <img src="/readme_files/new_note.png">
+  <img src="https://github.com/dubisdev/cerebro-todoist/raw/master/readme_files/new_note.png">
 </p>
 
 ### ⚙ `today` command
@@ -39,13 +39,13 @@ In Cerebro, type `tds` and then one of the [available commands](#available-comma
 Todoist "today" section:
 
 <p align="center">
-  <img src="/readme_files/today_todoist.png">
+  <img src="https://github.com/dubisdev/cerebro-todoist/raw/master/readme_files/today_todoist.png">
 </p>
 
 When you write `tds today`, you will get:
 
 <p align="center">
-  <img src="/readme_files/today_cerebro.png">
+  <img src="https://raw.githubusercontent.com/dubisdev/cerebro-todoist/master/readme_files/new_note.png">
 </p>
 
 ## Related
