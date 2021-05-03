@@ -70,6 +70,12 @@ let settings = {
 		defaultValue: "",
 		description: "Your Todoist api Token",
 	},
+	"Today tasks update delay": {
+		type: "number",
+		defaultValue: 30,
+		description:
+			"Seconds between each update of today's tasks (less time, more processing)",
+	},
 };
 // ----------------- END Plugin settings --------------------- //
 

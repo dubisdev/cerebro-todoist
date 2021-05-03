@@ -1,15 +1,22 @@
 import TDSClient from "todoist-rest-client";
 import fs from "fs";
 import path from "path";
+var dir = path.join(process.env.APPDATA, "Cerebro", "config.json");
 
-const NO_ERROR_INTERVAL = 30 * 1000;
 const ERROR_INTERVAL = 10 * 60 * 1000;
 
 function getApiToken() {
-	var dir = path.join(process.env.APPDATA, "Cerebro", "config.json");
 	let text = fs.readFileSync(dir);
 	let json = JSON.parse(text);
 	return json["plugins"]["cerebro-todoist"]["token"];
+}
+
+function getUserUpdateTime() {
+	let text = fs.readFileSync(dir);
+	let json = JSON.parse(text);
+	return parseInt(
+		json["plugins"]["cerebro-todoist"]["Today tasks update delay"]
+	);
 }
 
 function init(done) {
@@ -25,7 +32,7 @@ function init(done) {
 				info: info,
 				errorExists: false,
 			};
-			setTimeout(() => init(done), NO_ERROR_INTERVAL);
+			setTimeout(() => init(done), getUserUpdateTime() * 1000);
 			return obj;
 		})
 		.then((done) => done)
