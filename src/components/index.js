@@ -1,4 +1,3 @@
-import TodayTasks from "./TodayTasks";
-import ReactComponent from "./ReactComponent";
+import TodoistInterface from "./TodoistInterface";
 
-export { TodayTasks, ReactComponent };
+export { TodoistInterface };
