@@ -36,8 +36,6 @@ export default class DisplayGetter {
 
 	Action(action, term) {
 		switch (action) {
-			case "Today":
-				return null;
 			case "New":
 				return () => this.myInterface.createTask({ text: term });
 		}
