@@ -60,6 +60,11 @@ function plugin({ term, display, actions, settings }) {
 				return displayGetter.get({ action, getPreview, term });
 			});
 
+		if (displayArray.length === 0) {
+			let getPreview = () => <TodoistInterface content={content} />;
+			displayArray.push(displayGetter.getEmpty({ getPreview }));
+		}
+
 		display(displayArray);
 	}
 }

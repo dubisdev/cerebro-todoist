@@ -10,6 +10,15 @@ export default class DisplayGetter {
 		}
 	}
 
+	getEmpty({ getPreview }) {
+		return {
+			term: `tds`,
+			icon: icon,
+			title: `Todoist Workflow`,
+			getPreview: getPreview,
+		};
+	}
+
 	get({ action, getPreview, term }) {
 		if (this.noToken) {
 			return {
