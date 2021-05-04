@@ -1,19 +1,32 @@
 import { getSubCommand } from "./core-engine/textUtilities";
-import { TodayTasks, ReactComponent } from "./components";
+import { TodoistInterface } from "./components";
 import icon from "./icons";
 import initializeAsync from "./plugin-structure/initialize";
 import DisplayGetter from "./plugin-structure/DisplayGetter";
+import TDSClient from "todoist-rest-client";
+import { getApiToken } from "./core-engine/settingsServices";
 
 //pide Acceso a notificaciones
 if (!Notification.permission) {
 	Notification.requestPermission();
 }
 
-let todayTasks;
 let error = false;
-const onMessage = ({ info, errorExists = false }) => {
+let content;
+
+const onMessage = ({ errorExists = false }) => {
 	error = errorExists;
-	todayTasks = info;
+
+	if (!errorExists) {
+		let apiToken = getApiToken();
+		let miCliente;
+		if (apiToken) {
+			miCliente = new TDSClient(apiToken);
+			miCliente.getTodayTasks().then((res) => {
+				content = res;
+			});
+		}
+	}
 };
 
 function plugin({ term, display, actions, settings }) {
@@ -33,7 +46,7 @@ function plugin({ term, display, actions, settings }) {
 	);
 
 	if (match) {
-		const appActionNames = ["New", "Today"];
+		const appActionNames = ["New"];
 		//filters the action names
 		const displayArray = appActionNames
 			.filter(
@@ -43,16 +56,7 @@ function plugin({ term, display, actions, settings }) {
 					action.toLowerCase().startsWith(getSubCommand(term))
 			)
 			.map((action) => {
-				let getPreview;
-
-				switch (action.toLowerCase()) {
-					case "today":
-						getPreview = () => <TodayTasks content={todayTasks} />;
-						break;
-					case "new":
-						getPreview = () => <ReactComponent />;
-				}
-
+				let getPreview = () => <TodoistInterface content={content} />;
 				return displayGetter.get({ action, getPreview, term });
 			});
 
