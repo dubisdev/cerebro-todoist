@@ -3,7 +3,8 @@ import apiInterface from "../core-engine/apiConnect";
 import { PreviewToday, NewTaskInterface } from "../components";
 
 export default class DisplayGetter {
-	constructor({ apiToken, noToken }) {
+	constructor({ apiToken, noToken, actions }) {
+		this.actions = actions;
 		if (noToken) {
 			this.noToken = noToken;
 		} else {
@@ -58,7 +59,7 @@ export default class DisplayGetter {
 			case "New":
 				return () => <NewTaskInterface />;
 			case "Today":
-				return () => <PreviewToday />;
+				return () => <PreviewToday actions={this.actions} />;
 			default:
 				return () => <h3>Invalid Command</h3>;
 		}

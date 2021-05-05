@@ -4,12 +4,14 @@ import Preload from "../cerebro-ui/Preload";
 import TDSClient from "todoist-rest-client";
 import { getApiToken } from "../../core-engine/settingsServices";
 
-const PreviewToday = () => {
+const PreviewToday = ({ actions }) => {
 	let miCliente = new TDSClient(getApiToken());
-	let promise = miCliente.getTodayTasks();
+	let promise = miCliente.getTodayTasksJSON();
 	return (
 		<Preload promise={promise} loader={Loading()}>
-			{(promiseResult) => <TodoistInterface content={promiseResult} />}
+			{(promiseResult) => (
+				<TodoistInterface content={promiseResult} actions={actions} />
+			)}
 		</Preload>
 	);
 };
