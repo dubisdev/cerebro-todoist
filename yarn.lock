@@ -39,9 +39,9 @@ react@17.0.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-todoist-rest-client@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/todoist-rest-client/-/todoist-rest-client-0.0.3.tgz#db0f39cbdf63d10ad7da9c16587fb66c10e0984f"
-  integrity sha512-f8MRxxkS0NonP+bMrTeySBSSGR/KlQ8CrljaJIrNaNOwhyhPBSSuGunybGJ2PPWIZRRhix9tyaBaJ+b0o52Duw==
+todoist-rest-client@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/todoist-rest-client/-/todoist-rest-client-0.0.4.tgz#1a3907d53cbd6d4457e1772ab0827636869285f0"
+  integrity sha512-dmQktpNuon6DAlLpfIT8ryBPEgjnPP6hz2jZ47kECMAF0WcfB3CqTRjLO6V/o6ygie4KPT4jtXrdmOq1YrQuIA==
   dependencies:
     axios "0.21.1"

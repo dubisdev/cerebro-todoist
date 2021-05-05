@@ -21,7 +21,7 @@ function plugin({ term, display, actions, settings }) {
 	if (error) {
 		displayGetter = new DisplayGetter({ noToken: true });
 	} else {
-		displayGetter = new DisplayGetter({ apiToken: settings.token });
+		displayGetter = new DisplayGetter({ apiToken: settings.token, actions });
 	}
 
 	//match === true if the input is any of the appnames
