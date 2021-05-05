@@ -1,12 +1,12 @@
 import TDSClient from "todoist-rest-client";
-import {
-	getUserUpdateTime,
-	getApiToken,
-} from "../core-engine/settingsServices";
+import { getApiToken } from "../core-engine/settingsServices";
 
 function init(done) {
 	let apitoken = getApiToken();
-	if (!apitoken) return;
+	if (!apitoken) {
+		new Notification("Please check the token in the cerebro-todoist settings.");
+		return Promise.resolve().then(done);
+	}
 
 	const cliente = new TDSClient(apitoken);
 	cliente
@@ -15,8 +15,8 @@ function init(done) {
 			var obj = {
 				errorExists: false,
 			};
-			console.log(getUserUpdateTime());
-			setTimeout(() => init(done), getUserUpdateTime() * 1000);
+			//checks the token every 30 minutes
+			setTimeout(() => init(done), 30 * 60 * 1000);
 			return obj;
 		})
 		.then((done) => done)
@@ -24,11 +24,6 @@ function init(done) {
 			new Notification(
 				"Please check the token in the cerebro-todoist settings."
 			);
-			//setTimeout(() => init(done), getUserUpdateTime() * 1000);
-			var obj = {
-				errorExists: true,
-			};
-			return obj;
 		})
 		.then(done);
 }

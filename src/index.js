@@ -1,32 +1,16 @@
 import { getSubCommand } from "./core-engine/textUtilities";
-import { TodoistInterface } from "./components";
 import icon from "./icons";
 import initializeAsync from "./plugin-structure/initialize";
 import DisplayGetter from "./plugin-structure/DisplayGetter";
-import TDSClient from "todoist-rest-client";
-import { getApiToken } from "./core-engine/settingsServices";
 
 //pide Acceso a notificaciones
 if (!Notification.permission) {
 	Notification.requestPermission();
 }
 
-let error = false;
-let content;
-
-const onMessage = ({ errorExists = false }) => {
+let error;
+const onMessage = ({ errorExists = true } = {}) => {
 	error = errorExists;
-
-	if (!errorExists) {
-		let apiToken = getApiToken();
-		let miCliente;
-		if (apiToken) {
-			miCliente = new TDSClient(apiToken);
-			miCliente.getTodayTasks().then((res) => {
-				content = res;
-			});
-		}
-	}
 };
 
 function plugin({ term, display, actions, settings }) {
@@ -46,7 +30,7 @@ function plugin({ term, display, actions, settings }) {
 	);
 
 	if (match) {
-		const appActionNames = ["New"];
+		const appActionNames = ["New", "Today"];
 		//filters the action names
 		const displayArray = appActionNames
 			.filter(
@@ -56,13 +40,11 @@ function plugin({ term, display, actions, settings }) {
 					action.toLowerCase().startsWith(getSubCommand(term))
 			)
 			.map((action) => {
-				let getPreview = () => <TodoistInterface content={content} />;
-				return displayGetter.get({ action, getPreview, term });
+				return displayGetter.get({ action, term });
 			});
 
 		if (displayArray.length === 0) {
-			let getPreview = () => <TodoistInterface content={content} />;
-			displayArray.push(displayGetter.getEmpty({ getPreview }));
+			displayArray.push(displayGetter.getEmpty());
 		}
 
 		display(displayArray);
@@ -78,12 +60,6 @@ let settings = {
 		type: "string",
 		defaultValue: "",
 		description: "Your Todoist api Token",
-	},
-	"Today tasks update delay": {
-		type: "number",
-		defaultValue: 30,
-		description:
-			"Seconds between each update of today's tasks (less time, more processing)",
 	},
 };
 // ----------------- END Plugin settings --------------------- //
