@@ -1,6 +1,6 @@
 import icon from "../icons";
 import apiInterface from "../core-engine/apiConnect";
-import { PreviewToday } from "../components";
+import { PreviewToday, NewTaskInterface } from "../components";
 
 export default class DisplayGetter {
 	constructor({ apiToken, noToken }) {
@@ -56,7 +56,7 @@ export default class DisplayGetter {
 	getPreview(action) {
 		switch (action) {
 			case "New":
-				return () => <PreviewToday />;
+				return () => <NewTaskInterface />;
 			case "Today":
 				return () => <PreviewToday />;
 			default:
