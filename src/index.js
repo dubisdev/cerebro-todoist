@@ -8,6 +8,7 @@ if (!Notification.permission) {
 	Notification.requestPermission();
 }
 
+//async check if api token is ok
 let error;
 const onMessage = ({ errorExists = true } = {}) => {
 	error = errorExists;
