@@ -1,5 +1,6 @@
 import icon from "../icons";
 import apiInterface from "../core-engine/apiConnect";
+import { PreviewToday, NewTaskInterface } from "../components";
 
 export default class DisplayGetter {
 	constructor({ apiToken, noToken }) {
@@ -10,7 +11,16 @@ export default class DisplayGetter {
 		}
 	}
 
-	get({ action, getPreview, term }) {
+	getEmpty() {
+		return {
+			term: `tds`,
+			icon: icon,
+			title: `Todoist Workflow`,
+			getPreview: this.getPreview(),
+		};
+	}
+
+	get({ action, term }) {
 		if (this.noToken) {
 			return {
 				term: `tds ${action.toLowerCase()}`,
@@ -29,17 +39,28 @@ export default class DisplayGetter {
 			term: `tds ${action.toLowerCase()}`,
 			icon: icon,
 			title: `Todoist Workflow ${action}`,
-			getPreview: getPreview,
+			getPreview: this.getPreview(action),
 			onSelect: this.Action(action, term),
 		};
 	}
 
 	Action(action, term) {
 		switch (action) {
-			case "Today":
-				return null;
 			case "New":
 				return () => this.myInterface.createTask({ text: term });
+			default:
+				return null;
+		}
+	}
+
+	getPreview(action) {
+		switch (action) {
+			case "New":
+				return () => <NewTaskInterface />;
+			case "Today":
+				return () => <PreviewToday />;
+			default:
+				return () => <h3>Invalid Command</h3>;
 		}
 	}
 }

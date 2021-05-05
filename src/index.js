@@ -1,5 +1,4 @@
 import { getSubCommand } from "./core-engine/textUtilities";
-import { TodayTasks, ReactComponent } from "./components";
 import icon from "./icons";
 import initializeAsync from "./plugin-structure/initialize";
 import DisplayGetter from "./plugin-structure/DisplayGetter";
@@ -9,11 +8,10 @@ if (!Notification.permission) {
 	Notification.requestPermission();
 }
 
-let todayTasks;
-let error = false;
-const onMessage = ({ info, errorExists = false }) => {
+//async check if api token is ok
+let error;
+const onMessage = ({ errorExists = true } = {}) => {
 	error = errorExists;
-	todayTasks = info;
 };
 
 function plugin({ term, display, actions, settings }) {
@@ -43,18 +41,12 @@ function plugin({ term, display, actions, settings }) {
 					action.toLowerCase().startsWith(getSubCommand(term))
 			)
 			.map((action) => {
-				let getPreview;
-
-				switch (action.toLowerCase()) {
-					case "today":
-						getPreview = () => <TodayTasks content={todayTasks} />;
-						break;
-					case "new":
-						getPreview = () => <ReactComponent />;
-				}
-
-				return displayGetter.get({ action, getPreview, term });
+				return displayGetter.get({ action, term });
 			});
+
+		if (displayArray.length === 0) {
+			displayArray.push(displayGetter.getEmpty());
+		}
 
 		display(displayArray);
 	}
@@ -69,12 +61,6 @@ let settings = {
 		type: "string",
 		defaultValue: "",
 		description: "Your Todoist api Token",
-	},
-	"Today tasks update delay": {
-		type: "number",
-		defaultValue: 30,
-		description:
-			"Seconds between each update of today's tasks (less time, more processing)",
 	},
 };
 // ----------------- END Plugin settings --------------------- //

@@ -1,4 +1,4 @@
-import TodayTasks from "./TodayTasks";
-import ReactComponent from "./ReactComponent";
+import { NewTaskInterface } from "./interfaces";
+import PreviewToday from "./previews/PreviewToday";
 
-export { TodayTasks, ReactComponent };
+export { PreviewToday, NewTaskInterface };

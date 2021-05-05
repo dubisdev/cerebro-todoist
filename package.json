@@ -1,29 +1,29 @@
 {
-  "name": "cerebro-todoist",
-  "version": "0.0.4",
-  "description": "Cerebro plugin for todoist.",
-  "author": "dubisdev",
-  "license": "MIT",
-  "repository": "dubisdev/cerebro-todoist",
-  "dependencies": {
-    "axios": "0.21.1",
-    "react": "17.0.2",
-    "todoist-rest-client": "0.0.3"
-  },
-  "//" :{"devDependencies": {
-    "cerebro-scripts": "0.0.25"
-  }},
-  "main": "dist/index.js",
-  "keywords": [
-    "cerebro",
-    "cerebro-plugin",
-    "todoist"
-  ],
-  "//": {"scripts": {
-    "start": "cerebro-scripts start",
-    "build": "cerebro-scripts build",
-    "test": "cerebro-scripts test",
-    "clear": "cerebro-scripts clear",
-    "prepublish": "yarn clear && yarn build"
-  }}
+	"name": "cerebro-todoist",
+	"version": "0.0.5",
+	"description": "Cerebro plugin for todoist.",
+	"author": "dubisdev",
+	"license": "MIT",
+	"repository": "dubisdev/cerebro-todoist",
+	"dependencies": {
+		"axios": "0.21.1",
+		"react": "17.0.2",
+		"todoist-rest-client": "0.0.3"
+	},
+	"//" :{"devDependencies": {
+		"cerebro-scripts": "0.0.25"
+	}},
+	"main": "dist/index.js",
+	"keywords": [
+		"cerebro",
+		"cerebro-plugin",
+		"todoist"
+	],
+	"//": {"scripts": {
+		"start": "cerebro-scripts start",
+		"build": "cerebro-scripts build",
+		"test": "cerebro-scripts test",
+		"clear": "cerebro-scripts clear",
+		"prepublish": "yarn clear && yarn build"
+	}}
 }
