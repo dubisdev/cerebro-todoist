@@ -1,3 +1,4 @@
-import TodoistInterface from "./TodoistInterface";
+import TodoistInterface from "./interfaces/TodayTasksInterface";
+import PreviewToday from "./previews/PreviewToday";
 
-export { TodoistInterface };
+export { TodoistInterface, PreviewToday };
