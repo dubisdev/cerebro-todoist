@@ -1,5 +1,5 @@
 import Loading from "../cerebro-ui/Loading";
-import TodoistInterface from "../interfaces/TodayTasksInterface";
+import { TodayTasksInterface as TodoistInterface } from "../interfaces";
 import Preload from "../cerebro-ui/Preload";
 import TDSClient from "todoist-rest-client";
 import { getApiToken } from "../../core-engine/settingsServices";
