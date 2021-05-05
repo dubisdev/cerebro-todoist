@@ -7,7 +7,6 @@ function init(done) {
 		new Notification("Please check the token in the cerebro-todoist settings.");
 		return Promise.resolve().then(done);
 	}
-
 	const cliente = new TDSClient(apitoken);
 	cliente
 		.getTodayTasks()
@@ -15,8 +14,7 @@ function init(done) {
 			var obj = {
 				errorExists: false,
 			};
-			//checks the token every 30 minutes
-			setTimeout(() => init(done), 30 * 60 * 1000);
+
 			return obj;
 		})
 		.then((done) => done)
