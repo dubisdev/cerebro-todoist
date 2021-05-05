@@ -33,6 +33,7 @@ In Cerebro, type `tds` and then one of the [available commands](#available-comma
 ### ⚙ `today` command
 
 `today` command shows the tasks you have scheduled for today.
+Navegate with `tab key` complete them by pressing `enter key`.
 
 #### Example
 
