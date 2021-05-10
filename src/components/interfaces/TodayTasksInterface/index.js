@@ -41,7 +41,17 @@ const TodayTasksInterface = ({ content, actions }) => {
 									tagName={"li"}
 									key={task.id}
 									onSelect={() => action(task)}>
-									{task.content}
+									<div className={styles.floatLayout}>
+										<span className={styles.floatLeft}>{task.content}</span>
+										<span className={styles.floatRight}>
+											{(() => {
+												const hour = new Date(task.due.datetime)
+													.toTimeString()
+													.split(" ")[0];
+												if (hour !== "Invalid") return "|| ⌛ " + hour;
+											})()}
+										</span>
+									</div>
 								</KeyboardNavItem>
 							);
 						})}
