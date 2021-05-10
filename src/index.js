@@ -1,28 +1,15 @@
 import { getSubCommand } from "./core-engine/textUtilities";
 import icon from "./icons";
-import initializeAsync from "./plugin-structure/initialize";
 import DisplayGetter from "./plugin-structure/DisplayGetter";
+import checkToken from "./plugin-structure/checkToken";
 
 //pide Acceso a notificaciones
 if (!Notification.permission) {
 	Notification.requestPermission();
 }
 
-//async check if api token is ok
-let error;
-const onMessage = ({ errorExists = true } = {}) => {
-	error = errorExists;
-};
-
 function plugin({ term, display, actions, settings }) {
-	let displayGetter;
-
-	//checks if the initialize function returns error (token missing)
-	if (error) {
-		displayGetter = new DisplayGetter({ noToken: true });
-	} else {
-		displayGetter = new DisplayGetter({ apiToken: settings.token, actions });
-	}
+	let displayGetter = new DisplayGetter({ apiToken: settings.token, actions });
 
 	//match === true if the input is any of the appnames
 	const appNames = ["tds", "Todoist Workflow"];
@@ -31,6 +18,8 @@ function plugin({ term, display, actions, settings }) {
 	);
 
 	if (match) {
+		checkToken();
+
 		const appActionNames = ["New", "Today"];
 		//filters the action names
 		const displayArray = appActionNames
@@ -65,12 +54,4 @@ let settings = {
 };
 // ----------------- END Plugin settings --------------------- //
 
-export {
-	icon,
-	name,
-	keyword,
-	plugin as fn,
-	settings,
-	initializeAsync,
-	onMessage,
-};
+export { icon, name, keyword, plugin as fn, settings };
