@@ -12,13 +12,13 @@ class apiInterface {
 		return this.Client.create(
 			{ type: "task" },
 			new Task({ content: task, due_string: "today", due_lang: "en" })
-		).then((res) => {
-			if (res === true) {
-				return new Notification("Task Created");
-			} else {
-				return new Notification("Task couldn't be created");
-			}
-		});
+		)
+			.then(() => {
+				new Notification("Task Created");
+			})
+			.catch(() => {
+				new Notification("Task couldn't be created");
+			});
 	}
 }
 
