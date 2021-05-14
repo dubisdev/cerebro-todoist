@@ -1,4 +1,4 @@
-import { getSubCommand } from "./core-engine/textUtilities";
+import { getSubCommand, getCommand } from "./core-engine/textUtilities";
 import icon from "./icons";
 import DisplayGetter from "./plugin-structure/DisplayGetter";
 import checkToken from "./plugin-structure/checkToken";
@@ -14,7 +14,7 @@ function plugin({ term, display, actions, settings }) {
 	//match === true if the input is any of the appnames
 	const appNames = ["tds", "Todoist Workflow"];
 	let match = appNames.some(
-		(appName) => appName.toLowerCase() === term.split(" ")[0].toLowerCase()
+		(appName) => appName.toLowerCase() === getCommand(term).toLowerCase()
 	);
 
 	if (match) {
