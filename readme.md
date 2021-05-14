@@ -30,6 +30,43 @@ In Cerebro, type `tds` and then one of the [available commands](#available-comma
   <img src="https://github.com/dubisdev/cerebro-todoist/raw/master/readme_files/new_note.png">
 </p>
 
+### Creating tasks with priorities and descriptions
+
+You can assign priority property to your tasks using the command `!!`
+
+<p align="center">
+  <img src="https://github.com/dubisdev/cerebro-todoist/raw/master/readme_files/priority_cerebro.png">
+</p>
+<p align="center">
+  <img src="https://github.com/dubisdev/cerebro-todoist/raw/master/readme_files/priority_todoist.png">
+</p>
+
+You can assign a description to your tasks using the command `::`\*
+
+<p align="center">
+  <img src="https://github.com/dubisdev/cerebro-todoist/raw/master/readme_files/description_cerebro.png">
+</p>
+<p align="center">
+  <img src="https://github.com/dubisdev/cerebro-todoist/raw/master/readme_files/description1_todoist.png">
+</p>
+<p align="center">
+  <img src="https://github.com/dubisdev/cerebro-todoist/raw/master/readme_files/description_todoist.png">
+</p>
+
+\*The task priority or name must be before this sign, otherwise it will recognize the text as part of the description
+
+You can combine them as long as you keep in mind that the description must always be the last:
+
+<p align="center">
+  <img src="https://github.com/dubisdev/cerebro-todoist/raw/master/readme_files/combined_cerebro.png">
+</p>
+<p align="center">
+  <img src="https://github.com/dubisdev/cerebro-todoist/raw/master/readme_files/combined1_todoist.png">
+</p>
+<p align="center">
+  <img src="https://github.com/dubisdev/cerebro-todoist/raw/master/readme_files/combined_todoist.png">
+</p>
+
 ### ⚙ `today` command
 
 `today` command shows the tasks you have scheduled for today.
