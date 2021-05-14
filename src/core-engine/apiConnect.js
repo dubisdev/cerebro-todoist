@@ -1,5 +1,9 @@
 import TDSClient, { Task } from "todoist-rest-client";
-import { getSubCommandText } from "./textUtilities.js";
+import {
+	getSubCommandText,
+	getTaskPriority,
+	getTaskDescription,
+} from "./textUtilities.js";
 
 class apiInterface {
 	constructor({ apiToken }) {
@@ -7,16 +11,26 @@ class apiInterface {
 	}
 
 	createTask({ text = "" } = {}) {
-		let task = getSubCommandText(text);
+		let rudeText = getSubCommandText(text);
+		const [description, taskTextWODescription] = getTaskDescription(rudeText);
+		const [priority, taskText] = getTaskPriority(taskTextWODescription);
+		console.log(priority);
 
 		return this.Client.create(
 			{ type: "task" },
-			new Task({ content: task, due_string: "today", due_lang: "en" })
+			new Task({
+				content: taskText,
+				due_string: "today",
+				due_lang: "en",
+				priority,
+				description,
+			})
 		)
 			.then(() => {
 				new Notification("Task Created");
 			})
-			.catch(() => {
+			.catch((err) => {
+				console.error(err);
 				new Notification("Task couldn't be created");
 			});
 	}
