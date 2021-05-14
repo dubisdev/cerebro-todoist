@@ -14,7 +14,6 @@ class apiInterface {
 		let rudeText = getSubCommandText(text);
 		const [description, taskTextWODescription] = getTaskDescription(rudeText);
 		const [priority, taskText] = getTaskPriority(taskTextWODescription);
-		console.log(priority);
 
 		return this.Client.create(
 			{ type: "task" },
@@ -30,7 +29,6 @@ class apiInterface {
 				new Notification("Task Created");
 			})
 			.catch((err) => {
-				console.error(err);
 				new Notification("Task couldn't be created");
 			});
 	}
