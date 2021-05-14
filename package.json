@@ -8,7 +8,7 @@
 	"dependencies": {
 		"axios": "0.21.1",
 		"react": "17.0.2",
-		"todoist-rest-client": "0.0.4"
+		"todoist-rest-client": "0.0.5"
 	},
 	"//": {"devDependencies": {
 		"cerebro-scripts": "0.0.25"
