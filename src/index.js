@@ -49,7 +49,7 @@ let settings = {
 	token: {
 		type: "string",
 		defaultValue: "",
-		description: "Your Todoist api Token",
+		description: "Your Todoist API Token",
 	},
 };
 // ----------------- END Plugin settings --------------------- //

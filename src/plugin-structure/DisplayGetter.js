@@ -46,22 +46,22 @@ export default class DisplayGetter {
 	}
 
 	Action(action, term) {
-		switch (action) {
-			case "New":
-				return () => this.myInterface.createTask({ text: term });
-			default:
-				return null;
-		}
+		const actionsObject = {
+			Nex: () => this.myInterface.createTask({ text: term }),
+		};
+		const noAction = null;
+
+		return actionsObject[action] || noAction;
 	}
 
 	getPreview(action) {
-		switch (action) {
-			case "New":
-				return () => <NewTaskInterface />;
-			case "Today":
-				return () => <PreviewToday actions={this.actions} />;
-			default:
-				return () => <h3>Invalid Command</h3>;
-		}
+		const previewsObject = {
+			New: () => <NewTaskInterface />,
+			Today: () => <PreviewToday actions={this.actions} />,
+		};
+
+		const invalidAction = () => <h3>Invalid Command</h3>;
+
+		return previewsObject[action] || invalidAction;
 	}
 }
