@@ -5,11 +5,9 @@ import { PreviewToday, NewTaskInterface } from "../components";
 export default class DisplayGetter {
 	constructor({ apiToken, noToken, actions }) {
 		this.actions = actions;
-		if (noToken) {
-			this.noToken = noToken;
-		} else {
-			this.myInterface = new apiInterface({ apiToken });
-		}
+
+		if (noToken) this.noToken = noToken;
+		else this.myInterface = new apiInterface({ apiToken });
 	}
 
 	getEmpty() {
@@ -17,7 +15,7 @@ export default class DisplayGetter {
 			term: `tds`,
 			icon: icon,
 			title: `Todoist Workflow`,
-			getPreview: this.getPreview(),
+			getPreview: this.getPreview("noAction"),
 		};
 	}
 
