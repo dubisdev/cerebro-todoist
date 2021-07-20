@@ -1,4 +1,4 @@
-import TDSClient, { Task } from "todoist-rest-client";
+import { Task } from "todoist-rest-client";
 import {
 	getSubCommandText,
 	getTaskPriority,
@@ -6,8 +6,8 @@ import {
 } from "./textUtilities.js";
 
 class apiInterface {
-	constructor({ apiToken }) {
-		this.Client = new TDSClient(apiToken);
+	constructor(client) {
+		this.Client = client;
 	}
 
 	createTask({ text = "" } = {}) {

@@ -1,18 +1,18 @@
-import { getSubCommand, getCommand } from "./core-engine/textUtilities";
 import icon from "./icons";
-import DisplayGetter from "./plugin-structure/DisplayGetter";
 import checkToken from "./plugin-structure/checkToken";
+import DisplayGetter from "./plugin-structure/DisplayGetter";
+import TDSClient from "todoist-rest-client";
+import { getSubCommand, getCommand } from "./core-engine/textUtilities";
 
 //pide Acceso a notificaciones
 if (!Notification.permission) Notification.requestPermission();
 
 function plugin({ term, display, actions, settings }) {
-	//hacer un check del token
-	//crear un cliente de todoist
-	//crear el displaygetter pasándole el cliente y las actions (funciones utiles como cerrar la ventana)
-	//el cliente se reutiliza para todos los componentes, de manera que con el settings.token vale para toda la app
+	checkToken(settings.token);
 
-	let displayGetter = new DisplayGetter({ apiToken: settings.token, actions });
+	const client = new TDSClient(settings.token);
+
+	let displayGetter = new DisplayGetter({ client, actions });
 
 	//match === true if the input is any of the appnames
 	const appNames = ["tds", "Todoist Workflow"];
@@ -21,24 +21,29 @@ function plugin({ term, display, actions, settings }) {
 	);
 
 	if (match) {
-		//aqui ya no haría falta hacer el check del token ;)
-		checkToken();
+		if (
+			process.env.noInternet !== "true" &&
+			process.env.invalidToken !== "true"
+		) {
+			const appActionNames = ["New", "Today"];
+			//filters the action names
+			const displayArray = appActionNames
+				.filter(
+					(action) =>
+						//get subcomand gets the action "tds new" --> "new"
+						!getSubCommand(term) ||
+						action.toLowerCase().startsWith(getSubCommand(term))
+				)
+				.map((action) => displayGetter.get({ action, term }));
 
-		const appActionNames = ["New", "Today"];
-		//filters the action names
-		const displayArray = appActionNames
-			.filter(
-				(action) =>
-					//get subcomand gets the action "tds new" --> "new"
-					!getSubCommand(term) ||
-					action.toLowerCase().startsWith(getSubCommand(term))
-			)
-			.map((action) => displayGetter.get({ action, term }));
+			//si la longitud es 0, se devuelve una vacía
+			if (displayArray.length === 0)
+				displayArray.push(displayGetter.getEmpty());
 
-		//si la longitud es 0, se devuelve una vacía
-		if (displayArray.length === 0) displayArray.push(displayGetter.getEmpty());
-
-		display(displayArray);
+			display(displayArray);
+		} else if (process.env.noInternet === "true")
+			display(displayGetter.getNoInternet());
+		else display(displayGetter.getInvalidToken());
 	}
 }
 
