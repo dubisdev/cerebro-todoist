@@ -1,6 +1,6 @@
 import icon from "../icons";
-import apiInterface from "../core-engine/apiConnect";
-import { PreviewToday, NewTaskInterface } from "../components";
+import apiInterface from "./apiConnect";
+import { PreviewToday, NewTodayTask } from "../components";
 
 export default class DisplayGetter {
 	constructor({ noToken, actions, client }) {
@@ -73,7 +73,7 @@ export default class DisplayGetter {
 
 	getPreview(action) {
 		const previewsObject = {
-			New: () => <NewTaskInterface />,
+			New: () => <NewTodayTask />,
 			Today: () => <PreviewToday actions={this.actions} client={this.client} />,
 			noInternet: () => <h3>No internet conexion</h3>,
 			invalidToken: () => <h3>Invalid token, check it please :)</h3>,

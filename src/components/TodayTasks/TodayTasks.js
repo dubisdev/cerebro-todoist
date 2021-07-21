@@ -1,4 +1,4 @@
-import { Loading, KeyboardNav, KeyboardNavItem } from "../../cerebro-ui";
+import { Loading, KeyboardNav, KeyboardNavItem } from "../cerebro-ui";
 import styles from "./styles.css";
 
 const TodayTasksInterface = ({ content, actions, client }) => {

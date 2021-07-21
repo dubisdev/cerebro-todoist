@@ -1,5 +1,5 @@
 import Loading from "../cerebro-ui/Loading";
-import { TodayTasksInterface as TodoistInterface } from "../interfaces";
+import TodayTasks from "./TodayTasks";
 import Preload from "../cerebro-ui/Preload";
 
 const PreviewToday = ({ actions, client }) => {
@@ -7,11 +7,7 @@ const PreviewToday = ({ actions, client }) => {
 	return (
 		<Preload promise={promise} loader={Loading()}>
 			{(promiseResult) => (
-				<TodoistInterface
-					content={promiseResult}
-					actions={actions}
-					client={client}
-				/>
+				<TodayTasks content={promiseResult} actions={actions} client={client} />
 			)}
 		</Preload>
 	);

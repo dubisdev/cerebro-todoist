@@ -1,6 +1,6 @@
 import icon from "./icons";
-import checkToken from "./plugin-structure/checkToken";
-import DisplayGetter from "./plugin-structure/DisplayGetter";
+import checkToken from "./core-engine/checkToken";
+import DisplayGetter from "./core-engine/DisplayGetter";
 import TDSClient from "todoist-rest-client";
 import { getSubCommand, getCommand } from "./core-engine/textUtilities";
 
