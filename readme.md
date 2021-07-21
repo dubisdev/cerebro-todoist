@@ -1,4 +1,4 @@
-# cerebro-todoist v0.1
+# cerebro-todoist v0.1.1
 
 > [Cerebro](https://cerebroapp.com) plugin to create and manage todoist.
 
