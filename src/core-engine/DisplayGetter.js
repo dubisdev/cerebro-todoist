@@ -1,15 +1,14 @@
 import icon from "../icons";
-import apiInterface from "../core-engine/apiConnect";
-import { PreviewToday, NewTaskInterface } from "../components";
+import apiInterface from "./apiConnect";
+import { PreviewToday, NewTodayTask } from "../components";
 
 export default class DisplayGetter {
-	constructor({ apiToken, noToken, actions }) {
+	constructor({ noToken, actions, client }) {
 		this.actions = actions;
-		if (noToken) {
-			this.noToken = noToken;
-		} else {
-			this.myInterface = new apiInterface({ apiToken });
-		}
+		this.client = client;
+
+		if (noToken) this.noToken = noToken;
+		else this.myInterface = new apiInterface(client);
 	}
 
 	getEmpty() {
@@ -17,7 +16,25 @@ export default class DisplayGetter {
 			term: `tds`,
 			icon: icon,
 			title: `Todoist Workflow`,
-			getPreview: this.getPreview(),
+			getPreview: this.getPreview("noAction"),
+		};
+	}
+
+	getNoInternet() {
+		return {
+			term: `tds`,
+			icon: icon,
+			title: `Todoist Workflow`,
+			getPreview: this.getPreview("noInternet"),
+		};
+	}
+
+	getInvalidToken() {
+		return {
+			term: `tds`,
+			icon: icon,
+			title: `Todoist Workflow`,
+			getPreview: this.getPreview("invalidToken"),
 		};
 	}
 
@@ -47,7 +64,7 @@ export default class DisplayGetter {
 
 	Action(action, term) {
 		const actionsObject = {
-			Nex: () => this.myInterface.createTask({ text: term }),
+			New: () => this.myInterface.createTask({ text: term }),
 		};
 		const noAction = null;
 
@@ -56,8 +73,10 @@ export default class DisplayGetter {
 
 	getPreview(action) {
 		const previewsObject = {
-			New: () => <NewTaskInterface />,
-			Today: () => <PreviewToday actions={this.actions} />,
+			New: () => <NewTodayTask />,
+			Today: () => <PreviewToday actions={this.actions} client={this.client} />,
+			noInternet: () => <h3>No internet conexion</h3>,
+			invalidToken: () => <h3>Invalid token, check it please :)</h3>,
 		};
 
 		const invalidAction = () => <h3>Invalid Command</h3>;

@@ -1,15 +1,9 @@
-import { Loading, KeyboardNav, KeyboardNavItem } from "../../cerebro-ui";
+import { Loading, KeyboardNav, KeyboardNavItem } from "../cerebro-ui";
 import styles from "./styles.css";
-import { getApiToken } from "../../../core-engine/settingsServices";
-import TDSClient from "todoist-rest-client";
 
-const myClient = new TDSClient(getApiToken());
-
-const TodayTasksInterface = ({ content, actions }) => {
+const TodayTasksInterface = ({ content, actions, client }) => {
 	const action = (task) => {
-		if (task) {
-			myClient.completeTask({ TaskObject: task });
-		}
+		if (task) client.completeTask({ TaskObject: task });
 
 		actions.hideWindow();
 	};

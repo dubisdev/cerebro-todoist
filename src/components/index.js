@@ -1,4 +1,4 @@
-import { NewTaskInterface } from "./interfaces";
-import PreviewToday from "./previews/PreviewToday";
+import PreviewToday from "./TodayTasks";
+import NewTodayTask from "./NewTodayTask";
 
-export { PreviewToday, NewTaskInterface };
+export { PreviewToday, NewTodayTask };
