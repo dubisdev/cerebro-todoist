@@ -13,7 +13,6 @@ const TodayTasksInterface = ({ content, actions, client }) => {
 			return (
 				<div className={styles.wrapper}>
 					<h2>Today Tasks</h2>
-
 					<KeyboardNav>
 						<ul className={styles.list}>
 							<KeyboardNavItem tagName={"li"} onSelect={() => action()}>
@@ -29,26 +28,24 @@ const TodayTasksInterface = ({ content, actions, client }) => {
 				<h2>Today Tasks</h2>
 				<KeyboardNav>
 					<ul className={styles.list}>
-						{content.map((task) => {
-							return (
-								<KeyboardNavItem
-									tagName={"li"}
-									key={task.id}
-									onSelect={() => action(task)}>
-									<div className={styles.floatLayout}>
-										<span className={styles.floatLeft}>{task.content}</span>
-										<span className={styles.floatRight}>
-											{(() => {
-												const hour = new Date(task.due.datetime)
-													.toTimeString()
-													.split(" ")[0];
-												if (hour !== "Invalid") return "|| ⌛ " + hour;
-											})()}
-										</span>
-									</div>
-								</KeyboardNavItem>
-							);
-						})}
+						{content.map((task) => (
+							<KeyboardNavItem
+								tagName={"li"}
+								key={task.id}
+								onSelect={() => action(task)}>
+								<div className={styles.floatLayout}>
+									<span className={styles.floatLeft}>{task.content}</span>
+									<span className={styles.floatRight}>
+										{(() => {
+											const hour = new Date(task.due.datetime)
+												.toTimeString()
+												.split(" ")[0];
+											if (hour !== "Invalid") return "|| ⌛ " + hour;
+										})()}
+									</span>
+								</div>
+							</KeyboardNavItem>
+						))}
 					</ul>
 				</KeyboardNav>
 			</div>
