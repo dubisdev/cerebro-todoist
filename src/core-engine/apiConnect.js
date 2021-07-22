@@ -1,9 +1,7 @@
 import { Task } from "todoist-rest-client";
-import {
-	getSubCommandText,
-	getTaskPriority,
-	getTaskDescription,
-} from "./textUtilities.js";
+import { getTaskPriority, getTaskDescription } from "./textUtilities.js";
+
+import { getSubCommandText } from "cerebro-command-router";
 
 class apiInterface {
 	constructor(client) {
@@ -29,7 +27,13 @@ class apiInterface {
 				new Notification("Task Created");
 			})
 			.catch((err) => {
-				new Notification("Task couldn't be created");
+				if (!err.response) {
+					new Notification("Task couldn't be created: No internet conexion");
+				} else if (err.response.status === 403) {
+					new Notification(
+						"Task couldn't be created: Please check the token in the cerebro-todoist settings."
+					);
+				}
 			});
 	}
 }

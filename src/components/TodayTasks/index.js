@@ -6,9 +6,22 @@ const PreviewToday = ({ actions, client }) => {
 	let promise = client.getTodayTasksJSON();
 	return (
 		<Preload promise={promise} loader={Loading()}>
-			{(promiseResult) => (
-				<TodayTasks content={promiseResult} actions={actions} client={client} />
-			)}
+			{(promiseResult) => {
+				if (promiseResult === null)
+					return (
+						<h3>
+							Something was wrong (check your internet connection or your
+							Todoist API token)
+						</h3>
+					);
+				return (
+					<TodayTasks
+						content={promiseResult}
+						actions={actions}
+						client={client}
+					/>
+				);
+			}}
 		</Preload>
 	);
 };
