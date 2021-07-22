@@ -1,4 +1,5 @@
-# cerebro-todoist v0.1.1
+# cerebro-todoist &nbsp; ![npm](https://img.shields.io/npm/v/cerebro-todoist?color=green)
+
 
 > [Cerebro](https://cerebroapp.com) plugin to create and manage todoist.
 
