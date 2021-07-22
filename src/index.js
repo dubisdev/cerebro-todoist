@@ -1,49 +1,44 @@
 import icon from "./icons";
-import checkToken from "./core-engine/checkToken";
-import DisplayGetter from "./core-engine/DisplayGetter";
+import CerebroRouter from "cerebro-command-router";
+import { PreviewToday, NewTodayTask } from "./components";
 import TDSClient from "todoist-rest-client";
-import { getSubCommand, getCommand } from "./core-engine/textUtilities";
+import apiInterface from "./core-engine/apiConnect";
 
 //pide Acceso a notificaciones
 if (!Notification.permission) Notification.requestPermission();
 
 function plugin({ term, display, actions, settings }) {
-	checkToken(settings.token);
+	//si no hay token se muestra la pantalla de error
+	if (!settings.token) {
+		display({
+			icon: icon,
+			title: `Todoist Workflow Error`,
+			getPreview: () => <h3>No token found :(</h3>,
+		});
+	} else {
+		const client = new TDSClient(settings.token);
 
-	const client = new TDSClient(settings.token);
+		const myInterface = new apiInterface(client);
 
-	let displayGetter = new DisplayGetter({ client, actions });
+		const myRouter = new CerebroRouter({ command: "tds", term, display });
 
-	//match === true if the input is any of the appnames
-	const appNames = ["tds", "Todoist Workflow"];
-	let match = appNames.some(
-		(appName) => appName.toLowerCase() === getCommand(term).toLowerCase()
-	);
+		myRouter.route("new", {
+			icon: icon,
+			title: `Todoist Workflow New`,
+			getPreview: () => <NewTodayTask />,
+			onSelect: () => myInterface.createTask({ text: term }),
+		});
 
-	if (match) {
-		if (
-			process.env.noInternet !== "true" &&
-			process.env.invalidToken !== "true"
-		) {
-			const appActionNames = ["New", "Today"];
-			//filters the action names
-			const displayArray = appActionNames
-				.filter(
-					(action) =>
-						//get subcomand gets the action "tds new" --> "new"
-						!getSubCommand(term) ||
-						action.toLowerCase().startsWith(getSubCommand(term))
-				)
-				.map((action) => displayGetter.get({ action, term }));
+		myRouter.route("today", {
+			icon: icon,
+			title: `Todoist Workflow Today`,
+			getPreview: () => <PreviewToday actions={actions} client={client} />,
+		});
 
-			//si la longitud es 0, se devuelve una vacía
-			if (displayArray.length === 0)
-				displayArray.push(displayGetter.getEmpty());
-
-			display(displayArray);
-		} else if (process.env.noInternet === "true")
-			display(displayGetter.getNoInternet());
-		else display(displayGetter.getInvalidToken());
+		myRouter.invalidRoute({
+			icon: icon,
+			title: `Invalid Todoist Workflow Command`,
+		});
 	}
 }
 
