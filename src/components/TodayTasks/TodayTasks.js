@@ -1,7 +1,10 @@
 import { Loading, KeyboardNav, KeyboardNavItem } from "../cerebro-ui";
 import styles from "./styles.css";
+import lang from "../../lang";
 
 const TodayTasksInterface = ({ content, actions, client }) => {
+	const strings = lang.TodayTasks;
+
 	const action = (task) => {
 		if (task) client.completeTask({ TaskObject: task });
 
@@ -12,11 +15,11 @@ const TodayTasksInterface = ({ content, actions, client }) => {
 		if (content.length === 0) {
 			return (
 				<div className={styles.wrapper}>
-					<h2>Today Tasks</h2>
+					<h2>{strings.today_tasks}</h2>
 					<KeyboardNav>
 						<ul className={styles.list}>
 							<KeyboardNavItem tagName={"li"} onSelect={() => action()}>
-								No tasks for today! Is this #TodoistZero ?
+								{strings.no_tasks}
 							</KeyboardNavItem>
 						</ul>
 					</KeyboardNav>
@@ -25,7 +28,7 @@ const TodayTasksInterface = ({ content, actions, client }) => {
 		}
 		return (
 			<div className={styles.wrapper}>
-				<h2>Today Tasks</h2>
+				<h2>{strings.today_tasks}</h2>
 				<KeyboardNav>
 					<ul className={styles.list}>
 						{content.map((task) => (

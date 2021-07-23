@@ -1,0 +1,33 @@
+{
+    "error": "Error de Todoist",
+    "noTokenFound": "No se ha encontrado un token :(",
+    "workflow_new": "Todoist: Nueva Tarea",
+    "workflow_today": "Todoist: Tareas de Hoy",
+    "invalid_command": "Comando no válido",
+    
+    "settings": {
+        "description": "Tu Token de la API Todoist"
+    },
+
+    "NewTodayTask": {
+        "title": "Nueva Tarea de Todoist",
+        "description": "Crea una nueva tarea que se asignará para hoy en tu bandeja de entrada.",
+        "li1": "Utiliza !!número para añadir prioridad a la tarea.",
+        "li2": "Utiliza :: para añadir una descripción."
+    },
+
+    "TodayTasks": {
+        "error": "Algo salió mal (comprueba tu conexión a internet o tu token de la API Todoist).",
+        "today_tasks" :"Tus tareas de hoy",
+        "no_tasks":"¡No tienes tareas hoy! ¿Es esto un #TodoistZero ?"
+    },
+
+    "apiConnect": {
+        "due_lang": "es",
+        "due_string": "hoy",
+        "created": "Tarea creada",
+        "error_internet": "La tarea no se pudo crear: No hay conexión a internet.",
+        "error_token": "La tarea no se pudo crear: El token de la API es incorrecto."
+    }
+
+}

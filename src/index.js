@@ -3,17 +3,18 @@ import CerebroRouter from "cerebro-command-router";
 import { PreviewToday, NewTodayTask } from "./components";
 import TDSClient from "todoist-rest-client";
 import apiInterface from "./core-engine/apiConnect";
+import strings from "./lang";
 
 //pide Acceso a notificaciones
 if (!Notification.permission) Notification.requestPermission();
 
-function plugin({ term, display, actions, settings }) {
+function plugin({ term, display, actions, settings, config }) {
 	//si no hay token se muestra la pantalla de error
 	if (!settings.token) {
 		display({
 			icon: icon,
-			title: `Todoist Workflow Error`,
-			getPreview: () => <h3>No token found :(</h3>,
+			title: strings.error,
+			getPreview: () => <h3>{strings.noTokenFound}</h3>,
 		});
 	} else {
 		const client = new TDSClient(settings.token);
@@ -24,20 +25,20 @@ function plugin({ term, display, actions, settings }) {
 
 		myRouter.route("new", {
 			icon: icon,
-			title: `Todoist Workflow New`,
+			title: strings.workflow_new,
 			getPreview: () => <NewTodayTask />,
 			onSelect: () => myInterface.createTask({ text: term }),
 		});
 
 		myRouter.route("today", {
 			icon: icon,
-			title: `Todoist Workflow Today`,
+			title: strings.workflow_today,
 			getPreview: () => <PreviewToday actions={actions} client={client} />,
 		});
 
 		myRouter.invalidRoute({
 			icon: icon,
-			title: `Invalid Todoist Workflow Command`,
+			title: strings.invalid_command,
 		});
 	}
 }
@@ -46,11 +47,12 @@ function plugin({ term, display, actions, settings }) {
 const name = "Todoist Workflow";
 const keyword = "tds";
 
-let settings = {
+const s_settings = strings.settings;
+const settings = {
 	token: {
 		type: "string",
 		defaultValue: "",
-		description: "Your Todoist API Token",
+		description: s_settings.description,
 	},
 };
 // ----------------- END Plugin settings --------------------- //

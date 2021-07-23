@@ -1,13 +1,15 @@
 import styles from "./styles.css";
+import lang from "../../lang";
 
 const NewTaskInterface = () => {
+	const strings = lang.NewTodayTask;
 	return (
 		<div className={styles.wrapper}>
-			<h2>New Todoist Task</h2>
-			Creates a new Todoist task in your inbox for today.
+			<h2>{strings.title}</h2>
+			{strings.description}
 			<ul>
-				<li>Use !!number to indicate priority</li>
-				<li>Use :: to separate task name from description</li>
+				<li>{strings.li1}</li>
+				<li>{strings.li2}</li>
 			</ul>
 		</div>
 	);

@@ -1,0 +1,32 @@
+{
+    "error": "Todoist Workflow Error",
+    "noTokenFound": "No token found :(",
+    "workflow_new": "Todoist: New Task",
+    "workflow_today": "Todoist: Today Tasks",
+    "invalid_command": "Invalid Todoist Workflow Command",
+    
+    "settings": {
+        "description": "Your Todoist API Token"
+    },
+
+    "NewTodayTask": {
+        "title": "New Todoist Task",
+        "description": "Creates a new Todoist task in your inbox for today.",
+        "li1": "Use !!number to indicate priority",
+        "li2": "Use :: to separate task name from description"
+    },
+
+    "TodayTasks": {
+        "error": "Something was wrong (check your internet connection or your Todoist API token).",
+        "today_tasks" :"Today Tasks",
+        "no_tasks":"No tasks for today! Is this #TodoistZero ?"
+    },
+
+    "apiConnect": {
+        "due_lang": "en",
+        "due_string": "today",
+        "created": "Task Created",
+        "error_internet": "Task couldn't be created: No internet conexion",
+        "error_token": "Task couldn't be created: Please check the token in the cerebro-todoist settings."
+    }
+}

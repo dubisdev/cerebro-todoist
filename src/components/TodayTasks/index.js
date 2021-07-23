@@ -1,19 +1,16 @@
 import Loading from "../cerebro-ui/Loading";
 import TodayTasks from "./TodayTasks";
 import Preload from "../cerebro-ui/Preload";
+import lang from "../../lang";
 
 const PreviewToday = ({ actions, client }) => {
+	const strings = lang.TodayTasks;
+
 	let promise = client.getTodayTasksJSON();
 	return (
 		<Preload promise={promise} loader={Loading()}>
 			{(promiseResult) => {
-				if (promiseResult === null)
-					return (
-						<h3>
-							Something was wrong (check your internet connection or your
-							Todoist API token)
-						</h3>
-					);
+				if (promiseResult === null) return <h3>{strings.error}</h3>;
 				return (
 					<TodayTasks
 						content={promiseResult}
