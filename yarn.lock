@@ -9,10 +9,15 @@ axios@0.21.1:
   dependencies:
     follow-redirects "^1.10.0"
 
+cerebro-command-router@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/cerebro-command-router/-/cerebro-command-router-1.0.0.tgz#c9ab37e56b90be304474df40229a3ddfbf92e7a5"
+  integrity sha512-wqayWt6jMLfjv0hvveHuAaPVpqAbOt9ecGWePX31HEBdQu1SnTjQWgDKpJBm6VYpi+jXodYWA0/ONJ+B/VeyOw==
+
 follow-redirects@^1.10.0:
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.0.tgz#f5d260f95c5f8c105894491feee5dc8993b402fe"
-  integrity sha512-0vRwd7RKQBTt+mgu87mtYeofLFZpTas2S9zY+jIeuLJMNvudIgF52nr19q40HOwH5RrhWIPuj9puybzSJiRrVg==
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.1.tgz#d9114ded0a1cfdd334e164e6662ad02bfd91ff43"
+  integrity sha512-HWqDgT7ZEkqRzBvc2s64vSZ/hfOceEol3ac/7tKwzuvEyWx3/4UegXh5oBOIotkGsObyk3xznnSRVADBgWSQVg==
 
 "js-tokens@^3.0.0 || ^4.0.0":
   version "4.0.0"
