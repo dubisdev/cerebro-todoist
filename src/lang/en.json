@@ -6,7 +6,9 @@
     "invalid_command": "Invalid Todoist Workflow Command",
     
     "settings": {
-        "description": "Your Todoist API Token"
+        "descriptionToken": "Your Todoist API Token",
+        "descriptionNewCommand": "Command for creating new tasks.",
+        "descriptionTodayCommand": "Command for showing today tasks."
     },
 
     "NewTodayTask": {
