@@ -1,6 +1,5 @@
 # cerebro-todoist &nbsp; ![npm](https://img.shields.io/npm/v/cerebro-todoist?color=green)
 
-
 > [Cerebro](https://cerebroapp.com) plugin to create and manage todoist.
 
 ## Installation
@@ -17,7 +16,7 @@
 
 In Cerebro, type `tds` and then one of the [available commands](#available-commands).
 
-## Available commands
+## Default commands
 
 ### ⚙ `new` command
 
@@ -31,7 +30,7 @@ In Cerebro, type `tds` and then one of the [available commands](#available-comma
   <img src="https://github.com/dubisdev/cerebro-todoist/raw/master/readme_files/new_note.png">
 </p>
 
-### Creating tasks with priorities and descriptions
+#### Creating tasks with priorities and descriptions
 
 You can assign priority property to your tasks using the command `!!`
 
@@ -85,6 +84,14 @@ When you write `tds today`, you get:
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/dubisdev/cerebro-todoist/master/readme_files/today_cerebro.png">
+</p>
+
+## Custom Commands
+
+From version v1.1.0 you can customize the commands for different actions from the plugin settings.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/dubisdev/cerebro-todoist/master/readme_files/custom_commands.png">
 </p>
 
 ## Related
