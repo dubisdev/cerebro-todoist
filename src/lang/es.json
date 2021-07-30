@@ -6,7 +6,9 @@
     "invalid_command": "Comando no válido",
     
     "settings": {
-        "description": "Tu Token de la API Todoist"
+        "descriptionToken": "Tu Token de la API Todoist",
+        "descriptionNewCommand": "Comando para crear nuevas tareas.",
+        "descriptionTodayCommand": "Comando para ver las tareas de hoy."
     },
 
     "NewTodayTask": {
