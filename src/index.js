@@ -10,7 +10,7 @@ import { name, keyword, settings } from "./settings";
 if (!Notification.permission) Notification.requestPermission();
 
 function plugin({ term, display, actions, settings, config }) {
-	const token = settings["API Token"];
+	const token = settings.token;
 
 	//si no hay token se muestra la pantalla de error
 	if (!token) {

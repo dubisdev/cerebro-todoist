@@ -6,7 +6,7 @@ export const name = "Todoist Workflow";
 export const keyword = "tds";
 
 export const settings = {
-	"API Token": {
+	token: {
 		type: "string",
 		defaultValue: "",
 		description: strings.descriptionToken,
