@@ -13,7 +13,7 @@ function plugin({ term, display, actions, settings, config }) {
 	const token = settings.token;
 
 	//si no hay token se muestra la pantalla de error
-	if (!token) {
+	if (!token && term.toLowerCase().includes("tds")) {
 		display({
 			icon: icon,
 			title: strings.error,
