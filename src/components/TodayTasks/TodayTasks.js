@@ -6,7 +6,10 @@ const TodayTasksInterface = ({ content, actions, client }) => {
 	const strings = lang.TodayTasks;
 
 	const action = (task) => {
-		if (task) client.completeTask({ TaskObject: task });
+		if (task)
+			client
+				.completeTask({ TaskObject: task })
+				.then(() => new Notification(lang.taskCompleted));
 
 		actions.hideWindow();
 	};
