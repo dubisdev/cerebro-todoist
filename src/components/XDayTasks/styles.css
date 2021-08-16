@@ -1,0 +1,33 @@
+.wrapper {
+	align-self: flex-start;
+	width: 100%;
+	margin: -10px;
+	position: relative;
+	transition: all 0.3s linear;
+}
+
+.list {
+	margin: 0;
+	padding: 0;
+}
+
+@keyframes scroll {
+	0% {
+		top: 50%;
+	}
+	100% {
+		top: -25%;
+	}
+}
+
+.floatLeft {
+	float: left;
+}
+
+.floatRight {
+	float: right;
+}
+
+.floatLayout {
+	width: 100%;
+}

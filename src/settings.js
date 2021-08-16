@@ -23,5 +23,11 @@ export const settings = {
 		defaultValue: "today",
 		description: strings.descriptionTodayCommand,
 	},
+
+	"View X Day Tasks Command": {
+		type: "string",
+		defaultValue: "view",
+		description: strings.descriptionViewCommand,
+	},
 };
 // ----------------- END Plugin settings --------------------- //

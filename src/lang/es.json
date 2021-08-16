@@ -3,13 +3,16 @@
     "noTokenFound": "No se ha encontrado un token :(",
     "workflow_new": "Todoist: Nueva Tarea",
     "workflow_today": "Todoist: Tareas de Hoy",
+    "workflow_view": "Todoist: Tareas de algún día",
     "invalid_command": "Comando no válido",
     "updateAvailable": "¡Una nueva versión de cerebro-todoist está disponible! Descárgala desde los ajustes de CerebroApp",
+    "taskCompleted": "¡Tarea completada!",
     
     "settings": {
         "descriptionToken": "Tu Token de la API Todoist",
         "descriptionNewCommand": "Comando para crear nuevas tareas.",
-        "descriptionTodayCommand": "Comando para ver las tareas de hoy."
+        "descriptionTodayCommand": "Comando para ver las tareas de hoy.",
+        "descriptionViewCommand": "Comando para ver las tareas de un día concreto."
     },
 
     "NewTodayTask": {
@@ -23,6 +26,12 @@
         "error": "Algo salió mal (comprueba tu conexión a internet o tu token de la API Todoist).",
         "today_tasks" :"Tus tareas de hoy",
         "no_tasks":"¡No tienes tareas hoy! ¿Es esto un #TodoistZero ?"
+    },
+
+    "XDayTasks": {
+        "error": "Algo salió mal (comprueba tu conexión a internet o tu token de la API Todoist).",
+        "day_tasks" :"Tareas para el",
+        "no_tasks":"No hay tareas para este día"
     },
 
     "apiConnect": {

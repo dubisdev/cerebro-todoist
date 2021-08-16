@@ -1,6 +1,6 @@
 import icon from "./icons";
-import CerebroRouter from "cerebro-command-router";
-import { PreviewToday, NewTodayTask } from "./components";
+import CerebroRouter, { getSubCommandText } from "cerebro-command-router";
+import { TodayTasks, NewTodayTask, XDayTasks } from "./components";
 import TDSClient from "todoist-rest-client";
 import apiInterface from "./core-engine/apiConnect";
 import updateChecker from "./core-engine/updateChecker";
@@ -39,7 +39,19 @@ function plugin({ term, display, actions, settings, config }) {
 		myRouter.route(settings["Today Tasks Command"], {
 			icon: icon,
 			title: strings.workflow_today,
-			getPreview: () => <PreviewToday actions={actions} client={client} />,
+			getPreview: () => <TodayTasks actions={actions} client={client} />,
+		});
+
+		myRouter.route(settings["View X Day Tasks Command"], {
+			icon: icon,
+			title: strings.workflow_view,
+			getPreview: () => (
+				<XDayTasks
+					actions={actions}
+					client={client}
+					dayInfo={getSubCommandText(term)}
+				/>
+			),
 		});
 
 		myRouter.invalidRoute({

@@ -3,13 +3,16 @@
     "noTokenFound": "No token found :(",
     "workflow_new": "Todoist: New Task",
     "workflow_today": "Todoist: Today Tasks",
+    "workflow_view": "Todoist: View Someday Tasks",
     "invalid_command": "Invalid Todoist Workflow Command",
     "updateAvailable": "A new cerebro-todoist version is available! Download and install it from cerebroapp plugin settings.",
+    "taskCompleted": "Task Completed!",
     
     "settings": {
         "descriptionToken": "Your Todoist API Token",
         "descriptionNewCommand": "Command for creating new tasks.",
-        "descriptionTodayCommand": "Command for showing today tasks."
+        "descriptionTodayCommand": "Command for showing today tasks.",
+        "descriptionViewCommand": "Command for showing someday tasks."
     },
 
     "NewTodayTask": {
@@ -23,6 +26,12 @@
         "error": "Something was wrong (check your internet connection or your Todoist API token).",
         "today_tasks" :"Today Tasks",
         "no_tasks":"No tasks for today! Is this #TodoistZero ?"
+    },
+
+    "XDayTasks": {
+        "error": "Something was wrong (check your internet connection or your Todoist API token).",
+        "day_tasks" :"Tasks for",
+        "no_tasks":"No tasks for this day."
     },
 
     "apiConnect": {
