@@ -8,8 +8,8 @@
 	"dependencies": {
 		"@bugsnag/js": "7.11.0",
 		"axios": "0.21.1",
-		"cerebro-command-router": "^1.0.0",
-		"moment": "^2.29.1",
+		"cerebro-command-router": "1.0.0",
+		"moment": "2.29.1",
 		"react": "17.0.2",
 		"semver": "7.3.5",
 		"todoist-rest-client": "0.0.5"

@@ -62,7 +62,7 @@ byline@^5.0.0:
   resolved "https://registry.yarnpkg.com/byline/-/byline-5.0.0.tgz#741c5216468eadc457b03410118ad77de8c1ddb1"
   integrity sha1-dBxSFkaOrcRXsDQQEYrXfejB3bE=
 
-cerebro-command-router@^1.0.0:
+cerebro-command-router@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/cerebro-command-router/-/cerebro-command-router-1.0.0.tgz#c9ab37e56b90be304474df40229a3ddfbf92e7a5"
   integrity sha512-wqayWt6jMLfjv0hvveHuAaPVpqAbOt9ecGWePX31HEBdQu1SnTjQWgDKpJBm6VYpi+jXodYWA0/ONJ+B/VeyOw==
@@ -110,7 +110,7 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-moment@^2.29.1:
+moment@2.29.1:
   version "2.29.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
