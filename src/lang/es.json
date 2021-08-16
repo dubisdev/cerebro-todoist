@@ -4,6 +4,7 @@
     "workflow_new": "Todoist: Nueva Tarea",
     "workflow_today": "Todoist: Tareas de Hoy",
     "invalid_command": "Comando no válido",
+    "updateAvailable": "¡Una nueva versión de cerebro-todoist está disponible! Descárgala desde los ajustes de CerebroApp",
     
     "settings": {
         "descriptionToken": "Tu Token de la API Todoist",

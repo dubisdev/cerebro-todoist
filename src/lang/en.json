@@ -4,6 +4,7 @@
     "workflow_new": "Todoist: New Task",
     "workflow_today": "Todoist: Today Tasks",
     "invalid_command": "Invalid Todoist Workflow Command",
+    "updateAvailable": "A new cerebro-todoist version is available! Download and install it from cerebroapp plugin settings.",
     
     "settings": {
         "descriptionToken": "Your Todoist API Token",

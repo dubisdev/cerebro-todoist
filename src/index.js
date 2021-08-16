@@ -3,11 +3,14 @@ import CerebroRouter from "cerebro-command-router";
 import { PreviewToday, NewTodayTask } from "./components";
 import TDSClient from "todoist-rest-client";
 import apiInterface from "./core-engine/apiConnect";
+import updateChecker from "./core-engine/updateChecker";
 import strings from "./lang";
 import { name, keyword, settings } from "./settings";
 
 //pide Acceso a notificaciones
 if (!Notification.permission) Notification.requestPermission();
+
+const initialize = () => updateChecker(strings.updateAvailable);
 
 function plugin({ term, display, actions, settings, config }) {
 	const token = settings.token;
@@ -46,4 +49,4 @@ function plugin({ term, display, actions, settings, config }) {
 	}
 }
 
-export { icon, name, keyword, plugin as fn, settings };
+export { icon, name, keyword, plugin as fn, settings, initialize };
