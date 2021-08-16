@@ -30,6 +30,7 @@ function plugin({ term, display, actions, settings, config }) {
 		const myRouter = new CerebroRouter({ command: "tds", term, display });
 
 		myRouter.route(settings["New Task Command"], {
+			order: 1,
 			icon: icon,
 			title: strings.workflow_new,
 			getPreview: () => <NewTodayTask />,
@@ -37,12 +38,14 @@ function plugin({ term, display, actions, settings, config }) {
 		});
 
 		myRouter.route(settings["Today Tasks Command"], {
+			order: 0,
 			icon: icon,
 			title: strings.workflow_today,
 			getPreview: () => <TodayTasks actions={actions} client={client} />,
 		});
 
 		myRouter.route(settings["View X Day Tasks Command"], {
+			order: 2,
 			icon: icon,
 			title: strings.workflow_view,
 			getPreview: () => (
