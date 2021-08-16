@@ -29,5 +29,11 @@ export const settings = {
 		defaultValue: "view",
 		description: strings.descriptionViewCommand,
 	},
+
+	"Send anonymous usage data": {
+		type: "bool",
+		defaultValue: false,
+		description: strings.descriptionUsageData,
+	},
 };
 // ----------------- END Plugin settings --------------------- //

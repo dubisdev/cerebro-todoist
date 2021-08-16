@@ -12,7 +12,27 @@ if (!Notification.permission) Notification.requestPermission();
 
 const initialize = () => updateChecker(strings.updateAvailable);
 
-function plugin({ term, display, actions, settings, config }) {
+let firstStart = true;
+
+const plugin = ({ term, display, actions, settings, config }) => {
+	if (settings["Send anonymous usage data"]) {
+		const Bugsnag = require("@bugsnag/browser");
+		Bugsnag.start({
+			apiKey: "d89a1b69a37fb85e0b906ba614231b2a",
+			appVersion: require("../package.json").version,
+			logger: null,
+			enabledBreadcrumbTypes: ["error", "navigation", "request", "user"],
+			collectUserIp: false,
+		});
+	} else if (firstStart) {
+		new Notification(strings.notificationSendData_title, {
+			body: strings.notificationSendData_body,
+			icon,
+		});
+
+		firstStart = false;
+	}
+
 	const token = settings.token;
 
 	//si no hay token se muestra la pantalla de error
@@ -62,6 +82,6 @@ function plugin({ term, display, actions, settings, config }) {
 			title: strings.invalid_command,
 		});
 	}
-}
+};
 
 export { icon, name, keyword, plugin as fn, settings, initialize };

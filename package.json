@@ -6,6 +6,7 @@
 	"license": "MIT",
 	"repository": "dubisdev/cerebro-todoist",
 	"dependencies": {
+		"@bugsnag/js": "7.11.0",
 		"axios": "0.21.1",
 		"cerebro-command-router": "^1.0.0",
 		"moment": "^2.29.1",

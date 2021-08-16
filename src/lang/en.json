@@ -7,12 +7,15 @@
     "invalid_command": "Invalid Todoist Workflow Command",
     "updateAvailable": "A new cerebro-todoist version is available! Download and install it from cerebroapp plugin settings.",
     "taskCompleted": "Task Completed!",
+    "notificationSendData_title": "Cerebro-Todoist: Help me to help you!",
+    "notificationSendData_body": "Would you like to send anonymous data usage? Help us by activating this option in the plugin settings ❤",
     
     "settings": {
         "descriptionToken": "Your Todoist API Token",
         "descriptionNewCommand": "Command for creating new tasks.",
         "descriptionTodayCommand": "Command for showing today tasks.",
-        "descriptionViewCommand": "Command for showing someday tasks."
+        "descriptionViewCommand": "Command for showing someday tasks.",
+        "descriptionUsageData": "We only collect error data and some anonymous logs for fixing errors in the app. We DO NOT share any information with third parts."
     },
 
     "NewTodayTask": {

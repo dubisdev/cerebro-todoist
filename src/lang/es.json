@@ -7,12 +7,15 @@
     "invalid_command": "Comando no válido",
     "updateAvailable": "¡Una nueva versión de cerebro-todoist está disponible! Descárgala desde los ajustes de CerebroApp",
     "taskCompleted": "¡Tarea completada!",
+    "notificationSendData_title": "Cerebro-Todoist: ¡Ayúdame a mejorar!",
+    "notificationSendData_body": "Activa la recogida de datos anónimos sobre errores desde los ajustes del plugin para ayudarme a seguir mejorándolo ❤",
     
     "settings": {
         "descriptionToken": "Tu Token de la API Todoist",
         "descriptionNewCommand": "Comando para crear nuevas tareas.",
         "descriptionTodayCommand": "Comando para ver las tareas de hoy.",
-        "descriptionViewCommand": "Comando para ver las tareas de un día concreto."
+        "descriptionViewCommand": "Comando para ver las tareas de un día concreto.",
+        "descriptionUsageData": "Solo recogemos datos anónimos sobre errores en la aplicación para poder arreglarlos. NO COMPARTIMOS estos datos con terceros."
     },
 
     "NewTodayTask": {
