@@ -1,10 +1,12 @@
-import configureErrorReporting from "./core-engine/errorReporting";
-import icon from "./icons";
 import CerebroRouter, { getSubCommandText } from "cerebro-command-router";
-import { TodayTasks, NewTodayTask, XDayTasks } from "./components";
 import TDSClient from "todoist-rest-client";
-import apiInterface from "./core-engine/apiConnect";
-import updateChecker from "./core-engine/updateChecker";
+import {
+	configureErrorReporting,
+	apiInterface,
+	updateChecker,
+} from "./core-engine";
+import icon from "./icons";
+import { TodayTasks, NewTodayTask, XDayTasks } from "./components";
 import strings from "./lang";
 import { name, keyword, settings } from "./settings";
 
