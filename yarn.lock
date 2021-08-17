@@ -62,10 +62,10 @@ byline@^5.0.0:
   resolved "https://registry.yarnpkg.com/byline/-/byline-5.0.0.tgz#741c5216468eadc457b03410118ad77de8c1ddb1"
   integrity sha1-dBxSFkaOrcRXsDQQEYrXfejB3bE=
 
-cerebro-command-router@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/cerebro-command-router/-/cerebro-command-router-1.0.0.tgz#c9ab37e56b90be304474df40229a3ddfbf92e7a5"
-  integrity sha512-wqayWt6jMLfjv0hvveHuAaPVpqAbOt9ecGWePX31HEBdQu1SnTjQWgDKpJBm6VYpi+jXodYWA0/ONJ+B/VeyOw==
+cerebro-command-router@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/cerebro-command-router/-/cerebro-command-router-1.1.0.tgz#87875dd3c167a316137c43ca22f3952d05970907"
+  integrity sha512-V12Gj/gnaz0MGgurIXbEpF36+PaZIi29hVnlYrhAKQ5XzHU+Le19jCiRC81eZMT86ed8dhHouvcVxmbL/MpE1Q==
 
 end-of-stream@^1.1.0:
   version "1.4.4"
