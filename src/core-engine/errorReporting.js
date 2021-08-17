@@ -1,6 +1,7 @@
+import { notification } from "../components";
 import strings from "../lang";
 
-export default (reportingPermission = false, icon) => {
+export default (reportingPermission = false) => {
 	if (reportingPermission) {
 		const Bugsnag = require("@bugsnag/browser");
 		Bugsnag.start({
@@ -11,9 +12,9 @@ export default (reportingPermission = false, icon) => {
 			collectUserIp: false,
 		});
 	} else {
-		new Notification(strings.notificationSendData_title, {
+		notification({
+			title: strings.notificationSendData_title,
 			body: strings.notificationSendData_body,
-			icon,
 		});
 	}
 };

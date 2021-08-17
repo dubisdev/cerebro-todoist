@@ -1,3 +1,4 @@
+import { notification } from "../components";
 import { Task } from "todoist-rest-client";
 import { getTaskPriority, getTaskDescription } from "./textUtilities.js";
 import { getSubCommandText } from "cerebro-command-router";
@@ -25,12 +26,12 @@ class apiInterface {
 			})
 		)
 			.then(() => {
-				new Notification(strings.created);
+				notification({ body: strings.created });
 			})
 			.catch((err) => {
-				if (!err.response) new Notification(strings.error_internet);
+				if (!err.response) notification({ body: strings.error_internet });
 				else if (err.response.status === 403)
-					new Notification(strings.error_token);
+					notification({ body: strings.error_token });
 			});
 	}
 }

@@ -1,3 +1,4 @@
+import { notification } from "../components";
 const semverGt = require("semver/functions/gt");
 
 const currentVersion = require("../../package.json").version;
@@ -7,6 +8,6 @@ export default function updateChecker(msg) {
 		.then((res) => res.json())
 		.then((res) => {
 			const updateExists = semverGt(res["dist-tags"]["latest"], currentVersion);
-			if (updateExists) new Notification(msg);
+			if (updateExists) notification({ body: msg });
 		});
 }

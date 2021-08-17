@@ -17,7 +17,7 @@ let firstStart = true;
 
 const plugin = ({ term, display, actions, settings, config }) => {
 	if (firstStart) {
-		configureErrorReporting(settings["Send anonymous usage data"], icon);
+		configureErrorReporting(settings["Send anonymous usage data"]);
 		firstStart = false;
 	}
 

@@ -1,4 +1,5 @@
 import { Loading, KeyboardNav, KeyboardNavItem } from "../cerebro-ui";
+import { notification } from "../index";
 import styles from "./styles.css";
 import lang from "../../lang";
 
@@ -8,7 +9,7 @@ const XDayTasksInterface = ({ content, actions, client }) => {
 		if (task)
 			client
 				.completeTask({ TaskObject: task })
-				.then(() => new Notification(lang.taskCompleted));
+				.then(() => notification({ body: lang.taskCompleted }));
 
 		actions.hideWindow();
 	};
