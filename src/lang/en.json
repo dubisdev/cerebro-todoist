@@ -37,7 +37,7 @@
         "no_tasks":"No tasks for this day."
     },
 
-    "apiConnect": {
+    "taskServices": {
         "due_lang": "en",
         "due_string": "today",
         "created": "Task Created",

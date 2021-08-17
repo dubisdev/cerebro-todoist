@@ -1,5 +1,5 @@
 import configureErrorReporting from "./errorReporting";
-import apiInterface from "./apiConnect";
+import { createTask } from "./taskServices";
 import updateChecker from "./updateChecker";
 
-export { configureErrorReporting, apiInterface, updateChecker };
+export { configureErrorReporting, createTask, updateChecker };

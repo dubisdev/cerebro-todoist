@@ -2,7 +2,7 @@ import CerebroRouter, { getSubCommandText } from "cerebro-command-router";
 import TDSClient from "todoist-rest-client";
 import {
 	configureErrorReporting,
-	apiInterface,
+	createTask,
 	updateChecker,
 } from "./core-engine";
 import icon from "./icons";
@@ -35,8 +35,6 @@ const plugin = ({ term, display, actions, settings, config }) => {
 	} else {
 		const client = new TDSClient(token);
 
-		const myInterface = new apiInterface(client);
-
 		const myRouter = new CerebroRouter({ command: "tds", term, display });
 
 		myRouter.route(settings["New Task Command"], {
@@ -44,7 +42,7 @@ const plugin = ({ term, display, actions, settings, config }) => {
 			icon: icon,
 			title: strings.workflow_new,
 			getPreview: () => <NewTodayTask />,
-			onSelect: () => myInterface.createTask({ text: term }),
+			onSelect: () => createTask(client, { text: term }),
 		});
 
 		myRouter.route(settings["Today Tasks Command"], {
