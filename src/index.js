@@ -17,7 +17,7 @@ const initialize = () => updateChecker(strings.updateAvailable);
 
 let firstStart = true;
 
-const plugin = ({ term, display, actions, settings, config }) => {
+const plugin = ({ term, display, actions, settings, update, config }) => {
 	if (firstStart) {
 		configureErrorReporting(settings["Send anonymous usage data"]);
 		firstStart = false;
@@ -53,16 +53,25 @@ const plugin = ({ term, display, actions, settings, config }) => {
 		});
 
 		myRouter.route(settings["View X Day Tasks Command"], {
+			id: "xdaytasks",
 			order: 2,
 			icon: icon,
 			title: strings.workflow_view,
-			getPreview: () => (
-				<XDayTasks
-					actions={actions}
-					client={client}
-					dayInfo={getSubCommandText(term)}
-				/>
-			),
+			//evento para hacer que solo haga el get al pulsar intro
+			onKeyDown: (event) => {
+				if (event.keyCode === 13) {
+					event.preventDefault();
+					update("xdaytasks", {
+						getPreview: () => (
+							<XDayTasks
+								actions={actions}
+								client={client}
+								dayInfo={getSubCommandText(term)}
+							/>
+						),
+					});
+				}
+			},
 		});
 
 		myRouter.invalidRoute({
