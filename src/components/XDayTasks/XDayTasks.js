@@ -22,11 +22,12 @@ const XDayTasksInterface = ({ content, actions, client }) => {
 				</div>
 			);
 		}
+
+		let date = new Date(content[0].due.date).toLocaleDateString();
+
 		return (
 			<div className={styles.wrapper}>
-				<h2>
-					{strings.day_tasks} {content[0].due.date}
-				</h2>
+				<h2>{strings.day_tasks + " " + date}</h2>
 				<KeyboardNav>
 					<ul className={styles.list}>
 						{content.map((task) => (
