@@ -1,5 +1,6 @@
-import { Loading, KeyboardNav, KeyboardNavItem } from "../cerebro-ui";
-import { notification } from "../index";
+import { Loading, KeyboardNav } from "../cerebro-ui";
+import { TaskNavItem } from "../index";
+import { completeTask } from "../../core-engine/taskServices";
 import styles from "./styles.css";
 import lang from "../../lang";
 
@@ -7,11 +8,7 @@ const TodayTasksInterface = ({ content, actions, client }) => {
 	const strings = lang.TodayTasks;
 
 	const action = (task) => {
-		if (task)
-			client
-				.completeTask({ TaskObject: task })
-				.then(() => notification({ body: lang.notifications.taskCompleted }));
-
+		completeTask(client, task);
 		actions.hideWindow();
 	};
 
@@ -20,13 +17,7 @@ const TodayTasksInterface = ({ content, actions, client }) => {
 			return (
 				<div className={styles.wrapper}>
 					<h2>{strings.todayTasks}</h2>
-					<KeyboardNav>
-						<ul className={styles.list}>
-							<KeyboardNavItem tagName={"li"} onSelect={() => action()}>
-								{strings.noTasks}
-							</KeyboardNavItem>
-						</ul>
-					</KeyboardNav>
+					{strings.noTasks}
 				</div>
 			);
 		}
@@ -36,22 +27,11 @@ const TodayTasksInterface = ({ content, actions, client }) => {
 				<KeyboardNav>
 					<ul className={styles.list}>
 						{content.map((task) => (
-							<KeyboardNavItem
-								tagName={"li"}
+							<TaskNavItem
 								key={task.id}
-								onSelect={() => action(task)}>
-								<div className={styles.floatLayout}>
-									<span className={styles.floatLeft}>{task.content}</span>
-									<span className={styles.floatRight}>
-										{(() => {
-											const hour = new Date(task.due.datetime)
-												.toTimeString()
-												.split(" ")[0];
-											if (hour !== "Invalid") return "|| ⌛ " + hour;
-										})()}
-									</span>
-								</div>
-							</KeyboardNavItem>
+								task={task}
+								onSelect={() => action(task)}
+							/>
 						))}
 					</ul>
 				</KeyboardNav>

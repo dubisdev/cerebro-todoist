@@ -1,27 +1,18 @@
-import { Loading, KeyboardNav, KeyboardNavItem } from "../cerebro-ui";
-import { notification } from "../index";
+import { Loading, KeyboardNav } from "../cerebro-ui";
+import TaskNavItem from "../TaskNavItem";
+import { completeTask } from "../../core-engine/taskServices";
 import styles from "./styles.css";
 import lang from "../../lang";
 
 const XDayTasksInterface = ({ content, actions, client }) => {
 	let strings = lang.XDayTasks;
 	const action = (task) => {
-		if (task)
-			client
-				.completeTask({ TaskObject: task })
-				.then(() => notification({ body: lang.notification.taskCompleted }));
-
+		completeTask(client, task);
 		actions.hideWindow();
 	};
 
 	if (content) {
-		if (content.length === 0) {
-			return (
-				<div className={styles.wrapper}>
-					<h2>{strings.noTasks}</h2>
-				</div>
-			);
-		}
+		if (content.length === 0) return <h2>{strings.noTasks}</h2>;
 
 		let date = new Date(content[0].due.date).toLocaleDateString();
 
@@ -31,12 +22,11 @@ const XDayTasksInterface = ({ content, actions, client }) => {
 				<KeyboardNav>
 					<ul className={styles.list}>
 						{content.map((task) => (
-							<KeyboardNavItem
-								tagName={"li"}
+							<TaskNavItem
 								key={task.id}
-								onSelect={() => action(task)}>
-								<div className={styles.floatLayout}>{task.content}</div>
-							</KeyboardNavItem>
+								task={task}
+								onSelect={() => action(task)}
+							/>
 						))}
 					</ul>
 				</KeyboardNav>
