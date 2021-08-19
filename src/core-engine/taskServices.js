@@ -29,3 +29,20 @@ export function createTask(Client, { text = "" } = {}) {
 				notification({ body: lang.notifications.createTaskErrorToken });
 		});
 }
+
+export const getTaskHour = (task) => {
+	if (task.due.datetime) {
+		const hour = new Date(task.due.datetime)
+			.toTimeString()
+			.split(" ")[0]
+			.slice(0, 5);
+		return "|| ⌛ " + hour;
+	}
+};
+
+export const completeTask = (Client, task) => {
+	if (task)
+		Client.completeTask({ TaskObject: task }).then(() =>
+			notification({ body: lang.notifications.taskCompleted })
+		);
+};
