@@ -1,25 +1,24 @@
 import Loading from "../cerebro-ui/Loading";
 import XDayTasks from "./XDayTasks";
 import Preload from "../cerebro-ui/Preload";
-import { checkDate } from "./checkDate";
+import { dateGetter } from "./checkDate";
+import { filterByDate } from "../../core-engine/taskFilterServices";
 import lang from "../../lang";
 
 const PreviewXDay = ({ actions, client, dayInfo }) => {
 	let strings = lang.XDayTasks;
 	let promise = client.getAllJSON();
 
-	const { isDate, dateString } = checkDate(dayInfo);
+	const dateString = dateGetter(dayInfo);
 
-	if (isDate) {
+	if (dateString) {
 		return (
 			<Preload promise={promise} loader={Loading()}>
 				{(promiseResult) => {
 					if (promiseResult === null) return <h3>{strings.error}</h3>;
 					return (
 						<XDayTasks
-							content={promiseResult.filter(
-								(task) => task.due && task.due.date === dateString
-							)}
+							content={filterByDate(promiseResult, dateString)}
 							actions={actions}
 							client={client}
 						/>
