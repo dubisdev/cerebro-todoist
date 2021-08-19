@@ -10,7 +10,7 @@ const TodayTasksInterface = ({ content, actions, client }) => {
 		if (task)
 			client
 				.completeTask({ TaskObject: task })
-				.then(() => notification({ body: lang.taskCompleted }));
+				.then(() => notification({ body: lang.notifications.taskCompleted }));
 
 		actions.hideWindow();
 	};
@@ -19,11 +19,11 @@ const TodayTasksInterface = ({ content, actions, client }) => {
 		if (content.length === 0) {
 			return (
 				<div className={styles.wrapper}>
-					<h2>{strings.today_tasks}</h2>
+					<h2>{strings.todayTasks}</h2>
 					<KeyboardNav>
 						<ul className={styles.list}>
 							<KeyboardNavItem tagName={"li"} onSelect={() => action()}>
-								{strings.no_tasks}
+								{strings.noTasks}
 							</KeyboardNavItem>
 						</ul>
 					</KeyboardNav>
@@ -32,7 +32,7 @@ const TodayTasksInterface = ({ content, actions, client }) => {
 		}
 		return (
 			<div className={styles.wrapper}>
-				<h2>{strings.today_tasks}</h2>
+				<h2>{strings.todayTasks}</h2>
 				<KeyboardNav>
 					<ul className={styles.list}>
 						{content.map((task) => (

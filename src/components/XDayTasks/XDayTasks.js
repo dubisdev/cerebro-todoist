@@ -9,7 +9,7 @@ const XDayTasksInterface = ({ content, actions, client }) => {
 		if (task)
 			client
 				.completeTask({ TaskObject: task })
-				.then(() => notification({ body: lang.taskCompleted }));
+				.then(() => notification({ body: lang.notification.taskCompleted }));
 
 		actions.hideWindow();
 	};
@@ -18,7 +18,7 @@ const XDayTasksInterface = ({ content, actions, client }) => {
 		if (content.length === 0) {
 			return (
 				<div className={styles.wrapper}>
-					<h2>{strings.no_tasks}</h2>
+					<h2>{strings.noTasks}</h2>
 				</div>
 			);
 		}
@@ -27,7 +27,7 @@ const XDayTasksInterface = ({ content, actions, client }) => {
 
 		return (
 			<div className={styles.wrapper}>
-				<h2>{strings.day_tasks + " " + date}</h2>
+				<h2>{strings.dayTasks + " " + date}</h2>
 				<KeyboardNav>
 					<ul className={styles.list}>
 						{content.map((task) => (

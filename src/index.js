@@ -13,7 +13,7 @@ import { name, keyword, settings } from "./settings";
 //pide Acceso a notificaciones
 if (!Notification.permission) Notification.requestPermission();
 
-const initialize = () => updateChecker(strings.updateAvailable);
+const initialize = () => updateChecker();
 
 let firstStart = true;
 
@@ -76,7 +76,7 @@ const plugin = ({ term, display, actions, settings, update, config }) => {
 
 		myRouter.invalidRoute({
 			icon: icon,
-			title: strings.invalid_command,
+			title: strings.invalidCommand,
 		});
 	}
 };

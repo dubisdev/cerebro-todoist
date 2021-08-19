@@ -1,7 +1,8 @@
 import { notification } from "../components";
-import strings from "../lang";
+import lang from "../lang";
 
 export default (reportingPermission = false) => {
+	const strings = lang.notifications;
 	if (reportingPermission) {
 		const Bugsnag = require("@bugsnag/browser");
 		Bugsnag.start({
@@ -13,8 +14,8 @@ export default (reportingPermission = false) => {
 		});
 	} else {
 		notification({
-			title: strings.notificationSendData_title,
-			body: strings.notificationSendData_body,
+			title: strings.sendData_title,
+			body: strings.sendData_body,
 		});
 	}
 };
