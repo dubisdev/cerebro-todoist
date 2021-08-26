@@ -10,7 +10,6 @@ import { TodayTasks, NewTodayTask, XDayTasks } from "./components";
 import strings from "./lang";
 import { name, keyword, settings } from "./settings";
 
-//pide Acceso a notificaciones
 if (!Notification.permission) Notification.requestPermission();
 
 const initialize = () => updateChecker();
@@ -25,7 +24,7 @@ const plugin = ({ term, display, actions, settings, update, config }) => {
 
 	const token = settings.token;
 
-	//si no hay token se muestra la pantalla de error
+	//no token --> pantalla de error
 	if (!token && term.toLowerCase().includes("tds")) {
 		display({
 			icon: icon,
@@ -37,7 +36,6 @@ const plugin = ({ term, display, actions, settings, update, config }) => {
 
 		const myRouter = new CerebroRouter({ command: "tds", term, display });
 
-		//Routing commands
 		myRouter.route(settings["New Task Command"], {
 			order: 1,
 			icon: icon,
@@ -58,7 +56,7 @@ const plugin = ({ term, display, actions, settings, update, config }) => {
 			order: 2,
 			icon: icon,
 			title: strings.workflow_view,
-			//only do get when intro key is pressed
+			//get when intro key is pressed
 			onKeyDown: (event) => {
 				if (event.keyCode === 13) {
 					event.preventDefault();
