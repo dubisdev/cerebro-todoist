@@ -10,7 +10,7 @@ const TaskNavItem = ({ task, ...props }) => {
 		}
 		const vimO = event.keyCode === 79 && (event.metaKey || event.ctrlKey);
 		if (!event.defaultPrevented && (event.keyCode === 13 || vimO)) {
-			onSelect();
+			onClick();
 		}
 	};
 	const itemProps = {
