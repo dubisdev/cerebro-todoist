@@ -1,0 +1,14 @@
+name: Create Github Release on Push to Master
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Automatic Release
+        uses: marvinpinto/action-automatic-releases@v1.2.1
