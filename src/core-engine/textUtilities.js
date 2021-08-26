@@ -8,7 +8,7 @@ export function getTaskPriority(taskText) {
 	let importance;
 	let textWOResponse = taskText;
 
-	//search for priorities
+	//search priorities
 	words.forEach((word) => {
 		if (word.startsWith("!!")) {
 			let number = word.substring(2);
