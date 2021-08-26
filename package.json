@@ -1,6 +1,6 @@
 {
 	"name": "cerebro-todoist",
-	"version": "1.2.4",
+	"version": "1.2.5",
 	"description": "Cerebro plugin for managing todoist.",
 	"author": "dubisdev",
 	"license": "MIT",
