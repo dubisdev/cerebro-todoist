@@ -2,8 +2,8 @@ name: Create Github Release on Push to Master
 
 on:
   push:
-    branches:
-      - master
+    tags:
+      - "v*"
 
 jobs:
   build:
@@ -15,4 +15,3 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
-          automatic_release_tag: "latest"
