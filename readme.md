@@ -1,4 +1,4 @@
-# cerebro-todoist &nbsp; ![npm](https://img.shields.io/npm/v/cerebro-todoist?color=green)
+# cerebro-todoist &nbsp; ![npm](https://img.shields.io/npm/v/cerebro-todoist?color=green) ![downloads: 1.2k](https://img.shields.io/npm/dt/cerebro-todoist)
 
 > [Cerebro](https://cerebroapp.com) plugin to create and manage todoist.
 
@@ -85,6 +85,22 @@ When you write `tds today`, you get:
 <p align="center">
   <img src="https://raw.githubusercontent.com/dubisdev/cerebro-todoist/master/readme_files/today_cerebro.png">
 </p>
+
+### ⚙ `view` command
+
+`tds view dd/mm/yyyy` command shows the tasks you have scheduled for a specific day. Navegate with `tab key` and complete them by pressing `enter key`.
+
+### Why dd/mm/yyyy?
+
+Because this also allows you to quickly search for tasks for the days of the present month by just typing the day number.
+
+![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8a090ac7-648f-44ee-8aae-0bcb936c3407/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210817%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210817T133821Z&X-Amz-Expires=86400&X-Amz-Signature=1fa4f4ed298f63585b66d482efe82b6c47de9331d8dcf2afbe62a64000f1e171&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
+![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/dfb3eeb3-0380-426e-934a-e8181542a549/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210817%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210817T133905Z&X-Amz-Expires=86400&X-Amz-Signature=12eb1ae56e7643ecc7f8e891e4b303bd546694cd1b14c8b0eb66048ad364c1b4&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
+As you can see, there is no difference between this two images because the plugin recognizes the 28 as "28/08/2021" (08 is the current month when this documentations is being generated).
+
+With the mm/dd/yyyy format this could not happen as the first number is the month not a day.
 
 ## Custom Commands
 

@@ -1,14 +1,27 @@
 {
-    "error": "Todoist Workflow Error",
+    "error": "Cerebro Todoist Error",
     "noTokenFound": "No token found :(",
     "workflow_new": "Todoist: New Task",
     "workflow_today": "Todoist: Today Tasks",
-    "invalid_command": "Invalid Todoist Workflow Command",
+    "workflow_view": "Todoist: View Someday Tasks",
+    "invalidCommand": "Invalid Todoist Workflow Command",
     
     "settings": {
         "descriptionToken": "Your Todoist API Token",
         "descriptionNewCommand": "Command for creating new tasks.",
-        "descriptionTodayCommand": "Command for showing today tasks."
+        "descriptionTodayCommand": "Command for showing today tasks.",
+        "descriptionViewCommand": "Command for showing someday tasks.",
+        "descriptionUsageData": "We only collect error data and some anonymous logs for fixing errors in the app. We DO NOT share any information with third parts."
+    },
+
+    "notifications": {
+        "taskCreated": "Task Created",
+        "taskCompleted": "Task Completed!",
+        "createTaskErrorInternet": "Task couldn't be created: No internet conexion",
+        "createTaskErrorToken": "Task couldn't be created: Please check the token in the cerebro-todoist settings.",
+        "updateAvailable": "A new cerebro-todoist version is available! Download and install it from cerebroapp plugin settings.",
+        "sendData_title": "Cerebro-Todoist: Help me to help you!",
+        "sendData_body": "Would you like to send anonymous data usage? Help us by activating this option in the plugin settings ❤"
     },
 
     "NewTodayTask": {
@@ -20,15 +33,18 @@
 
     "TodayTasks": {
         "error": "Something was wrong (check your internet connection or your Todoist API token).",
-        "today_tasks" :"Today Tasks",
-        "no_tasks":"No tasks for today! Is this #TodoistZero ?"
+        "todayTasks" :"Today Tasks",
+        "noTasks":"No tasks for today! Is this #TodoistZero ?"
     },
 
-    "apiConnect": {
+    "XDayTasks": {
+        "error": "Something was wrong (check your internet connection or your Todoist API token).",
+        "dayTasks" :"Tasks for",
+        "noTasks":"No tasks for this day."
+    },
+
+    "taskServices": {
         "due_lang": "en",
-        "due_string": "today",
-        "created": "Task Created",
-        "error_internet": "Task couldn't be created: No internet conexion",
-        "error_token": "Task couldn't be created: Please check the token in the cerebro-todoist settings."
+        "due_string": "today"
     }
 }

@@ -1,14 +1,27 @@
 {
-    "error": "Error de Todoist",
+    "error": "Error de Cerebro-Todoist",
     "noTokenFound": "No se ha encontrado un token :(",
     "workflow_new": "Todoist: Nueva Tarea",
     "workflow_today": "Todoist: Tareas de Hoy",
-    "invalid_command": "Comando no válido",
+    "workflow_view": "Todoist: Tareas de algún día",
+    "invalidCommand": "Comando no válido",
     
     "settings": {
         "descriptionToken": "Tu Token de la API Todoist",
         "descriptionNewCommand": "Comando para crear nuevas tareas.",
-        "descriptionTodayCommand": "Comando para ver las tareas de hoy."
+        "descriptionTodayCommand": "Comando para ver las tareas de hoy.",
+        "descriptionViewCommand": "Comando para ver las tareas de un día concreto.",
+        "descriptionUsageData": "Solo recogemos datos anónimos sobre errores en la aplicación para poder arreglarlos. NO COMPARTIMOS estos datos con terceros."
+    },
+
+    "notifications": {
+        "taskCreated": "Tarea creada",
+        "taskCompleted": "¡Tarea completada!",
+        "createTaskErrorInternet": "La tarea no se pudo crear: No hay conexión a internet.",
+        "createTaskErrorToken": "La tarea no se pudo crear: El token de la API es incorrecto.",
+        "updateAvailable": "¡Una nueva versión de cerebro-todoist está disponible! Descárgala desde los ajustes de CerebroApp",
+        "sendData_title": "Cerebro-Todoist: ¡Ayúdame a mejorar!",
+        "sendData_body": "Activa la recogida de datos anónimos sobre errores desde los ajustes del plugin para ayudarme a seguir mejorándolo ❤"
     },
 
     "NewTodayTask": {
@@ -20,16 +33,18 @@
 
     "TodayTasks": {
         "error": "Algo salió mal (comprueba tu conexión a internet o tu token de la API Todoist).",
-        "today_tasks" :"Tus tareas de hoy",
-        "no_tasks":"¡No tienes tareas hoy! ¿Es esto un #TodoistZero ?"
+        "todayTasks" :"Tus tareas de hoy",
+        "noTasks":"¡No tienes tareas hoy! ¿Es esto un #TodoistZero ?"
     },
 
-    "apiConnect": {
-        "due_lang": "es",
-        "due_string": "hoy",
-        "created": "Tarea creada",
-        "error_internet": "La tarea no se pudo crear: No hay conexión a internet.",
-        "error_token": "La tarea no se pudo crear: El token de la API es incorrecto."
-    }
+    "XDayTasks": {
+        "error": "Algo salió mal (comprueba tu conexión a internet o tu token de la API Todoist).",
+        "dayTasks" :"Tareas para el",
+        "noTasks":"No hay tareas para este día"
+    },
 
+    "taskServices": {
+        "due_lang": "es",
+        "due_string": "hoy"
+    }
 }

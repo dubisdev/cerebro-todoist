@@ -1,0 +1,50 @@
+{
+    "error": "Erreur Cerebro-Todoist",
+    "noTokenFound": "Aucun clé API trouvé :(",
+    "workflow_new": "Todoist: Créer une tâche",
+    "workflow_today": "Todoist: Tâches du jour",
+    "workflow_view": "Todoist: Tâches d'un autre jour",
+    "invalidCommand": "Commande non valide",
+    
+    "settings": {
+        "descriptionToken": "Votre clé API Todoist",
+        "descriptionNewCommand": "Commande pour créer de nouvelles tâches.",
+        "descriptionTodayCommand": "Commande pour voir les tâches du jour.",
+        "descriptionViewCommand": "Commande pour voir les tâches d'un jour spécifique.",
+        "descriptionUsageData": "Nous collectons uniquement des données anonymes sur les erreurs dans l'application afin de pouvoir les corriger. NOUS NE PARTAGEONS PAS ces données avec des tiers."
+    },
+
+    "notifications": {
+        "taskCreated": "Tâche créée",
+        "taskCompleted": "Tâche terminée!",
+        "createTaskErrorInternet": "La tâche n'a pas pu être créée: il n'y a pas de connexion Internet.",
+        "createTaskErrorToken": "La tâche n'a pas pu être créée: Le clé API est erroné.",
+        "updateAvailable": "Une nouvelle version de Cerebro-Todoist est disponible! Téléchargez-le à partir des paramètres de CerebroApp.",
+        "sendData_title": "Cerebro-Todoist: Aidez-moi à améliorer l'application!",
+        "sendData_body": "Activer la collecte de données anonymes sur les erreurs depuis les paramètres du plugin pour m'aider à continuer à l'améliorer ❤."
+    },
+
+    "NewTodayTask": {
+        "title": "Nouvelle tâche de Todoist",
+        "description": "Créez une nouvelle tâche à attribuer pour aujourd'hui dans votre boîte de réception.",
+        "li1": "Utilisez !!numéro pour ajouter la priorité à la tâche.",
+        "li2": "Utilisez :: pour ajouter une description."
+    },
+
+    "TodayTasks": {
+        "error": "Une erreur s'est produite (vérifiez votre connexion Internet ou votre clé API Todoist).",
+        "todayTasks" :"Vos tâches aujourd'hui",
+        "noTasks":"Tu n'as pas de tâches aujourd'hui! Est-ce un #TodoistZero ?"
+    },
+
+    "XDayTasks": {
+        "error": "Une erreur s'est produite (vérifiez votre connexion Internet ou votre clé API Todoist).",
+        "dayTasks" :"Tâches pour le",
+        "noTasks":"Il n'y a pas de tâches pour ce jour."
+    },
+
+    "taskServices": {
+        "due_lang": "fr",
+        "due_string": "aujourd'hui"
+    }
+}

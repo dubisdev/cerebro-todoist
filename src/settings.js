@@ -23,5 +23,17 @@ export const settings = {
 		defaultValue: "today",
 		description: strings.descriptionTodayCommand,
 	},
+
+	"View X Day Tasks Command": {
+		type: "string",
+		defaultValue: "view",
+		description: strings.descriptionViewCommand,
+	},
+
+	"Send anonymous usage data": {
+		type: "bool",
+		defaultValue: false,
+		description: strings.descriptionUsageData,
+	},
 };
 // ----------------- END Plugin settings --------------------- //
