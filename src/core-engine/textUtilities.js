@@ -19,7 +19,7 @@ export function getTaskPriority(taskText) {
 		}
 	});
 
-	//remove priority strings from taskText
+	//remove priority strings
 	textWOResponse = taskText.split(" ");
 	textWOResponse = textWOResponse.filter((word) => word !== `!!${importance}`);
 	textWOResponse = textWOResponse.join(" ");
@@ -29,7 +29,7 @@ export function getTaskPriority(taskText) {
 }
 
 /**
- * Debe devolver un array de dos posiciones= [prioridad, textoSinPrioridad]
+ * Devuleve un array de dos posiciones= [prioridad, textoSinPrioridad]
  */
 export function getTaskDescription(taskText) {
 	if (!taskText) return [undefined, undefined];
