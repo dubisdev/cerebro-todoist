@@ -10,6 +10,9 @@ export default function updateChecker() {
 		.then((res) => {
 			const updateExists = semverGt(res["dist-tags"]["latest"], currentVersion);
 			if (updateExists)
-				notification({ body: lang.notifications.updateAvailable });
+				notification({
+					body: lang.notifications.updateAvailable,
+					isUpdate: true,
+				});
 		});
 }
