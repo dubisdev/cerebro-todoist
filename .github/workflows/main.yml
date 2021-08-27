@@ -22,7 +22,7 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
 
-      - if: steps.publish.outputs.type != 'none'
+      - if: ${{ steps.publish.outputs.type != 'none' }}
         - name: "Create GH Release"
         - uses: "marvinpinto/action-automatic-releases@latest"
           with:
