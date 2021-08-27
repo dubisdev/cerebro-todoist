@@ -1,4 +1,4 @@
-import PluginUpdated from "../components/updatedPlugin";
+import PluginUpdated from "../components/UpdatedPluginPage";
 import icon from "../icons";
 import { settings } from "../settings";
 import lang from "../lang";
@@ -9,7 +9,7 @@ export default (config, myRouter, actions) => {
 	let firstUpdateStart = getFirstUpdateStart(config);
 
 	if (firstUpdateStart !== false) {
-		myRouter.route("", {
+		myRouter.invalidRoute({
 			icon,
 			order: 0,
 			title: lang.workflow_update,
