@@ -4,6 +4,7 @@ import {
 	configureErrorReporting,
 	createTask,
 	updateChecker,
+	startPageAfterUpdate,
 } from "./core-engine";
 import icon from "./icons";
 import { TodayTasks, NewTodayTask, XDayTasks } from "./components";
@@ -35,6 +36,8 @@ const plugin = ({ term, display, actions, settings, update, config }) => {
 		const client = new TDSClient(token);
 
 		const myRouter = new CerebroRouter({ command: "tds", term, display });
+
+		startPageAfterUpdate(config, myRouter, actions);
 
 		myRouter.route(settings["New Task Command"], {
 			order: 1,
