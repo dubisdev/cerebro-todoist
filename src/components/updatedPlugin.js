@@ -1,5 +1,7 @@
 import { KeyboardNavItem } from "./cerebro-ui";
 import { setFirstUpdateStartToFalse } from "../core-engine/startPageAfterUpdate";
+import lang from "../lang";
+const strings = lang.afterUpdate;
 
 const updatedPlugin = ({ actions, config }) => {
 	const handleClick = (action) => {
@@ -12,14 +14,14 @@ const updatedPlugin = ({ actions, config }) => {
 
 	return (
 		<div>
-			<h1>App updated!</h1>
+			<h1>{strings.pluginUpdated}</h1>
 
 			<KeyboardNavItem onSelect={() => handleClick("view")}>
-				View Changelog
+				{strings.viewChangelog}
 			</KeyboardNavItem>
 
 			<KeyboardNavItem onSelect={() => handleClick("close")}>
-				Click here to hide this
+				{strings.clickToHideWindow}
 			</KeyboardNavItem>
 		</div>
 	);

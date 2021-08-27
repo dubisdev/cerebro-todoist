@@ -4,6 +4,7 @@
     "workflow_new": "Todoist: Nueva Tarea",
     "workflow_today": "Todoist: Tareas de Hoy",
     "workflow_view": "Todoist: Tareas de algún día",
+    "workflow_update": "¡Plugin Actualizado!",
     "invalidCommand": "Comando no válido",
     
     "settings": {
@@ -41,6 +42,12 @@
         "error": "Algo salió mal (comprueba tu conexión a internet o tu token de la API Todoist).",
         "dayTasks" :"Tareas para el",
         "noTasks":"No hay tareas para este día"
+    },
+
+    "afterUpdate": {
+        "pluginUpdated": "¡Plugin Actualizado!",
+        "viewChangelog": "Ver el historial de cambios",
+        "clickToHideWindow": "Pulsa aquí para ocultar esta pestaña"
     },
 
     "taskServices": {

@@ -4,6 +4,7 @@
     "workflow_new": "Todoist: Créer une tâche",
     "workflow_today": "Todoist: Tâches du jour",
     "workflow_view": "Todoist: Tâches d'un autre jour",
+    "workflow_update": "Mise à jour installée!",
     "invalidCommand": "Commande non valide",
     
     "settings": {
@@ -43,6 +44,12 @@
         "noTasks":"Il n'y a pas de tâches pour ce jour."
     },
 
+    "afterUpdate": {
+        "pluginUpdated": "Mise à jour installée!",
+        "viewChangelog": "Regarder ce qu'il y a de nouveau",
+        "clickToHideWindow": "Cacher cette fenêtre"
+    },
+    
     "taskServices": {
         "due_lang": "fr",
         "due_string": "aujourd'hui"

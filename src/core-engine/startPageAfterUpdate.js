@@ -1,6 +1,7 @@
 import PluginUpdated from "../components/updatedPlugin";
 import icon from "../icons";
 import { settings } from "../settings";
+import lang from "../lang";
 
 console.log(Object.keys(settings));
 
@@ -11,7 +12,7 @@ export default (config, myRouter, actions) => {
 		myRouter.route("", {
 			icon,
 			order: 0,
-			title: "Todoist just updated",
+			title: lang.workflow_update,
 			getPreview: () => <PluginUpdated actions={actions} config={config} />,
 		});
 	}

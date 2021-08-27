@@ -4,6 +4,7 @@
     "workflow_new": "Todoist: New Task",
     "workflow_today": "Todoist: Today Tasks",
     "workflow_view": "Todoist: View Someday Tasks",
+    "workflow_update": "Plugin updated!",
     "invalidCommand": "Invalid Todoist Workflow Command",
     
     "settings": {
@@ -43,6 +44,12 @@
         "noTasks":"No tasks for this day."
     },
 
+    "afterUpdate": {
+        "pluginUpdated": "Plugin updated!",
+        "viewChangelog": "See changelog",
+        "clickToHideWindow": "Hide this window"
+    },
+    
     "taskServices": {
         "due_lang": "en",
         "due_string": "today"
