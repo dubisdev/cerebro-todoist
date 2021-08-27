@@ -27,5 +27,5 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
-          title: steps.publish.outputs.version
-          automatic_release_tag: steps.publish.outputs.version
+          title: cerebro-todoist ${{ steps.publish.outputs.version }}
+          automatic_release_tag: ${{ steps.publish.outputs.version }}
