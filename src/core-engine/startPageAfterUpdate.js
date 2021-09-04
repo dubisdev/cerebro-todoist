@@ -3,8 +3,6 @@ import icon from "../icons";
 import { settings } from "../settings";
 import lang from "../lang";
 
-console.log(Object.keys(settings));
-
 export default (config, myRouter, actions) => {
 	let firstUpdateStart = getFirstUpdateStart(config);
 
