@@ -1,7 +1,6 @@
-import TodayTasks from "./TodayTasks";
+import TaskInfoPreview from "./TasksInfoPreview";
 import NewTodayTask from "./NewTodayTask";
-import XDayTasks from "./XDayTasks";
 import notification from "./notification";
-import TaskNavItem from "./TaskNavItem";
+import TaskNavItem from "./TasksInfoPreview/TaskNavInfoElement";
 
-export { TaskNavItem, TodayTasks, NewTodayTask, XDayTasks, notification };
+export { TaskNavItem, TaskInfoPreview, NewTodayTask, notification };
