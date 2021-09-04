@@ -1,11 +1,6 @@
 import CerebroRouter, { getSubCommandText } from "cerebro-command-router";
 import TDSClient from "todoist-rest-client";
-import {
-	configureErrorReporting,
-	createTask,
-	updateChecker,
-	startPageAfterUpdate,
-} from "./core-engine";
+import { createTask, updateChecker, startPageAfterUpdate } from "./core-engine";
 import icon from "./icons";
 import { TodayTasks, NewTodayTask, XDayTasks } from "./components";
 import strings from "./lang";
@@ -15,14 +10,7 @@ if (!Notification.permission) Notification.requestPermission();
 
 const initialize = () => updateChecker();
 
-let firstStart = true;
-
 const plugin = ({ term, display, actions, settings, update, config }) => {
-	if (firstStart) {
-		configureErrorReporting(settings["Send anonymous usage data"]);
-		firstStart = false;
-	}
-
 	const token = settings.token;
 
 	//no token --> pantalla de error
