@@ -1,0 +1,26 @@
+.item {
+	cursor: pointer;
+	border-bottom: var(--main-border);
+	background: var(--result-background);
+	color: var(--result-title-color);
+	padding: 0 5px;
+	height: 35px;
+	display: flex;
+	align-items: center;
+}
+
+.item:last-child {
+	border-bottom: 0;
+}
+
+.item:focus {
+	outline: none;
+	background: var(--selected-result-background);
+	color: var(--selected-result-title-color);
+}
+
+.centerLayout {
+	display: inline-block;
+	width: 1000%;
+	text-align: center;
+}
