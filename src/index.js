@@ -1,4 +1,4 @@
-import CerebroRouter, { getSubCommandText } from "cerebro-command-router";
+import CerebroRouter from "cerebro-command-router";
 import TDSClient from "todoist-rest-client";
 import { createTask, updateChecker, startPageAfterUpdate } from "./core-engine";
 import icon from "./icons";
@@ -46,7 +46,7 @@ const plugin = ({ term, display, actions, settings, config, hide }) => {
 			{
 				showOnlyInFullMatch: true,
 				isAsyncArrayGenerator: true,
-				loadingMessage: "Está cargando coño",
+				loadingMessage: strings.gettingTasksMessage,
 				displayArrayGenerator: () =>
 					taskArrayGenerator({
 						client,
@@ -67,7 +67,7 @@ const plugin = ({ term, display, actions, settings, config, hide }) => {
 			{
 				showOnlyInFullMatch: true,
 				isAsyncArrayGenerator: true,
-				loadingMessage: "Está cargando coño",
+				loadingMessage: strings.gettingTasksMessage,
 				displayArrayGenerator: () =>
 					taskArrayGenerator({
 						type: "view",

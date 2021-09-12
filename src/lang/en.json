@@ -6,6 +6,7 @@
     "workflow_view": "Todoist: View Someday Tasks",
     "workflow_update": "Plugin updated!",
     "invalidCommand": "Invalid Todoist Workflow Command",
+    "gettingTasksMessage": "Searching tasks...",
     
     "settings": {
         "descriptionToken": "Your Todoist API Token",
@@ -32,16 +33,17 @@
         "li2": "Use :: to separate task name from description"
     },
 
-    "TodayTasks": {
-        "error": "Something was wrong (check your internet connection or your Todoist API token).",
-        "todayTasks" :"Today Tasks",
-        "noTasks":"No tasks for today! Is this #TodoistZero ?"
+    "TaskInfo": {
+        "completeTaskButton": "Complete Task",
+        "error": "Something was wrong (check your internet connection or your Todoist API token)."
     },
 
-    "XDayTasks": {
-        "error": "Something was wrong (check your internet connection or your Todoist API token).",
-        "dayTasks" :"Tasks for",
-        "noTasks":"No tasks for this day."
+    "displayArrayGenerator":{
+        "noFilteredTasksFound": "No tasks found",
+        "noTodayTasks":"No tasks for today! Is this #TodoistZero ?",
+        "noXDayTasks": "No tasks for this day.",
+        "dateNeeded": "Enter a date, please.",
+        "invalidDate": "Enter a valid date, please."
     },
 
     "afterUpdate": {

@@ -2,17 +2,19 @@ import { getSubCommandText } from "cerebro-command-router";
 import { filterByContent, filterByDate } from "./taskFilterServices";
 import { completeTask } from "./taskServices";
 import pDebounce from "p-debounce";
-import { TaskInfoPreview } from "../components";
+import { TaskInfo } from "../components";
 import { dateGetter } from "./checkDate";
+import lang from "../lang";
+const strings = lang.displayArrayGenerator;
 
 const ItaskArrayGenerator = ({ type, ...props }) => {
 	switch (type) {
 		case "today":
-			return todayTaskArrayGenerator({ ...props });
+			return todayTaskArrayGenerator(props);
 		case "view":
-			return otherDayTaskArrayGenerator({ ...props });
+			return otherDayTaskArrayGenerator(props);
 		default:
-			return todayTaskArrayGenerator({ ...props });
+			return todayTaskArrayGenerator(props);
 	}
 };
 
@@ -22,17 +24,17 @@ const todayTaskArrayGenerator = ({ client, method, term, actions }) => {
 		if (getSubCommandText(term)) {
 			taskArray = filterByContent(res, getSubCommandText(term));
 			if (taskArray.length === 0)
-				return [{ title: "No se han encontrado tareas con ese contenido" }];
+				return [{ title: strings.noFilteredTasksFound }];
 		}
 
-		if (taskArray.length === 0) return [{ title: "No hay tareas para hoy!" }];
+		if (taskArray.length === 0) return [{ title: strings.noTodayTasks }];
 
 		return taskArray.map((task) => {
 			return {
 				title: task.content,
 				onSelect: () => completeTask(client, task),
 				getPreview: () => (
-					<TaskInfoPreview task={task} client={client} actions={actions} />
+					<TaskInfo task={task} client={client} actions={actions} />
 				),
 			};
 		});
@@ -42,18 +44,14 @@ const todayTaskArrayGenerator = ({ client, method, term, actions }) => {
 const otherDayTaskArrayGenerator = ({ client, method, term, actions }) => {
 	//sacar la fecha del subcomman, si hay
 	const subCommandtext = getSubCommandText(term);
-	if (!subCommandtext)
-		return Promise.resolve([{ title: "Introduce una fecha por favor" }]);
+	if (!subCommandtext) return Promise.resolve([{ title: strings.dateNeeded }]);
 
 	//comprobar que la fecha sea correcta
 	const talVezDate = subCommandtext.split(" ")[0];
 
 	const date = dateGetter(talVezDate);
 
-	if (!date)
-		return Promise.resolve([
-			{ title: "Introduce una fecha correcta, por favor" },
-		]);
+	if (!date) return Promise.resolve([{ title: strings.invalidDate }]);
 
 	//comporbar si hay algo más de texto, para buscar entre las tareas que obtengamos
 
@@ -73,18 +71,17 @@ const otherDayTaskArrayGenerator = ({ client, method, term, actions }) => {
 				if (filterText) {
 					taskArray = filterByContent(tasks, filterText);
 					if (taskArray.length === 0)
-						return [{ title: "No se han encontrado tareas con ese contenido" }];
+						return [{ title: strings.noFilteredTasksFound }];
 				}
 
-				if (taskArray.length === 0)
-					return [{ title: "No se han encontrado tareas para este día" }];
+				if (taskArray.length === 0) return [{ title: strings.noXDayTasks }];
 
 				return taskArray.map((task) => {
 					return {
 						title: task.content,
 						onSelect: () => completeTask(client, task),
 						getPreview: () => (
-							<TaskInfoPreview task={task} client={client} actions={actions} />
+							<TaskInfo task={task} client={client} actions={actions} />
 						),
 					};
 				});
