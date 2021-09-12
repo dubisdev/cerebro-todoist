@@ -19,26 +19,32 @@ const ItaskArrayGenerator = ({ type, ...props }) => {
 };
 
 const todayTaskArrayGenerator = ({ client, method, term, actions }) => {
-	return method().then((res) => {
-		let taskArray = res;
-		if (getSubCommandText(term)) {
-			taskArray = filterByContent(res, getSubCommandText(term));
-			if (taskArray.length === 0)
-				return [{ title: strings.noFilteredTasksFound }];
-		}
+	return method()
+		.then((res) => {
+			let taskArray = res;
+			if (getSubCommandText(term)) {
+				taskArray = filterByContent(res, getSubCommandText(term));
+				if (taskArray.length === 0)
+					return [{ title: strings.noFilteredTasksFound }];
+			}
 
-		if (taskArray.length === 0) return [{ title: strings.noTodayTasks }];
+			if (taskArray.length === 0) return [{ title: strings.noTodayTasks }];
 
-		return taskArray.map((task) => {
-			return {
-				title: task.content,
-				onSelect: () => completeTask(client, task),
-				getPreview: () => (
-					<TaskInfo task={task} client={client} actions={actions} />
-				),
-			};
-		});
-	});
+			return taskArray.map((task) => {
+				return {
+					title: task.content,
+					onSelect: () => completeTask(client, task),
+					getPreview: () => (
+						<TaskInfo task={task} client={client} actions={actions} />
+					),
+				};
+			});
+		})
+		.catch((err) => [
+			{
+				title: lang.TaskInfo.error,
+			},
+		]);
 };
 
 const otherDayTaskArrayGenerator = ({ client, method, term, actions }) => {
@@ -86,6 +92,11 @@ const otherDayTaskArrayGenerator = ({ client, method, term, actions }) => {
 					};
 				});
 			})
+			.catch((err) => [
+				{
+					title: lang.TaskInfo.error,
+				},
+			])
 	);
 };
 
