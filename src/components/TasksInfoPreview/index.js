@@ -16,9 +16,7 @@ const TasksInfoPreview = ({ task, actions, client }) => {
 				<ul className={styles.list}>
 					<TaskNavItem>{getTaskHour(task) || null}</TaskNavItem>
 					<TaskNavItem>{task.description || null}</TaskNavItem>
-					<TaskNavItem
-						onSelect={() => action(task)}
-						style={{ "background-color": "#E44332" }}>
+					<TaskNavItem onSelect={() => action(task)}>
 						Completar Tarea
 					</TaskNavItem>
 				</ul>
