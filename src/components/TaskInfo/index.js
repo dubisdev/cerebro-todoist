@@ -1,6 +1,6 @@
 import { KeyboardNav } from "../cerebro-ui";
 import { TaskNavItem } from "../index";
-import { completeTask, getTaskHour } from "../../core-engine/taskServices";
+import { completeTask, getTaskHour } from "../../services/taskServices";
 import styles from "./styles.css";
 import lang from "../../lang";
 const strings = lang.TaskInfo;
