@@ -36,7 +36,7 @@ export const getTaskHour = (task) => {
 			.toTimeString()
 			.split(" ")[0]
 			.slice(0, 5);
-		return "|| ⌛ " + hour;
+		return "⌛ " + hour;
 	}
 };
 

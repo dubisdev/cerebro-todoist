@@ -4,7 +4,9 @@
     "workflow_new": "Todoist: Nueva Tarea",
     "workflow_today": "Todoist: Tareas de Hoy",
     "workflow_view": "Todoist: Tareas de algún día",
+    "workflow_update": "¡Plugin Actualizado!",
     "invalidCommand": "Comando no válido",
+    "gettingTasksMessage": "Buscando tareas...",
     
     "settings": {
         "descriptionToken": "Tu Token de la API Todoist",
@@ -31,16 +33,23 @@
         "li2": "Utiliza :: para añadir una descripción."
     },
 
-    "TodayTasks": {
-        "error": "Algo salió mal (comprueba tu conexión a internet o tu token de la API Todoist).",
-        "todayTasks" :"Tus tareas de hoy",
-        "noTasks":"¡No tienes tareas hoy! ¿Es esto un #TodoistZero ?"
+    "TaskInfo": {
+        "completeTaskButton": "Completar Tarea",
+        "error": "Algo salió mal (comprueba tu conexión a internet o tu token de la API Todoist)."
     },
 
-    "XDayTasks": {
-        "error": "Algo salió mal (comprueba tu conexión a internet o tu token de la API Todoist).",
-        "dayTasks" :"Tareas para el",
-        "noTasks":"No hay tareas para este día"
+    "displayArrayGenerator":{
+        "noFilteredTasksFound": "No se han encontrado tareas con ese contenido",
+        "noTodayTasks":"¡No tienes tareas hoy! ¿Es esto un #TodoistZero ?",
+        "noXDayTasks": "No hay tareas para este día",
+        "dateNeeded": "Introduce una fecha por favor",
+        "invalidDate": "Introduce una fecha correcta, por favor"
+    },
+
+    "afterUpdate": {
+        "pluginUpdated": "¡Plugin Actualizado!",
+        "viewChangelog": "Ver el historial de cambios",
+        "clickToHideWindow": "Pulsa aquí para ocultar esta pestaña"
     },
 
     "taskServices": {

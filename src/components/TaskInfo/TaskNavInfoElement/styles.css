@@ -19,14 +19,8 @@
 	color: var(--selected-result-title-color);
 }
 
-.floatLeft {
-	float: left;
-}
-
-.floatRight {
-	float: right;
-}
-
-.floatLayout {
-	width: 100%;
+.centerLayout {
+	display: inline-block;
+	width: 1000%;
+	text-align: center;
 }

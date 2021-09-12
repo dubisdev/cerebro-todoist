@@ -1,27 +1,17 @@
-import CerebroRouter, { getSubCommandText } from "cerebro-command-router";
+import CerebroRouter from "cerebro-command-router";
 import TDSClient from "todoist-rest-client";
-import {
-	configureErrorReporting,
-	createTask,
-	updateChecker,
-} from "./core-engine";
+import { createTask, updateChecker, startPageAfterUpdate } from "./services";
 import icon from "./icons";
-import { TodayTasks, NewTodayTask, XDayTasks } from "./components";
+import { NewTodayTask } from "./components";
 import strings from "./lang";
 import { name, keyword, settings } from "./settings";
+import taskArrayGenerator from "./services/displayArrayGenerator";
 
 if (!Notification.permission) Notification.requestPermission();
 
 const initialize = () => updateChecker();
 
-let firstStart = true;
-
-const plugin = ({ term, display, actions, settings, update, config }) => {
-	if (firstStart) {
-		configureErrorReporting(settings["Send anonymous usage data"]);
-		firstStart = false;
-	}
-
+const plugin = ({ term, display, actions, settings, config, hide }) => {
 	const token = settings.token;
 
 	//no token --> pantalla de error
@@ -34,7 +24,9 @@ const plugin = ({ term, display, actions, settings, update, config }) => {
 	} else {
 		const client = new TDSClient(token);
 
-		const myRouter = new CerebroRouter({ command: "tds", term, display });
+		const myRouter = new CerebroRouter({ command: "tds", term, display, hide });
+
+		startPageAfterUpdate(config, myRouter, actions);
 
 		myRouter.route(settings["New Task Command"], {
 			order: 1,
@@ -44,34 +36,48 @@ const plugin = ({ term, display, actions, settings, update, config }) => {
 			onSelect: () => createTask(client, { text: term }),
 		});
 
-		myRouter.route(settings["Today Tasks Command"], {
-			order: 0,
-			icon: icon,
-			title: strings.workflow_today,
-			getPreview: () => <TodayTasks actions={actions} client={client} />,
-		});
-
-		myRouter.route(settings["View X Day Tasks Command"], {
-			id: "xdaytasks",
-			order: 2,
-			icon: icon,
-			title: strings.workflow_view,
-			//get when intro key is pressed
-			onKeyDown: (event) => {
-				if (event.keyCode === 13) {
-					event.preventDefault();
-					update("xdaytasks", {
-						getPreview: () => (
-							<XDayTasks
-								actions={actions}
-								client={client}
-								dayInfo={getSubCommandText(term)}
-							/>
-						),
-					});
-				}
+		myRouter.route(
+			settings["Today Tasks Command"],
+			{
+				order: 0,
+				icon: icon,
+				title: strings.workflow_today,
 			},
-		});
+			{
+				showOnlyInFullMatch: true,
+				isAsyncArrayGenerator: true,
+				loadingMessage: strings.gettingTasksMessage,
+				displayArrayGenerator: () =>
+					taskArrayGenerator({
+						client,
+						method: () => client.getTodayTasksJSON(),
+						term,
+						actions,
+					}),
+			}
+		);
+
+		myRouter.route(
+			settings["View X Day Tasks Command"],
+			{
+				order: 2,
+				icon: icon,
+				title: strings.workflow_view,
+			},
+			{
+				showOnlyInFullMatch: true,
+				isAsyncArrayGenerator: true,
+				loadingMessage: strings.gettingTasksMessage,
+				displayArrayGenerator: () =>
+					taskArrayGenerator({
+						type: "view",
+						client,
+						method: () => client.getAllJSON(),
+						term,
+						actions,
+					}),
+			}
+		);
 
 		myRouter.invalidRoute({
 			icon: icon,
