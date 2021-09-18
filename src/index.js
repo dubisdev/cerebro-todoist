@@ -22,7 +22,7 @@ const plugin = ({ term, display, actions, settings, config, hide }) => {
 			getPreview: () => <h3>{strings.noTokenFound}</h3>,
 		});
 	} else {
-		const client = new TDSClient(token);
+		const client = TDSClient(token);
 
 		const myRouter = new CerebroRouter({ command: "tds", term, display, hide });
 
@@ -50,7 +50,7 @@ const plugin = ({ term, display, actions, settings, config, hide }) => {
 				displayArrayGenerator: () =>
 					taskArrayGenerator({
 						client,
-						method: () => client.getTodayTasksJSON(),
+						method: () => client.task.getTodayJSON(),
 						term,
 						actions,
 					}),
@@ -72,7 +72,7 @@ const plugin = ({ term, display, actions, settings, config, hide }) => {
 					taskArrayGenerator({
 						type: "view",
 						client,
-						method: () => client.getAllJSON(),
+						method: () => client.task.getAllJSON(),
 						term,
 						actions,
 					}),

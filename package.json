@@ -1,6 +1,6 @@
 {
 	"name": "cerebro-todoist",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"description": "Cerebro plugin for managing todoist.",
 	"author": "dubisdev",
 	"license": "MIT",
@@ -11,7 +11,7 @@
 		"p-debounce": "^4.0.0",
 		"react": "^17.0.2",
 		"semver": "^7.3.5",
-		"todoist-rest-client": "^0.0.5"
+		"todoist-rest-client": "^1.0.0"
 	},
 	"devDependencies": {
 		"cerebro-scripts": "0.0.25"

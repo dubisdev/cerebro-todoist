@@ -9,16 +9,16 @@ export function createTask(Client, { text = "" } = {}) {
 	const [description, taskTextWODescription] = getTaskDescription(rudeText);
 	const [priority, taskText] = getTaskPriority(taskTextWODescription);
 
-	return Client.create(
-		{ type: "task" },
-		new Task({
-			content: taskText,
-			due_string: lang.taskServices.due_string,
-			due_lang: lang.taskServices.due_lang,
-			priority,
-			description,
-		})
-	)
+	return Client.task
+		.create(
+			new Task({
+				content: taskText,
+				due_string: lang.taskServices.due_string,
+				due_lang: lang.taskServices.due_lang,
+				priority,
+				description,
+			})
+		)
 		.then(() => {
 			notification({ body: lang.notifications.taskCreated });
 		})
@@ -42,7 +42,7 @@ export const getTaskHour = (task) => {
 
 export const completeTask = (Client, task) => {
 	if (task)
-		Client.completeTask({ TaskObject: task }).then(() =>
-			notification({ body: lang.notifications.taskCompleted })
-		);
+		Client.task
+			.completeTask(task.id)
+			.then(() => notification({ body: lang.notifications.taskCompleted }));
 };
