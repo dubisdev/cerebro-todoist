@@ -11,7 +11,7 @@ export function createTask(Client, { text = "" } = {}) {
 
 	return Client.task
 		.create(
-			new Task({
+			Task({
 				content: taskText,
 				due_string: lang.taskServices.due_string,
 				due_lang: lang.taskServices.due_lang,
