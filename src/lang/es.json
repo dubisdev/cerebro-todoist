@@ -19,6 +19,7 @@
     "notifications": {
         "taskCreated": "Tarea creada",
         "taskCompleted": "¡Tarea completada!",
+        "taskDeleted": "¡Tarea eliminada!",
         "createTaskErrorInternet": "La tarea no se pudo crear: No hay conexión a internet.",
         "createTaskErrorToken": "La tarea no se pudo crear: El token de la API es incorrecto.",
         "updateAvailable": "¡Una nueva versión de cerebro-todoist está disponible! Descárgala desde los ajustes de CerebroApp",
@@ -35,6 +36,7 @@
 
     "TaskInfo": {
         "completeTaskButton": "Completar Tarea",
+        "deleteTaskButton": "Eliminar tarea",
         "error": "Algo salió mal (comprueba tu conexión a internet o tu token de la API Todoist)."
     },
 

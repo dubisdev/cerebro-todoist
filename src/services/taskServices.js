@@ -46,3 +46,10 @@ export const completeTask = (Client, task) => {
 			.completeTask(task.id)
 			.then(() => notification({ body: lang.notifications.taskCompleted }));
 };
+
+export const deleteTask = (Client, task) => {
+	if (task)
+		Client.task
+			.delete(task.id)
+			.then(() => notification({ body: lang.notifications.taskDeleted }));
+};

@@ -19,6 +19,7 @@
     "notifications": {
         "taskCreated": "Task Created",
         "taskCompleted": "Task Completed!",
+        "taskDeleted": "Task Completed!",
         "createTaskErrorInternet": "Task couldn't be created: No internet conexion",
         "createTaskErrorToken": "Task couldn't be created: Please check the token in the cerebro-todoist settings.",
         "updateAvailable": "A new cerebro-todoist version is available! Download and install it from cerebroapp plugin settings.",
@@ -35,6 +36,7 @@
 
     "TaskInfo": {
         "completeTaskButton": "Complete Task",
+        "deleteTaskButton": "Delete Task",
         "error": "Something was wrong (check your internet connection or your Todoist API token)."
     },
 

@@ -1,13 +1,21 @@
 import { KeyboardNav } from "../cerebro-ui";
 import { TaskNavItem } from "../index";
-import { completeTask, getTaskHour } from "../../services/taskServices";
+import {
+	completeTask,
+	deleteTask,
+	getTaskHour,
+} from "../../services/taskServices";
 import styles from "./styles.css";
 import lang from "../../lang";
 const strings = lang.TaskInfo;
 
 const TasksInfoPreview = ({ task, actions, client }) => {
-	const action = (task) => {
+	const complete = (task) => {
 		completeTask(client, task);
+		actions.hideWindow();
+	};
+	const del = (task) => {
+		deleteTask(client, task);
 		actions.hideWindow();
 	};
 
@@ -18,8 +26,11 @@ const TasksInfoPreview = ({ task, actions, client }) => {
 				<ul className={styles.list}>
 					<TaskNavItem>{getTaskHour(task) || null}</TaskNavItem>
 					<TaskNavItem>{task.description || null}</TaskNavItem>
-					<TaskNavItem onSelect={() => action(task)}>
+					<TaskNavItem onSelect={() => complete(task)}>
 						{strings.completeTaskButton}
+					</TaskNavItem>
+					<TaskNavItem onSelect={() => del(task)}>
+						{strings.deleteTaskButton}
 					</TaskNavItem>
 				</ul>
 			</KeyboardNav>
