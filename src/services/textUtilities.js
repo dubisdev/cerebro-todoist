@@ -1,4 +1,28 @@
 /**
+ * Debe devolver un array de dos posiciones= [nombre_deProyecto, textoSinProyecto]
+ */
+export function getTaskProject(taskText) {
+	if (!taskText) return [undefined, undefined];
+
+	let textWOResponse = taskText;
+
+	//search priorities
+	let project = ((taskText.match(/\B(#\w+)\b/g) || []).pop() || "").substring(
+		1
+	);
+
+	//remove priority strings
+	textWOResponse = taskText.split(" ");
+	textWOResponse = textWOResponse.filter((word) => word !== `#${project}`);
+	textWOResponse = textWOResponse.join(" ");
+
+	console.log(project);
+
+	if (textWOResponse) return [project, textWOResponse];
+	return [project, undefined];
+}
+
+/**
  * Debe devolver un array de dos posiciones= [prioridad, textoSinPrioridad]
  */
 export function getTaskPriority(taskText) {
