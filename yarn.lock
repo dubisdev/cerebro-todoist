@@ -4908,10 +4908,10 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
 
-todoist-rest-client@2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/todoist-rest-client/-/todoist-rest-client-2.0.4.tgz#f87ce9e645b15848dfdde68e65f86d1db49babcd"
-  integrity sha512-Ep/Xktl/S/RAUHj4/5/uQT48pOqo9/AlqJW6qmc4EmVB1NgT4UEj4W9vRHqhFbzr2wtQ9BTr800PYfJqSDManQ==
+todoist-rest-client@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/todoist-rest-client/-/todoist-rest-client-2.1.0.tgz#6f9440db43ad9499a29ec776ec19c5f02b1f077a"
+  integrity sha512-bTTU3MK8WXX6n7JE3bVPskSnhnvY3c0zeGEw6svw8WaFo3KampFptuV81UHbkFSU/6mq3m+jQigK46meT255Ug==
   dependencies:
     axios "^0.24.0"
 

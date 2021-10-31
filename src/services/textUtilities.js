@@ -21,7 +21,7 @@ export function getTaskPriority(taskText) {
 }
 
 /**
- * Devuleve un array de dos posiciones= [prioridad, textoSinPrioridad]
+ * Devuleve un array de dos posiciones= [descripción, textoSinDescripción]
  */
 export function getTaskDescription(taskText) {
 	if (!taskText) return [undefined, undefined];
@@ -30,7 +30,7 @@ export function getTaskDescription(taskText) {
 	let description;
 	let textWOdescription = taskText;
 
-	let descriptionPosition = text.search(/\B(::)\B/);
+	let descriptionPosition = taskText.search(/\B(::)\B/);
 
 	if (descriptionPosition !== -1) {
 		description = taskText.substring(descriptionPosition + 3);
