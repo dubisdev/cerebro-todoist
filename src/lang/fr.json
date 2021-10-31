@@ -19,6 +19,7 @@
     "notifications": {
         "taskCreated": "Tâche créée",
         "taskCompleted": "Tâche terminée!",
+        "taskDeleted": "Tâche suprimée!",
         "createTaskErrorInternet": "La tâche n'a pas pu être créée: il n'y a pas de connexion Internet.",
         "createTaskErrorToken": "La tâche n'a pas pu être créée: Le clé API est erroné.",
         "updateAvailable": "Une nouvelle version de Cerebro-Todoist est disponible! Téléchargez-le à partir des paramètres de CerebroApp.",
@@ -35,6 +36,7 @@
 
     "TaskInfo": {
         "completeTaskButton": "Terminer la tâche",
+        "deleteTaskButton": "Supprimer la tâche",
         "error": "Une erreur s'est produite (vérifiez votre connexion Internet ou votre clé API Todoist)."
     },
 

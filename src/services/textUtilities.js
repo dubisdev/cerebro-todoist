@@ -1,26 +1,36 @@
 /**
+ * Debe devolver un array de dos posiciones= [nombre_deProyecto, textoSinProyecto]
+ */
+export function getTaskProject(taskText) {
+	if (!taskText) return [undefined, undefined];
+
+	//search priorities
+	let project = ((taskText.match(/\B(#\w+)\b/g) || []).pop() || "").substring(
+		1
+	);
+
+	//remove priority strings
+	let textWOResponse = taskText.split(" ");
+	textWOResponse = textWOResponse.filter((word) => word !== `#${project}`);
+	textWOResponse = textWOResponse.join(" ");
+
+	if (textWOResponse) return [project, textWOResponse];
+	return [project, undefined];
+}
+
+/**
  * Debe devolver un array de dos posiciones= [prioridad, textoSinPrioridad]
  */
 export function getTaskPriority(taskText) {
 	if (!taskText) return [undefined, undefined];
 
-	let words = taskText.split(" ");
-	let importance;
-	let textWOResponse = taskText;
-
 	//search priorities
-	words.forEach((word) => {
-		if (word.startsWith("!!")) {
-			let number = word.substring(2);
-			if (number === "") return;
-			if (0 <= number && number <= 4) {
-				importance = Number.parseInt(number);
-			}
-		}
-	});
+	let importance = Number(
+		((taskText.match(/\B(!![0-4])\b/g) || []).pop() || "").substring(2)
+	);
 
 	//remove priority strings
-	textWOResponse = taskText.split(" ");
+	let textWOResponse = taskText.split(" ");
 	textWOResponse = textWOResponse.filter((word) => word !== `!!${importance}`);
 	textWOResponse = textWOResponse.join(" ");
 
@@ -29,21 +39,23 @@ export function getTaskPriority(taskText) {
 }
 
 /**
- * Devuleve un array de dos posiciones= [prioridad, textoSinPrioridad]
+ * Devuleve un array de dos posiciones= [descripción, textoSinDescripción]
  */
 export function getTaskDescription(taskText) {
 	if (!taskText) return [undefined, undefined];
 
-	let words = taskText.split(" ");
+	//search for descriptions
 	let description;
 	let textWOdescription = taskText;
 
-	//search for descriptions
-	let startDescription = words.indexOf(`::`);
-	if (startDescription === -1) return [undefined, taskText];
+	let descriptionPosition = taskText.search(/\B(::)\B/);
 
-	description = words.slice(startDescription + 1).join(" ");
-	textWOdescription = words.slice(0, startDescription).join(" ");
+	if (descriptionPosition !== -1) {
+		description = taskText.substring(descriptionPosition + 3);
+		textWOdescription = taskText.substring(0, descriptionPosition - 1);
+	}
+
+	if (!description) return [undefined, taskText];
 
 	if (textWOdescription) return [description, textWOdescription];
 	return [description, undefined];
