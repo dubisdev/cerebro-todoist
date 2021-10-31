@@ -4,19 +4,15 @@
 export function getTaskProject(taskText) {
 	if (!taskText) return [undefined, undefined];
 
-	let textWOResponse = taskText;
-
 	//search priorities
 	let project = ((taskText.match(/\B(#\w+)\b/g) || []).pop() || "").substring(
 		1
 	);
 
 	//remove priority strings
-	textWOResponse = taskText.split(" ");
+	let textWOResponse = taskText.split(" ");
 	textWOResponse = textWOResponse.filter((word) => word !== `#${project}`);
 	textWOResponse = textWOResponse.join(" ");
-
-	console.log(project);
 
 	if (textWOResponse) return [project, textWOResponse];
 	return [project, undefined];
@@ -28,15 +24,13 @@ export function getTaskProject(taskText) {
 export function getTaskPriority(taskText) {
 	if (!taskText) return [undefined, undefined];
 
-	let textWOResponse = taskText;
-
 	//search priorities
 	let importance = Number(
 		((taskText.match(/\B(!![0-4])\b/g) || []).pop() || "").substring(2)
 	);
 
 	//remove priority strings
-	textWOResponse = taskText.split(" ");
+	let textWOResponse = taskText.split(" ");
 	textWOResponse = textWOResponse.filter((word) => word !== `!!${importance}`);
 	textWOResponse = textWOResponse.join(" ");
 
