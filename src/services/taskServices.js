@@ -43,25 +43,24 @@ export async function createTask(Client, { text = "" } = {}) {
 }
 
 export const getTaskHour = (task) => {
-	if (task.due.datetime) {
-		const hour = new Date(task.due.datetime)
-			.toTimeString()
-			.split(" ")[0]
-			.slice(0, 5);
-		return "⌛ " + hour;
-	}
+	if (!task.due.datetime) return;
+
+	const hour = new Date(task.due.datetime)
+		.toTimeString()
+		.split(" ")[0]
+		.slice(0, 5);
+	return "⌛ " + hour;
 };
 
-export const completeTask = (Client, task) => {
-	if (task)
-		Client.task
-			.completeTask(task.id)
-			.then(() => notification({ body: lang.notifications.taskCompleted }));
+export const completeTask = async (Client, task) => {
+	if (!task) return;
+
+	await Client.task.completeTask(task.id);
+	notification({ body: lang.notifications.taskCompleted });
 };
 
-export const deleteTask = (Client, task) => {
-	if (task)
-		Client.task
-			.delete(task.id)
-			.then(() => notification({ body: lang.notifications.taskDeleted }));
+export const deleteTask = async (Client, task) => {
+	if (!task) return;
+	await Client.task.delete(task.id);
+	notification({ body: lang.notifications.taskDeleted });
 };

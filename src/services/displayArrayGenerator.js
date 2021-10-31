@@ -18,36 +18,40 @@ const ItaskArrayGenerator = ({ type, ...props }) => {
 	}
 };
 
-const todayTaskArrayGenerator = ({ client, method, term, actions }) => {
-	return method()
-		.then((res) => {
-			let taskArray = res;
-			if (getSubCommandText(term)) {
-				taskArray = filterByContent(res, getSubCommandText(term));
-				if (taskArray.length === 0)
-					return [{ title: strings.noFilteredTasksFound }];
-			}
+const todayTaskArrayGenerator = async ({ client, method, term, actions }) => {
+	let taskArray;
 
-			if (taskArray.length === 0) return [{ title: strings.noTodayTasks }];
+	try {
+		taskArray = await method();
+	} catch (err) {
+		return [{ title: lang.TaskInfo.error }];
+	}
 
-			return taskArray.map((task) => {
-				return {
-					title: task.content,
-					onSelect: () => completeTask(client, task),
-					getPreview: () => (
-						<TaskInfo task={task} client={client} actions={actions} />
-					),
-				};
-			});
-		})
-		.catch((err) => [
-			{
-				title: lang.TaskInfo.error,
-			},
-		]);
+	if (getSubCommandText(term)) {
+		taskArray = filterByContent(taskArray, getSubCommandText(term));
+		if (taskArray.length === 0)
+			return [{ title: strings.noFilteredTasksFound }];
+	}
+
+	if (taskArray.length === 0) return [{ title: strings.noTodayTasks }];
+
+	return taskArray.map((task) => {
+		return {
+			title: task.content,
+			onSelect: () => completeTask(client, task),
+			getPreview: () => (
+				<TaskInfo task={task} client={client} actions={actions} />
+			),
+		};
+	});
 };
 
-const otherDayTaskArrayGenerator = ({ client, method, term, actions }) => {
+const otherDayTaskArrayGenerator = async ({
+	client,
+	method,
+	term,
+	actions,
+}) => {
 	//sacar la fecha del subcomman, si hay
 	const subCommandtext = getSubCommandText(term);
 	if (!subCommandtext) return Promise.resolve([{ title: strings.dateNeeded }]);
@@ -60,44 +64,39 @@ const otherDayTaskArrayGenerator = ({ client, method, term, actions }) => {
 	if (!date) return Promise.resolve([{ title: strings.invalidDate }]);
 
 	//comporbar si hay algo más de texto, para buscar entre las tareas que obtengamos
-
 	const filterTextArray = subCommandtext.split(" ");
 	filterTextArray.shift();
 	const filterText = filterTextArray.join(" ");
 
 	//si es correcta procedemos a llamar al método de buscar en la api (ahorramos recursos ;) )
+	let fullTasksList;
+	try {
+		fullTasksList = await method();
+	} catch (err) {
+		return [
+			{
+				title: lang.TaskInfo.error,
+			},
+		];
+	}
 
-	return (
-		method()
-			//filtrarlas por fecha
-			.then((res) => filterByDate(res, date))
-			.then((tasks) => {
-				let taskArray = tasks;
-				//filtrarlas por contenido
-				if (filterText) {
-					taskArray = filterByContent(tasks, filterText);
-					if (taskArray.length === 0)
-						return [{ title: strings.noFilteredTasksFound }];
-				}
+	//filtrarlas por fecha y contenido
+	let dayTasksArray = filterByDate(fullTasksList, date);
+	if (filterText) {
+		dayTasksArray = filterByContent(dayTasksArray, filterText);
+		if (dayTasksArray.length === 0)
+			return [{ title: strings.noFilteredTasksFound }];
+	}
 
-				if (taskArray.length === 0) return [{ title: strings.noXDayTasks }];
+	if (dayTasksArray.length === 0) return [{ title: strings.noXDayTasks }];
 
-				return taskArray.map((task) => {
-					return {
-						title: task.content,
-						onSelect: () => completeTask(client, task),
-						getPreview: () => (
-							<TaskInfo task={task} client={client} actions={actions} />
-						),
-					};
-				});
-			})
-			.catch((err) => [
-				{
-					title: lang.TaskInfo.error,
-				},
-			])
-	);
+	return dayTasksArray.map((task) => ({
+		title: task.content,
+		onSelect: () => completeTask(client, task),
+		getPreview: () => (
+			<TaskInfo task={task} client={client} actions={actions} />
+		),
+	}));
 };
 
 const debouncedTaskArrayGenerator = pDebounce(ItaskArrayGenerator, 275);
