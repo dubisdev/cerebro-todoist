@@ -1,10 +1,11 @@
 {
 	"name": "cerebro-todoist",
-	"version": "2.2.0",
+	"version": "2.2.1",
 	"description": "Manage your todoist tasks from CerebroApp",
 	"author": "dubisdev",
 	"license": "MIT",
 	"repository": "dubisdev/cerebro-todoist",
+	"files": ["dist"],
 	"dependencies": {
 		"cerebro-command-router": "^1.2.0",
 		"moment": "^2.29.1",
