@@ -10,6 +10,7 @@
     
     "settings": {
         "descriptionToken": "Tu Token de la API Todoist",
+        "descriptionOverdue": "Mostrar tareas vencidas en la vista 'hoy'",
         "descriptionNewCommand": "Comando para crear nuevas tareas.",
         "descriptionTodayCommand": "Comando para ver las tareas de hoy.",
         "descriptionViewCommand": "Comando para ver las tareas de un día concreto.",

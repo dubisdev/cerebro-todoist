@@ -10,6 +10,7 @@
     
     "settings": {
         "descriptionToken": "Your Todoist API Token",
+        "descriptionOverdue": "Show overdue tasks on Today view",
         "descriptionNewCommand": "Command for creating new tasks.",
         "descriptionTodayCommand": "Command for showing today tasks.",
         "descriptionViewCommand": "Command for showing someday tasks.",

@@ -10,6 +10,7 @@
     
     "settings": {
         "descriptionToken": "Votre clé API Todoist",
+        "descriptionOverdue": "Afficher les tâches en retard dans la vue 'Aujourd'hui'",
         "descriptionNewCommand": "Commande pour créer de nouvelles tâches.",
         "descriptionTodayCommand": "Commande pour voir les tâches du jour.",
         "descriptionViewCommand": "Commande pour voir les tâches d'un jour spécifique.",
