@@ -18,11 +18,15 @@ const ItaskArrayGenerator = ({ type, ...props }) => {
 	}
 };
 
-const todayTaskArrayGenerator = async ({ client, method, term, actions }) => {
+/**
+ *
+ * @param {{client: import("todoist-rest-client").TDSClient}} param0
+ */
+const todayTaskArrayGenerator = async ({ client, term, actions }) => {
 	let taskArray;
 
 	try {
-		taskArray = await method();
+		taskArray = await client.extras.getTodayTaskJSON();
 	} catch (err) {
 		return [{ title: lang.TaskInfo.error }];
 	}
@@ -35,7 +39,19 @@ const todayTaskArrayGenerator = async ({ client, method, term, actions }) => {
 
 	if (taskArray.length === 0) return [{ title: strings.noTodayTasks }];
 
-	return taskArray.map((task) => {
+	let newTaskArray = [];
+
+	await Promise.all(
+		taskArray.map(async (task) => {
+			let projectName = (await client.project.get(task.project_id)).name;
+			newTaskArray.push({
+				...task,
+				projectName,
+			});
+		})
+	);
+
+	return newTaskArray.map((task) => {
 		return {
 			title: task.content,
 			onSelect: () => completeTask(client, task),
@@ -46,12 +62,11 @@ const todayTaskArrayGenerator = async ({ client, method, term, actions }) => {
 	});
 };
 
-const otherDayTaskArrayGenerator = async ({
-	client,
-	method,
-	term,
-	actions,
-}) => {
+/**
+ *
+ * @param {{client: import("todoist-rest-client").TDSClient}} param0
+ */
+const otherDayTaskArrayGenerator = async ({ client, term, actions }) => {
 	//sacar la fecha del subcomman, si hay
 	const subCommandtext = getSubCommandText(term);
 	if (!subCommandtext) return Promise.resolve([{ title: strings.dateNeeded }]);
@@ -71,7 +86,7 @@ const otherDayTaskArrayGenerator = async ({
 	//si es correcta procedemos a llamar al método de buscar en la api (ahorramos recursos ;) )
 	let fullTasksList;
 	try {
-		fullTasksList = await method();
+		fullTasksList = await client.task.getAll();
 	} catch (err) {
 		return [
 			{
@@ -90,13 +105,27 @@ const otherDayTaskArrayGenerator = async ({
 
 	if (dayTasksArray.length === 0) return [{ title: strings.noXDayTasks }];
 
-	return dayTasksArray.map((task) => ({
-		title: task.content,
-		onSelect: () => completeTask(client, task),
-		getPreview: () => (
-			<TaskInfo task={task} client={client} actions={actions} />
-		),
-	}));
+	let newTaskArray = [];
+
+	await Promise.all(
+		dayTasksArray.map(async (task) => {
+			let projectName = (await client.project.get(task.project_id)).name;
+			newTaskArray.push({
+				...task,
+				projectName,
+			});
+		})
+	);
+
+	return newTaskArray.map((task) => {
+		return {
+			title: task.content,
+			onSelect: () => completeTask(client, task),
+			getPreview: () => (
+				<TaskInfo task={task} client={client} actions={actions} />
+			),
+		};
+	});
 };
 
 const debouncedTaskArrayGenerator = pDebounce(ItaskArrayGenerator, 275);
