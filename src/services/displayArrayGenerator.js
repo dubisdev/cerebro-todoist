@@ -27,7 +27,7 @@ const todayTaskArrayGenerator = async ({ client, term, actions }) => {
 
 	try {
 		taskArray = await client.extras.getTodayTaskJSON();
-	} catch (err) {
+	} catch {
 		return [{ title: lang.TaskInfo.error }];
 	}
 
@@ -87,12 +87,8 @@ const otherDayTaskArrayGenerator = async ({ client, term, actions }) => {
 	let fullTasksList;
 	try {
 		fullTasksList = await client.task.getAll();
-	} catch (err) {
-		return [
-			{
-				title: lang.TaskInfo.error,
-			},
-		];
+	} catch {
+		return [{ title: lang.TaskInfo.error }];
 	}
 
 	//filtrarlas por fecha y contenido

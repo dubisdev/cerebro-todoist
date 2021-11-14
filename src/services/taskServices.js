@@ -24,7 +24,7 @@ export async function createTask(Client, { text = "" } = {}) {
 		project.name.toLowerCase().includes(project_name.toLowerCase())
 	);
 
-	let project_id = project && project.id ? project.id : undefined;
+	let project_id = project.id ? project.id : undefined;
 
 	try {
 		await Client.task.create(

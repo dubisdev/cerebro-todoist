@@ -8,9 +8,7 @@ export function dateGetter(date) {
 
 	let dateString;
 	let isDate = dateObject instanceof Date && !isNaN(dateObject);
-	if (isDate) {
-		dateString = dateObject.toISOString().slice(0, 10);
-	}
+	if (isDate) dateString = dateObject.toISOString().slice(0, 10);
 
 	return dateString;
 }
