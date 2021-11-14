@@ -6,7 +6,7 @@ export function dateGetter(date) {
 	let dateMomentObject = moment.utc(date, "DD/MM/YYYY");
 	let dateObject = dateMomentObject.toDate();
 
-	let dateString;
+	let dateString: string | undefined;
 	let isDate = dateObject instanceof Date && !isNaN(dateObject);
 	if (isDate) dateString = dateObject.toISOString().slice(0, 10);
 

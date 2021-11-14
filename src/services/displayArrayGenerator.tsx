@@ -5,9 +5,21 @@ import pDebounce from "p-debounce";
 import { TaskInfo } from "../components";
 import { dateGetter } from "./checkDate";
 import lang from "../lang";
+import { TDSClient } from "todoist-rest-client";
 const strings = lang.displayArrayGenerator;
 
-const ItaskArrayGenerator = ({ type, ...props }, showOverdue) => {
+
+type Options = PartialOptions & {
+	type?: "today" | "view"
+}
+
+type PartialOptions = {
+	client: TDSClient,
+	term: string,
+	actions: object
+}
+
+const ItaskArrayGenerator = ({ type, ...props }: Options, showOverdue?: boolean) => {
 	console.log(showOverdue);
 	switch (type) {
 		case "today":
@@ -19,13 +31,9 @@ const ItaskArrayGenerator = ({ type, ...props }, showOverdue) => {
 	}
 };
 
-/**
- *
- * @param {{client: import("todoist-rest-client").TDSClient}} param0
- */
 const todayTaskArrayGenerator = async (
-	{ client, term, actions },
-	showOverdue
+	{ client, term, actions }: PartialOptions,
+	showOverdue: boolean
 ) => {
 	let taskArray;
 
@@ -71,11 +79,7 @@ const todayTaskArrayGenerator = async (
 	});
 };
 
-/**
- *
- * @param {{client: import("todoist-rest-client").TDSClient}} param0
- */
-const otherDayTaskArrayGenerator = async ({ client, term, actions }) => {
+const otherDayTaskArrayGenerator = async ({ client, term, actions }: PartialOptions) => {
 	//sacar la fecha del subcomman, si hay
 	const subCommandtext = getSubCommandText(term);
 	if (!subCommandtext) return Promise.resolve([{ title: strings.dateNeeded }]);
