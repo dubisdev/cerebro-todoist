@@ -1,1 +1,2 @@
-export default require("./icon.png");
+import icon from "./icon.png";
+export default icon;

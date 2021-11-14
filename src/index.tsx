@@ -49,8 +49,8 @@ const plugin = ({ term, display, actions, settings, config, hide }) => {
 				loadingMessage: strings.gettingTasksMessage,
 				displayArrayGenerator: () =>
 					taskArrayGenerator({
+						type: "today",
 						client,
-						method: () => client.task.getTodayJSON(),
 						term,
 						actions,
 					}),
@@ -72,7 +72,6 @@ const plugin = ({ term, display, actions, settings, config, hide }) => {
 					taskArrayGenerator({
 						type: "view",
 						client,
-						method: () => client.task.getAllJSON(),
 						term,
 						actions,
 					}),

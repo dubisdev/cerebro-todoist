@@ -2,6 +2,7 @@ import PluginUpdated from "../components/UpdatedPluginPage";
 import icon from "../icons";
 import { settings } from "../settings";
 import lang from "../lang";
+import pkgJson from "../../package.json";
 
 export default (config, myRouter, actions) => {
 	let firstUpdateStart = getFirstUpdateStart(config);
@@ -30,15 +31,13 @@ export const setFirstUpdateStartToFalse = (config) => {
 
 	jsonConfig["cerebro-todoist"] = result;
 
-	jsonConfig["cerebro-todoist"][
-		`firstUpdateStart${require("../../package.json").version}`
-	] = false;
+	jsonConfig["cerebro-todoist"][`firstUpdateStart${pkgJson.version}`] = false;
 
 	config.set("plugins", jsonConfig);
 };
 
 export const getFirstUpdateStart = (config) => {
 	return config.get(["plugins"])["cerebro-todoist"][
-		`firstUpdateStart${require("../../package.json").version}`
+		`firstUpdateStart${pkgJson.version}`
 	];
 };

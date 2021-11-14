@@ -5,7 +5,7 @@ import {
 	deleteTask,
 	getTaskHour,
 } from "../../services/taskServices";
-import styles from "./styles.css";
+import styles from "./styles.module.css";
 import lang from "../../lang";
 const strings = lang.TaskInfo;
 
@@ -26,6 +26,7 @@ const TasksInfoPreview = ({ task, actions, client }) => {
 				<ul className={styles.list}>
 					<TaskNavItem>{getTaskHour(task) || null}</TaskNavItem>
 					<TaskNavItem>{task.description || null}</TaskNavItem>
+					<TaskNavItem>{task.projectName}</TaskNavItem>
 					<TaskNavItem onSelect={() => complete(task)}>
 						{strings.completeTaskButton}
 					</TaskNavItem>

@@ -1,8 +1,9 @@
 import { notification } from "../components";
 import lang from "../lang";
-const semverGt = require("semver/functions/gt");
+import semverGt from "semver/functions/gt";
 
-const currentVersion = require("../../package.json").version;
+import pkgJson from "../../package.json";
+let currentVersion = pkgJson.version;
 
 export default function updateChecker() {
 	fetch("https://registry.npmjs.org/cerebro-todoist")

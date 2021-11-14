@@ -1,6 +1,6 @@
 import { KeyboardNavItem, KeyboardNav } from "../cerebro-ui";
 import { setFirstUpdateStartToFalse } from "../../services/startPageAfterUpdate";
-import styles from "./styles.css";
+import styles from "./styles.module.css";
 import lang from "../../lang";
 const strings = lang.afterUpdate;
 

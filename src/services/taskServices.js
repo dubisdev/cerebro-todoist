@@ -8,6 +8,9 @@ import {
 import { getSubCommandText } from "cerebro-command-router";
 import lang from "../lang";
 
+/**
+ * @param {import("todoist-rest-client").TDSClient} Client
+ */
 export async function createTask(Client, { text = "" } = {}) {
 	let rudeText = getSubCommandText(text);
 	const [description, taskTextWODescription] = getTaskDescription(rudeText);
@@ -15,12 +18,13 @@ export async function createTask(Client, { text = "" } = {}) {
 	const [project_name, taskText] = getTaskProject(taskTextWProject);
 
 	//get project id if exists
-	let project_id = await Client.project.getAllJSON().then((res) => {
-		let project = res.find((project) => {
-			return project.name.toLowerCase().includes(project_name.toLowerCase());
-		});
-		return project && project.id ? project.id : undefined;
-	});
+	let projects = await Client.project.getAll();
+
+	let project = projects.find((project) =>
+		project.name.toLowerCase().includes(project_name.toLowerCase())
+	);
+
+	let project_id = project && project.id ? project.id : undefined;
 
 	try {
 		await Client.task.create(
@@ -52,13 +56,18 @@ export const getTaskHour = (task) => {
 	return "⌛ " + hour;
 };
 
+/**
+ * @param {import("todoist-rest-client").TDSClient} Client
+ */
 export const completeTask = async (Client, task) => {
 	if (!task) return;
-
-	await Client.task.completeTask(task.id);
+	await Client.task.close(task.id);
 	notification({ body: lang.notifications.taskCompleted });
 };
 
+/**
+ * @param {import("todoist-rest-client").TDSClient} Client
+ */
 export const deleteTask = async (Client, task) => {
 	if (!task) return;
 	await Client.task.delete(task.id);

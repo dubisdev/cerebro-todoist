@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./styles.css";
+import styles from "./styles.module.css";
 
 const TaskNavItem = ({ children, ...props }) => {
 	const onClick = props.onSelect || (() => {});
