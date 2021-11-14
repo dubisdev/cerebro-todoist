@@ -53,7 +53,7 @@ const plugin = ({ term, display, actions, settings, config, hide }) => {
 						client,
 						term,
 						actions,
-					}),
+					}, settings["Show Overdue"]),
 			}
 		);
 

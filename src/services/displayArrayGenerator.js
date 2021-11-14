@@ -7,14 +7,15 @@ import { dateGetter } from "./checkDate";
 import lang from "../lang";
 const strings = lang.displayArrayGenerator;
 
-const ItaskArrayGenerator = ({ type, ...props }) => {
+const ItaskArrayGenerator = ({ type, ...props }, showOverdue) => {
+	console.log(showOverdue);
 	switch (type) {
 		case "today":
-			return todayTaskArrayGenerator(props);
+			return todayTaskArrayGenerator(props, showOverdue);
 		case "view":
 			return otherDayTaskArrayGenerator(props);
 		default:
-			return todayTaskArrayGenerator(props);
+			return todayTaskArrayGenerator(props, showOverdue);
 	}
 };
 
@@ -22,11 +23,19 @@ const ItaskArrayGenerator = ({ type, ...props }) => {
  *
  * @param {{client: import("todoist-rest-client").TDSClient}} param0
  */
-const todayTaskArrayGenerator = async ({ client, term, actions }) => {
+const todayTaskArrayGenerator = async (
+	{ client, term, actions },
+	showOverdue
+) => {
 	let taskArray;
 
 	try {
-		taskArray = await client.extras.getTodayTaskJSON();
+		taskArray = showOverdue
+			? await client.task.search({
+					filter: "(today | overdue)",
+					lang: "en",
+			  })
+			: await client.extras.getTodayTaskJSON();
 	} catch {
 		return [{ title: lang.TaskInfo.error }];
 	}

@@ -29,5 +29,11 @@ export const settings = {
 		defaultValue: "view",
 		description: strings.descriptionViewCommand,
 	},
+
+	"Show Overdue": {
+		type: "bool",
+		defaultValue: false,
+		description: strings.descriptionOverdue,
+	},
 };
 // ----------------- END Plugin settings --------------------- //
