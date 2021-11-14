@@ -26,9 +26,9 @@
 		"todoist"
 	],
 	"scripts": {
-		"start": "node ./dev.build.js",
-		"build": "node ./build.js",
-		"clear": "node ./clear.js",
+		"start": "node ./esbuild_scripts/dev.build.js",
+		"build": "node ./esbuild_scripts/build.js",
+		"clear": "node ./esbuild_scripts/clear.js",
 		"prepublish": "yarn clear && yarn build"
 	}
 }
