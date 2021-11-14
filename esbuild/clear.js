@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
-const path = require("path");
+import path from "path";
 const dist = path.resolve("dist");
 
 process.on("unhandledRejection", (err) => {
 	throw err;
 });
 
-const fs = require("fs-extra");
+import fs from "fs-extra";
 
 if (fs.existsSync(dist)) {
 	console.log(`Removing ${dist}...`);

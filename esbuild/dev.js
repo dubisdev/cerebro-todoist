@@ -2,24 +2,23 @@
 
 "use strict";
 
-// Makes the script crash on unhandled rejections instead of silently
-// ignoring them. In the future, promise rejections that are not handled will
-// terminate the Node.js process with a non-zero exit code.
 process.on("unhandledRejection", (err) => {
 	throw err;
 });
 
-const path = require("path");
-const fs = require("fs");
+import path from "path";
+import fs from "fs";
+import os from "os";
+
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const pkgJson = require("../package.json");
 
 const appName = process.argv[2] === "dev" ? "Electron" : "Cerebro";
-
-const homeDir = require("os").homedir();
-
-const pluginName = require(path.join(path.resolve(), "package.json")).name;
+const homeDir = os.homedir();
+const pluginName = pkgJson.name;
 
 let symlinkPath;
-
 if (process.platform === "darwin") {
 	symlinkPath = path.join(
 		homeDir,
@@ -75,19 +74,13 @@ function removeSymlink() {
 	fs.unlinkSync(symlinkPath);
 }
 
-const cssModulesPlugin = require("esbuild-css-modules-plugin");
+import esbuild from "esbuild";
+import esbuildConfig from "../esbuild.config.js";
 
-require("esbuild")
+esbuild
 	.build({
-		logLevel: "info",
-		entryPoints: ["src/index.tsx"],
 		watch: true,
-		bundle: true,
-		minify: true,
-		format: "cjs",
-		target: "es2016",
-		loader: { ".js": "jsx", ".png": "dataurl", ".svg": "text" },
-		outfile: "dist/index.js",
-		plugins: [cssModulesPlugin()],
+		minify: false,
+		...esbuildConfig,
 	})
 	.catch(() => process.exit(1));
