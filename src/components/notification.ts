@@ -2,10 +2,10 @@ import iconDefault from "../icons";
 
 export default ({
 	title = "Cerebro-Todoist",
-	body,
+	body = "",
 	icon = iconDefault,
-	isUpdate,
-}) => {
+	isUpdate = false,
+} = {}) => {
 	let noti = new Notification(title, { body, icon });
 	if (isUpdate) {
 		noti.onclick = function (event) {

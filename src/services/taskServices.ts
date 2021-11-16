@@ -1,5 +1,5 @@
 import { notification } from "../components";
-import { Task } from "todoist-rest-client";
+import { APITaskObject, Task, TDSClient } from "todoist-rest-client";
 import {
 	getTaskPriority,
 	getTaskDescription,
@@ -8,10 +8,7 @@ import {
 import { getSubCommandText } from "cerebro-command-router";
 import lang from "../lang";
 
-/**
- * @param {import("todoist-rest-client").TDSClient} Client
- */
-export async function createTask(Client, { text = "" } = {}) {
+export async function createTask(Client: TDSClient, { text = "" } = {}) {
 	let rudeText = getSubCommandText(text);
 	const [description, taskTextWODescription] = getTaskDescription(rudeText);
 	const [priority, taskTextWProject] = getTaskPriority(taskTextWODescription);
@@ -46,7 +43,7 @@ export async function createTask(Client, { text = "" } = {}) {
 	}
 }
 
-export const getTaskHour = (task) => {
+export const getTaskHour = (task: APITaskObject) => {
 	if (!task.due.datetime) return;
 
 	const hour = new Date(task.due.datetime)
@@ -56,19 +53,13 @@ export const getTaskHour = (task) => {
 	return "⌛ " + hour;
 };
 
-/**
- * @param {import("todoist-rest-client").TDSClient} Client
- */
-export const completeTask = async (Client, task) => {
+export const completeTask = async (Client: TDSClient, task: APITaskObject) => {
 	if (!task) return;
 	await Client.task.close(task.id);
 	notification({ body: lang.notifications.taskCompleted });
 };
 
-/**
- * @param {import("todoist-rest-client").TDSClient} Client
- */
-export const deleteTask = async (Client, task) => {
+export const deleteTask = async (Client: TDSClient, task: APITaskObject) => {
 	if (!task) return;
 	await Client.task.delete(task.id);
 	notification({ body: lang.notifications.taskDeleted });

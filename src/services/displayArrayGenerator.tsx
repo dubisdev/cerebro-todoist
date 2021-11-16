@@ -20,7 +20,6 @@ type PartialOptions = {
 }
 
 const ItaskArrayGenerator = ({ type, ...props }: Options, showOverdue?: boolean) => {
-	console.log(showOverdue);
 	switch (type) {
 		case "today":
 			return todayTaskArrayGenerator(props, showOverdue);
