@@ -5,8 +5,9 @@ import pDebounce from "p-debounce";
 import { TaskInfo } from "../components";
 import { dateGetter } from "./checkDate";
 import lang from "../lang";
-import { TDSClient } from "todoist-rest-client";
+import { APITaskObject, TDSClient } from "todoist-rest-client/dist/definitions";
 const strings = lang.displayArrayGenerator;
+import { CerebroScreen } from "cerebro-command-router/dist/definitions"
 
 
 type Options = PartialOptions & {
@@ -33,8 +34,8 @@ const ItaskArrayGenerator = ({ type, ...props }: Options, showOverdue?: boolean)
 const todayTaskArrayGenerator = async (
 	{ client, term, actions }: PartialOptions,
 	showOverdue: boolean
-) => {
-	let taskArray;
+): Promise<CerebroScreen[]> => {
+	let taskArray: APITaskObject[];
 
 	try {
 		taskArray = showOverdue

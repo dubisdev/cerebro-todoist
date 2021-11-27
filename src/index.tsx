@@ -44,7 +44,6 @@ const plugin = ({ term, display, actions, settings, config, hide }) => {
 				title: strings.workflow_today,
 			},
 			{
-				showOnlyInFullMatch: true,
 				isAsyncArrayGenerator: true,
 				loadingMessage: strings.gettingTasksMessage,
 				displayArrayGenerator: () =>
@@ -65,7 +64,6 @@ const plugin = ({ term, display, actions, settings, config, hide }) => {
 				title: strings.workflow_view,
 			},
 			{
-				showOnlyInFullMatch: true,
 				isAsyncArrayGenerator: true,
 				loadingMessage: strings.gettingTasksMessage,
 				displayArrayGenerator: () =>

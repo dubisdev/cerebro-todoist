@@ -3,8 +3,10 @@ import icon from "../icons";
 import { settings } from "../settings";
 import lang from "../lang";
 import pkgJson from "../../package.json";
+import CerebroRouter from "cerebro-command-router";
+import { CerebroActions, CerebroConfig } from "cerebro-command-router/dist/definitions";
 
-export default (config, myRouter, actions) => {
+export default (config: CerebroConfig, myRouter: CerebroRouter, actions: CerebroActions) => {
 	let firstUpdateStart = getFirstUpdateStart(config);
 
 	if (firstUpdateStart !== false) {
@@ -17,7 +19,7 @@ export default (config, myRouter, actions) => {
 	}
 };
 
-export const setFirstUpdateStartToFalse = (config) => {
+export const setFirstUpdateStartToFalse = (config: CerebroConfig) => {
 	let jsonConfig = config.get("plugins");
 
 	//delete old version entries --> filter for keys in settings.js

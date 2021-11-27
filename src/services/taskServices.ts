@@ -1,5 +1,6 @@
 import { notification } from "../components";
-import { APITaskObject, Task, TDSClient } from "todoist-rest-client";
+import { Task } from "todoist-rest-client";
+import { TDSClient, APITaskObject } from "todoist-rest-client/dist/definitions";
 import {
 	getTaskPriority,
 	getTaskDescription,

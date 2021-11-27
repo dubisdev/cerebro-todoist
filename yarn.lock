@@ -32,10 +32,10 @@ brace-expansion@^1.1.7:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
 
-cerebro-command-router@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/cerebro-command-router/-/cerebro-command-router-1.2.0.tgz#7a79fc84daa549db9246a8b5a85fc1e1bb7245e5"
-  integrity sha512-vymUWq1Zi1bZdihr14GTd9Cqr/w+alFv188k/QM2ANh9qAUPQcc0chixrYMN345hM18LQXHhKHR3g0KQJWc2rA==
+cerebro-command-router@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/cerebro-command-router/-/cerebro-command-router-2.0.0.tgz#54118e780d2f10d4fb539a31695553886e8974a8"
+  integrity sha512-cRHOyjXefTGhUPK8acwbC19YTdYgTDhUuBIM/xV2n1O4ICr4b0Jd4jKkvlHd9laLxeKsLGxfUCKyTqG6ouip8Q==
 
 concat-map@0.0.1:
   version "0.0.1"
@@ -466,10 +466,10 @@ tmp@^0.2.1:
   dependencies:
     rimraf "^3.0.0"
 
-todoist-rest-client@3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/todoist-rest-client/-/todoist-rest-client-3.0.4.tgz#7f7c6cccc790bddbf9abbcc8bf45185986ef9327"
-  integrity sha512-1k9P1YxhoavBkXzn8oJbam5H9XfKkCcYOE3/fEC2OC3LNUnSPA5l5Y8H2uniF7MDyGb3441LKlZcAwieSIZwAQ==
+todoist-rest-client@3.0.8:
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/todoist-rest-client/-/todoist-rest-client-3.0.8.tgz#192b5247fa9097630183a70685c94dcc348f3753"
+  integrity sha512-G4C9SZAUGs9ZNV2yIF1hkdgYmB7Klb8BI6O4creUkYyiHCWinG8XwBOJG4LinbSGGMw+w/S6C5waPyaVTK1qXg==
   dependencies:
     axios "^0.24.0"
     uuid "^8.3.2"
