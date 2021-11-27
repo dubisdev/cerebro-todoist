@@ -26,8 +26,10 @@ export function getTaskPriority(taskText) {
 
 	//search priorities
 	let importance = Number(
-		((taskText.match(/\B(!![0-4])\b/g) || []).pop() || "").substring(2)
+		((taskText.match(/\B(!![1-4])\b/g) || []).pop() || "").substring(2)
 	);
+
+	importance = importance === 0 ? undefined : importance;
 
 	//remove priority strings
 	let textWOResponse = taskText.split(" ");
