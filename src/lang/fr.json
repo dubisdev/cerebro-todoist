@@ -1,62 +1,62 @@
 {
-    "error": "Erreur Cerebro-Todoist",
-    "noTokenFound": "Aucun clé API trouvé :(",
-    "workflow_new": "Todoist: Créer une tâche",
-    "workflow_today": "Todoist: Tâches du jour",
-    "workflow_view": "Todoist: Tâches d'un autre jour",
-    "workflow_update": "Mise à jour installée!",
-    "invalidCommand": "Commande non valide",
-    "gettingTasksMessage": "Récupération des tâches...",
-    
-    "settings": {
-        "descriptionToken": "Votre clé API Todoist",
-        "descriptionOverdue": "Afficher les tâches en retard dans la vue 'Aujourd'hui'",
-        "descriptionNewCommand": "Commande pour créer de nouvelles tâches.",
-        "descriptionTodayCommand": "Commande pour voir les tâches du jour.",
-        "descriptionViewCommand": "Commande pour voir les tâches d'un jour spécifique.",
-        "descriptionUsageData": "Nous collectons uniquement des données anonymes sur les erreurs dans l'application afin de pouvoir les corriger. NOUS NE PARTAGEONS PAS ces données avec des tiers."
-    },
+	"error": "Erreur Cerebro-Todoist",
+	"noTokenFound": "Aucun clé API trouvé :(",
+	"workflow_new": "Todoist: Créer une tâche",
+	"workflow_today": "Todoist: Tâches du jour",
+	"workflow_view": "Todoist: Tâches d'un autre jour",
+	"workflow_update": "Mise à jour installée!",
+	"invalidCommand": "Commande non valide",
+	"gettingTasksMessage": "Récupération des tâches...",
 
-    "notifications": {
-        "taskCreated": "Tâche créée",
-        "taskCompleted": "Tâche terminée!",
-        "taskDeleted": "Tâche suprimée!",
-        "createTaskErrorInternet": "La tâche n'a pas pu être créée: il n'y a pas de connexion Internet.",
-        "createTaskErrorToken": "La tâche n'a pas pu être créée: Le clé API est erroné.",
-        "updateAvailable": "Une nouvelle version de Cerebro-Todoist est disponible! Téléchargez-le à partir des paramètres de CerebroApp.",
-        "sendData_title": "Cerebro-Todoist: Aidez-moi à améliorer l'application!",
-        "sendData_body": "Activer la collecte de données anonymes sur les erreurs depuis les paramètres du plugin pour m'aider à continuer à l'améliorer ❤."
-    },
+	"settings": {
+		"descriptionToken": "Votre clé API Todoist",
+		"descriptionOverdue": "Afficher les tâches en retard dans la vue 'Aujourd'hui'",
+		"descriptionNewCommand": "Commande pour créer de nouvelles tâches.",
+		"descriptionTodayCommand": "Commande pour voir les tâches du jour.",
+		"descriptionViewCommand": "Commande pour voir les tâches d'un jour spécifique.",
+		"descriptionUsageData": "Nous collectons uniquement des données anonymes sur les erreurs dans l'application afin de pouvoir les corriger. NOUS NE PARTAGEONS PAS ces données avec des tiers."
+	},
 
-    "NewTodayTask": {
-        "title": "Nouvelle tâche de Todoist",
-        "description": "Créez une nouvelle tâche à attribuer pour aujourd'hui dans votre boîte de réception.",
-        "li1": "Utilisez !!numéro pour ajouter la priorité à la tâche.",
-        "li2": "Utilisez :: pour ajouter une description."
-    },
+	"notifications": {
+		"taskCreated": "Tâche créée",
+		"taskCompleted": "Tâche terminée!",
+		"taskDeleted": "Tâche suprimée!",
+		"createTaskErrorInternet": "La tâche n'a pas pu être créée: il n'y a pas de connexion Internet.",
+		"createTaskErrorToken": "La tâche n'a pas pu être créée: Le clé API est erroné.",
+		"updateAvailable": "Une nouvelle version de Cerebro-Todoist est disponible! Téléchargez-le à partir des paramètres de CerebroApp.",
+		"sendData_title": "Cerebro-Todoist: Aidez-moi à améliorer l'application!",
+		"sendData_body": "Activer la collecte de données anonymes sur les erreurs depuis les paramètres du plugin pour m'aider à continuer à l'améliorer ❤."
+	},
 
-    "TaskInfo": {
-        "completeTaskButton": "Terminer la tâche",
-        "deleteTaskButton": "Supprimer la tâche",
-        "error": "Une erreur s'est produite (vérifiez votre connexion Internet ou votre clé API Todoist)."
-    },
+	"NewTodayTask": {
+		"title": "Nouvelle tâche de Todoist",
+		"description": "Créez une nouvelle tâche à attribuer pour aujourd'hui dans votre boîte de réception.",
+		"li1": "Utilisez p1, p2, p3, p4 pour ajouter la priorité à la tâche.",
+		"li2": "Utilisez :: pour ajouter une description."
+	},
 
-    "displayArrayGenerator":{
-        "noFilteredTasksFound": "Aucune tâche avec ce contenu n'a été trouvée",
-        "noTodayTasks":"Tu n'as pas de tâches aujourd'hui! Est-ce un #TodoistZero ?",
-        "noXDayTasks": "Il n'y a pas de tâches pour ce jour.",
-        "dateNeeded": "Veuillez saisir une date",
-        "invalidDate": "Veuillez entrer une date valide"
-    },
+	"TaskInfo": {
+		"completeTaskButton": "Terminer la tâche",
+		"deleteTaskButton": "Supprimer la tâche",
+		"error": "Une erreur s'est produite (vérifiez votre connexion Internet ou votre clé API Todoist)."
+	},
 
-    "afterUpdate": {
-        "pluginUpdated": "Mise à jour installée!",
-        "viewChangelog": "Regarder ce qu'il y a de nouveau",
-        "clickToHideWindow": "Cacher cette fenêtre"
-    },
-    
-    "taskServices": {
-        "due_lang": "fr",
-        "due_string": "aujourd'hui"
-    }
+	"displayArrayGenerator": {
+		"noFilteredTasksFound": "Aucune tâche avec ce contenu n'a été trouvée",
+		"noTodayTasks": "Tu n'as pas de tâches aujourd'hui! Est-ce un #TodoistZero ?",
+		"noXDayTasks": "Il n'y a pas de tâches pour ce jour.",
+		"dateNeeded": "Veuillez saisir une date",
+		"invalidDate": "Veuillez entrer une date valide"
+	},
+
+	"afterUpdate": {
+		"pluginUpdated": "Mise à jour installée!",
+		"viewChangelog": "Regarder ce qu'il y a de nouveau",
+		"clickToHideWindow": "Cacher cette fenêtre"
+	},
+
+	"taskServices": {
+		"due_lang": "fr",
+		"due_string": "aujourd'hui"
+	}
 }

@@ -26,14 +26,16 @@ export function getTaskPriority(taskText) {
 
 	//search priorities
 	let importance = Number(
-		((taskText.match(/\B(!![1-4])\b/g) || []).pop() || "").substring(2)
+		((taskText.match(/\b(([p]|[P])[1-4])\b/g) || []).pop() || "").substring(1)
 	);
 
 	importance = importance === 0 ? undefined : importance;
 
 	//remove priority strings
 	let textWOResponse = taskText.split(" ");
-	textWOResponse = textWOResponse.filter((word) => word !== `!!${importance}`);
+	textWOResponse = textWOResponse.filter(
+		(word) => word.toLowerCase() !== `p${importance}`
+	);
 	textWOResponse = textWOResponse.join(" ");
 
 	if (textWOResponse) return [importance, textWOResponse];
