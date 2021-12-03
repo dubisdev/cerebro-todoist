@@ -13,16 +13,22 @@ export async function createTask(Client: TDSClient, { text = "" } = {}) {
 	let rudeText = getSubCommandText(text);
 	const [description, taskTextWODescription] = getTaskDescription(rudeText);
 	const [priority, taskTextWProject] = getTaskPriority(taskTextWODescription);
-	const [project_name, taskText] = getTaskProject(taskTextWProject);
+	let [project_name, taskText] = getTaskProject(taskTextWProject);
 
-	//get project id if exists
-	let projects = await Client.project.getAll();
+	let project_id;
+	if (project_name) {
+		//get project id if exists
+		let projects = await Client.project.getAll();
 
-	let project = projects.find((project) =>
-		project.name.toLowerCase().includes(project_name.toLowerCase())
-	);
+		let project = projects.find(({ name }) =>
+			name.toLowerCase().includes(project_name.toLowerCase())
+		);
 
-	let project_id = project.id ? project.id : undefined;
+		project_id = project?.id;
+
+		//if no project id, return hastag to taskText
+		if (!project_id) taskText = taskTextWProject;
+	}
 
 	try {
 		await Client.task.create(
