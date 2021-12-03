@@ -20,6 +20,10 @@ For more information about usage, check the [plugin's notion webpage](https://ce
 
 - [Cerebro](http://github.com/KELiON/cerebro) – main repo for CerebroApp
 
+## Development and Contributions
+
+![Alt](https://repobeats.axiom.co/api/embed/6840a1046d869af4ed1f31cd936af3b7a7e6a192.svg "Repobeats analytics image")
+
 ## License
 
 MIT © [Dubisdev](https://dubis.dev)
