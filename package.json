@@ -1,6 +1,6 @@
 {
   "name": "cerebro-todoist",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "description": "Manage your todoist tasks from CerebroApp",
   "author": "dubisdev",
   "type": "module",
@@ -15,7 +15,7 @@
     "p-debounce": "4.0.0",
     "react": "17.0.2",
     "semver": "7.3.7",
-    "todoist-rest-client": "3.0.8"
+    "todoist-rest-client": "3.0.10"
   },
   "devDependencies": {
     "css-tree": "1.1.3",
