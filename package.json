@@ -1,6 +1,6 @@
 {
   "name": "cerebro-todoist",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "Manage your todoist tasks from CerebroApp",
   "author": "dubisdev",
   "type": "module",
