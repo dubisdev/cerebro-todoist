@@ -1,62 +1,60 @@
 {
-	"error": "Cerebro Todoist Error",
-	"noTokenFound": "No token found :(",
-	"workflow_new": "Todoist: New Task",
-	"workflow_today": "Todoist: Today Tasks",
-	"workflow_view": "Todoist: View Someday Tasks",
-	"workflow_update": "Plugin updated!",
-	"invalidCommand": "Invalid Todoist Workflow Command",
-	"gettingTasksMessage": "Searching tasks...",
+  "error": "Cerebro Todoist Error",
+  "noTokenFound": "No token found :(",
+  "workflow_new": "Todoist: New Task",
+  "workflow_today": "Todoist: Today Tasks",
+  "workflow_view": "Todoist: View Someday Tasks",
+  "workflow_update": "Plugin updated!",
+  "invalidCommand": "Invalid Todoist Workflow Command",
+  "gettingTasksMessage": "Searching tasks...",
 
-	"settings": {
-		"descriptionToken": "Your Todoist API Token",
-		"descriptionOverdue": "Show overdue tasks on Today view",
-		"descriptionNewCommand": "Command for creating new tasks.",
-		"descriptionTodayCommand": "Command for showing today tasks.",
-		"descriptionViewCommand": "Command for showing someday tasks.",
-		"descriptionUsageData": "We only collect error data and some anonymous logs for fixing errors in the app. We DO NOT share any information with third parts."
-	},
+  "settings": {
+    "descriptionToken": "Your Todoist API Token",
+    "descriptionOverdue": "Show overdue tasks on Today view",
+    "descriptionNewCommand": "Command for creating new tasks.",
+    "descriptionTodayCommand": "Command for showing today tasks.",
+    "descriptionViewCommand": "Command for showing someday tasks.",
+    "descriptionUsageData": "We only collect error data and some anonymous logs for fixing errors in the app. We DO NOT share any information with third parts."
+  },
 
-	"notifications": {
-		"taskCreated": "Task Created",
-		"taskCompleted": "Task Completed!",
-		"taskDeleted": "Task Completed!",
-		"createTaskErrorInternet": "Task couldn't be created: No internet conexion",
-		"createTaskErrorToken": "Task couldn't be created: Please check the token in the cerebro-todoist settings.",
-		"updateAvailable": "A new cerebro-todoist version is available! Download and install it from cerebroapp plugin settings.",
-		"sendData_title": "Cerebro-Todoist: Help me to help you!",
-		"sendData_body": "Would you like to send anonymous data usage? Help us by activating this option in the plugin settings ❤"
-	},
+  "notifications": {
+    "taskCreated": "Task Created",
+    "taskCompleted": "Task Completed!",
+    "taskDeleted": "Task Completed!",
+    "createTaskErrorInternet": "Task couldn't be created: No internet conexion",
+    "createTaskErrorToken": "Task couldn't be created: Please check the token in the cerebro-todoist settings.",
+    "updateAvailable": "A new cerebro-todoist version is available! Download and install it from cerebroapp plugin settings.",
+    "sendData_title": "Cerebro-Todoist: Help me to help you!",
+    "sendData_body": "Would you like to send anonymous data usage? Help us by activating this option in the plugin settings ❤"
+  },
 
-	"NewTodayTask": {
-		"title": "New Todoist Task",
-		"description": "Creates a new Todoist task in your inbox for today.",
-		"li1": "Use p1, p2, p3 or p4 to indicate priority",
-		"li2": "Use :: to separate task name from description"
-	},
+  "NewTodayTask": {
+    "title": "New Todoist Task",
+    "description": "Creates a new Todoist task in your inbox for today. Use natural language to create the task: date, labels, projects,... will be recognized."
+  },
 
-	"TaskInfo": {
-		"completeTaskButton": "Complete Task",
-		"deleteTaskButton": "Delete Task",
-		"error": "Something was wrong (check your internet connection or your Todoist API token)."
-	},
+  "TaskInfo": {
+    "completeTaskButton": "Complete Task",
+    "deleteTaskButton": "Delete Task",
+    "error": "Something was wrong (check your internet connection or your Todoist API token)."
+  },
 
-	"displayArrayGenerator": {
-		"noFilteredTasksFound": "No tasks found",
-		"noTodayTasks": "No tasks for today! Is this #TodoistZero ?",
-		"noXDayTasks": "No tasks for this day.",
-		"dateNeeded": "Enter a date, please.",
-		"invalidDate": "Enter a valid date, please."
-	},
+  "displayArrayGenerator": {
+    "noFilteredTasksFound": "No tasks found",
+    "noTodayTasks": "No tasks for today! Is this #TodoistZero ?",
+    "noXDayTasks": "No tasks for this day.",
+    "dateNeeded": "Enter a date, please.",
+    "invalidDate": "Enter a valid date, please."
+  },
 
-	"afterUpdate": {
-		"pluginUpdated": "Plugin updated!",
-		"viewChangelog": "See changelog",
-		"clickToHideWindow": "Hide this window"
-	},
+  "afterUpdate": {
+    "pluginUpdated": "Plugin updated!",
+    "viewChangelog": "See changelog",
+    "clickToHideWindow": "Hide this window"
+  },
 
-	"taskServices": {
-		"due_lang": "en",
-		"due_string": "today"
-	}
+  "taskServices": {
+    "due_lang": "en",
+    "due_string": "today"
+  }
 }

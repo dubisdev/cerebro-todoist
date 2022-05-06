@@ -1,57 +1,54 @@
 {
-	"error": "Error de Cerebro-Todoist",
-	"noTokenFound": "No se ha encontrado un token :(",
-	"workflow_new": "Todoist: Nueva Tarea",
-	"workflow_today": "Todoist: Tareas de Hoy",
-	"workflow_view": "Todoist: Tareas de algún día",
-	"workflow_update": "¡Plugin Actualizado!",
-	"invalidCommand": "Comando no válido",
-	"gettingTasksMessage": "Buscando tareas...",
+  "error": "Error de Cerebro-Todoist",
+  "noTokenFound": "No se ha encontrado un token :(",
+  "workflow_new": "Todoist: Nueva Tarea",
+  "workflow_today": "Todoist: Tareas de Hoy",
+  "workflow_view": "Todoist: Tareas de algún día",
+  "workflow_update": "¡Plugin Actualizado!",
+  "invalidCommand": "Comando no válido",
+  "gettingTasksMessage": "Buscando tareas...",
 
-	"settings": {
-		"descriptionToken": "Tu Token de la API Todoist",
-		"descriptionOverdue": "Mostrar tareas vencidas en la vista 'hoy'",
-		"descriptionNewCommand": "Comando para crear nuevas tareas.",
-		"descriptionTodayCommand": "Comando para ver las tareas de hoy.",
-		"descriptionViewCommand": "Comando para ver las tareas de un día concreto.",
-		"descriptionUsageData": "Solo recogemos datos anónimos sobre errores en la aplicación para poder arreglarlos. NO COMPARTIMOS estos datos con terceros."
-	},
-	"notifications": {
-		"taskCreated": "Tarea creada",
-		"taskCompleted": "¡Tarea completada!",
-		"taskDeleted": "¡Tarea eliminada!",
-		"createTaskErrorInternet": "La tarea no se pudo crear: No hay conexión a internet.",
-		"createTaskErrorToken": "La tarea no se pudo crear: El token de la API es incorrecto.",
-		"updateAvailable": "¡Una nueva versión de cerebro-todoist está disponible! Descárgala desde los ajustes de CerebroApp",
-		"sendData_title": "Cerebro-Todoist: ¡Ayúdame a mejorar!",
-		"sendData_body": "Activa la recogida de datos anónimos sobre errores desde los ajustes del plugin para ayudarme a seguir mejorándolo ❤"
-	},
-	"NewTodayTask": {
-		"title": "Nueva Tarea de Todoist",
-		"description": "Crea una nueva tarea que se asignará para hoy en tu bandeja de entrada.",
-		"li1": "Utiliza p1, p2, p3 o p4 para añadir prioridad a la tarea.",
-		"li2": "Utiliza :: para añadir una descripción.",
-		"li3": "Utiliza #nombre_de_proyecto para agregar tareas a proyectos. No es necesario el nombre completo, con escribir el inicio es suficiente."
-	},
-	"TaskInfo": {
-		"completeTaskButton": "Completar Tarea",
-		"deleteTaskButton": "Eliminar tarea",
-		"error": "Algo salió mal (comprueba tu conexión a internet o tu token de la API Todoist)."
-	},
-	"displayArrayGenerator": {
-		"noFilteredTasksFound": "No se han encontrado tareas con ese contenido",
-		"noTodayTasks": "¡No tienes tareas hoy! ¿Es esto un #TodoistZero ?",
-		"noXDayTasks": "No hay tareas para este día",
-		"dateNeeded": "Introduce una fecha por favor",
-		"invalidDate": "Introduce una fecha correcta, por favor"
-	},
-	"afterUpdate": {
-		"pluginUpdated": "¡Plugin Actualizado!",
-		"viewChangelog": "Ver el historial de cambios",
-		"clickToHideWindow": "Pulsa aquí para ocultar esta pestaña"
-	},
-	"taskServices": {
-		"due_lang": "es",
-		"due_string": "hoy"
-	}
+  "settings": {
+    "descriptionToken": "Tu Token de la API Todoist",
+    "descriptionOverdue": "Mostrar tareas vencidas en la vista 'hoy'",
+    "descriptionNewCommand": "Comando para crear nuevas tareas.",
+    "descriptionTodayCommand": "Comando para ver las tareas de hoy.",
+    "descriptionViewCommand": "Comando para ver las tareas de un día concreto.",
+    "descriptionUsageData": "Solo recogemos datos anónimos sobre errores en la aplicación para poder arreglarlos. NO COMPARTIMOS estos datos con terceros."
+  },
+  "notifications": {
+    "taskCreated": "Tarea creada",
+    "taskCompleted": "¡Tarea completada!",
+    "taskDeleted": "¡Tarea eliminada!",
+    "createTaskErrorInternet": "La tarea no se pudo crear: No hay conexión a internet.",
+    "createTaskErrorToken": "La tarea no se pudo crear: El token de la API es incorrecto.",
+    "updateAvailable": "¡Una nueva versión de cerebro-todoist está disponible! Descárgala desde los ajustes de CerebroApp",
+    "sendData_title": "Cerebro-Todoist: ¡Ayúdame a mejorar!",
+    "sendData_body": "Activa la recogida de datos anónimos sobre errores desde los ajustes del plugin para ayudarme a seguir mejorándolo ❤"
+  },
+  "NewTodayTask": {
+    "title": "Nueva Tarea de Todoist",
+    "description": "Crea una nueva tarea que se asignará para hoy en tu bandeja de entrada. Puedes utilizar el lenguaje natural para añadir fechas, etiquetas, proyectos... y serán interpretados igual que en la aplicación de escritorio"
+  },
+  "TaskInfo": {
+    "completeTaskButton": "Completar Tarea",
+    "deleteTaskButton": "Eliminar tarea",
+    "error": "Algo salió mal (comprueba tu conexión a internet o tu token de la API Todoist)."
+  },
+  "displayArrayGenerator": {
+    "noFilteredTasksFound": "No se han encontrado tareas con ese contenido",
+    "noTodayTasks": "¡No tienes tareas hoy! ¿Es esto un #TodoistZero ?",
+    "noXDayTasks": "No hay tareas para este día",
+    "dateNeeded": "Introduce una fecha por favor",
+    "invalidDate": "Introduce una fecha correcta, por favor"
+  },
+  "afterUpdate": {
+    "pluginUpdated": "¡Plugin Actualizado!",
+    "viewChangelog": "Ver el historial de cambios",
+    "clickToHideWindow": "Pulsa aquí para ocultar esta pestaña"
+  },
+  "taskServices": {
+    "due_lang": "es",
+    "due_string": "hoy"
+  }
 }
