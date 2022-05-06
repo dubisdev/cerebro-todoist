@@ -35,6 +35,10 @@
 
 ![Alt](https://repobeats.axiom.co/api/embed/6840a1046d869af4ed1f31cd936af3b7a7e6a192.svg "Repobeats analytics image")
 
+## Privacy Policy
+
+No user data is collected. Once you install the plugin it makes requests directly to the Todoist API and the responses are sent directly to your computer. Just simple, fast and private.
+
 ## License
 
 MIT © [Dubisdev](https://dubis.dev)
