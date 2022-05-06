@@ -2,6 +2,8 @@
 
 > [Cerebro](https://cerebroapp.com) plugin to create and manage Todoist tasks.
 
+⚠️ Cerebro-Todoist is an extension that IS NOT created by, affiliated with, or supported by @Doist
+
 ## Installation
 
 - Type `plugins todoist` into Cerebro
@@ -14,7 +16,16 @@
 
 ## Usage
 
-For more information about usage, check the [plugin's notion webpage](https://cerebro-todoist.dubis.dev)
+### Available commands
+
+- `tds new` ➡️ Creates a new task (natural language syntax supported)
+- `tds today` ➡️ Returns a list with tasks for today and overdue tasks
+  - Navigate between them to see details
+- `tds view` + date ➡️ Returns tasks of that date
+
+😎 You can search between tasks just by typing ➡️ `tds today milk` - Filters the tasks and returns the ones that have "milk" in their name (same with `tds view 12/10 milk`)
+
+💡 You can configure the command names in the plugin settings page ➡️ `plugins todoist settings`
 
 ## Related
 
