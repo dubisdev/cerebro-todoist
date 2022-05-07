@@ -16,6 +16,7 @@
     "descriptionViewCommand": "Comando para ver las tareas de un día concreto.",
     "descriptionUsageData": "Solo recogemos datos anónimos sobre errores en la aplicación para poder arreglarlos. NO COMPARTIMOS estos datos con terceros."
   },
+
   "notifications": {
     "taskCreated": "Tarea creada",
     "taskCompleted": "¡Tarea completada!",
@@ -26,17 +27,22 @@
     "sendData_title": "Cerebro-Todoist: ¡Ayúdame a mejorar!",
     "sendData_body": "Activa la recogida de datos anónimos sobre errores desde los ajustes del plugin para ayudarme a seguir mejorándolo ❤"
   },
+
   "NewTodayTask": {
     "title": "Nueva Tarea de Todoist",
     "description": "Crea una nueva tarea que se asignará para hoy en tu bandeja de entrada. Puedes utilizar el lenguaje natural para añadir fechas, etiquetas, proyectos... y serán interpretados igual que en la aplicación de escritorio"
   },
+
   "TaskInfo": {
     "completeTaskButton": "Completar Tarea",
     "deleteTaskButton": "Eliminar tarea",
     "error": "Algo salió mal (comprueba tu conexión a internet o tu token de la API Todoist)."
   },
+
   "displayArrayGenerator": {
-    "noFilteredTasksFound": "No se han encontrado tareas con ese contenido",
+    "noFilterFound": "Introduce un filtro, por favor",
+    "filterError": "Filtro no válido",
+    "noFilteredTasksFound": "No se han encontrado tareas para este filtro",
     "noTodayTasks": "¡No tienes tareas hoy! ¿Es esto un #TodoistZero ?",
     "noXDayTasks": "No hay tareas para este día",
     "dateNeeded": "Introduce una fecha por favor",

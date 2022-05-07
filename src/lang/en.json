@@ -40,7 +40,9 @@
   },
 
   "displayArrayGenerator": {
-    "noFilteredTasksFound": "No tasks found",
+    "noFilterFound": "Enter a filter, please.",
+    "filterError": "Incorrect filter",
+    "noFilteredTasksFound": "No filtered tasks found",
     "noTodayTasks": "No tasks for today! Is this #TodoistZero ?",
     "noXDayTasks": "No tasks for this day.",
     "dateNeeded": "Enter a date, please.",

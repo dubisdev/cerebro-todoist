@@ -9,6 +9,5 @@ export default {
   target: "es2016",
   loader: { ".js": "jsx", ".png": "dataurl", ".svg": "text" },
   outfile: "dist/index.js",
-  platform: "node",
   plugins: [cssModulesPlugin()],
 };

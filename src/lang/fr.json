@@ -40,7 +40,9 @@
   },
 
   "displayArrayGenerator": {
-    "noFilteredTasksFound": "Aucune tâche avec ce contenu n'a été trouvée",
+    "noFilterFound": "Veuillez entrer un filtre",
+    "filterError": "Le filtre n'est pas valide",
+    "noFilteredTasksFound": "Aucune tâche avec ce filtre n'a été trouvée",
     "noTodayTasks": "Tu n'as pas de tâches aujourd'hui! Est-ce un #TodoistZero ?",
     "noXDayTasks": "Il n'y a pas de tâches pour ce jour.",
     "dateNeeded": "Veuillez saisir une date",

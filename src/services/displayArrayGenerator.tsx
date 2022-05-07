@@ -1,140 +1,121 @@
 import { getSubCommandText } from "cerebro-command-router";
-import { filterByContent, filterByDate } from "./taskFilterServices";
 import { completeTask } from "./taskServices";
 import pDebounce from "p-debounce";
 import { TaskInfo } from "../components";
-import { dateGetter } from "./checkDate";
+
 import lang from "../lang";
 import { APITaskObject, TDSClient } from "todoist-rest-client/dist/definitions";
 const strings = lang.displayArrayGenerator;
-import { CerebroScreen } from "cerebro-command-router/dist/definitions"
+import { CerebroScreen } from "cerebro-command-router/dist/definitions";
 
-
-type Options = PartialOptions & {
-	type?: "today" | "view"
-}
-
-type PartialOptions = {
-	client: TDSClient,
-	term: string,
-	actions: object
-}
-
-const ItaskArrayGenerator = ({ type, ...props }: Options, showOverdue?: boolean) => {
-	switch (type) {
-		case "today":
-			return todayTaskArrayGenerator(props, showOverdue);
-		case "view":
-			return otherDayTaskArrayGenerator(props);
-		default:
-			return todayTaskArrayGenerator(props, showOverdue);
-	}
+type Options = {
+  type?: "today" | "view";
+  client: TDSClient;
+  term: string;
+  actions: object;
+  showOverdue?: boolean;
 };
 
-const todayTaskArrayGenerator = async (
-	{ client, term, actions }: PartialOptions,
-	showOverdue: boolean
-): Promise<CerebroScreen[]> => {
-	let taskArray: APITaskObject[];
-
-	try {
-		taskArray = showOverdue
-			? await client.task.search({
-					filter: "(today | overdue)",
-					lang: "en",
-			  })
-			: await client.extras.getTodayTaskJSON();
-	} catch {
-		return [{ title: lang.TaskInfo.error }];
-	}
-
-	if (getSubCommandText(term)) {
-		taskArray = filterByContent(taskArray, getSubCommandText(term));
-		if (taskArray.length === 0)
-			return [{ title: strings.noFilteredTasksFound }];
-	}
-
-	if (taskArray.length === 0) return [{ title: strings.noTodayTasks }];
-
-	let newTaskArray = [];
-
-	await Promise.all(
-		taskArray.map(async (task) => {
-			let projectName = (await client.project.get(task.project_id)).name;
-			newTaskArray.push({
-				...task,
-				projectName,
-			});
-		})
-	);
-
-	return newTaskArray.map((task) => {
-		return {
-			title: task.content,
-			onSelect: () => completeTask(client, task),
-			getPreview: () => (
-				<TaskInfo task={task} client={client} actions={actions} />
-			),
-		};
-	});
+const ItaskArrayGenerator = (opts: Options) => {
+  const { type } = opts;
+  switch (type) {
+    case "today":
+      return todayTaskArrayGenerator(opts);
+    case "view":
+      return filterTaskArrayGenerator(opts);
+    default:
+      return todayTaskArrayGenerator(opts);
+  }
 };
 
-const otherDayTaskArrayGenerator = async ({ client, term, actions }: PartialOptions) => {
-	//sacar la fecha del subcomman, si hay
-	const subCommandtext = getSubCommandText(term);
-	if (!subCommandtext) return Promise.resolve([{ title: strings.dateNeeded }]);
+type tTAG = (opts: Options) => Promise<CerebroScreen[]>;
+const todayTaskArrayGenerator: tTAG = async ({
+  client,
+  showOverdue,
+  term,
+  actions,
+}) => {
+  let taskArray: APITaskObject[];
 
-	//comprobar que la fecha sea correcta
-	const talVezDate = subCommandtext.split(" ")[0];
+  const contentSearch = getSubCommandText(term);
+  let filter = contentSearch
+    ? `(today | overdue) & search:${contentSearch}`
+    : `today | overdue`;
 
-	const date = dateGetter(talVezDate);
+  try {
+    taskArray = showOverdue
+      ? await client.task.search({ filter })
+      : await client.extras.getTodayTaskJSON();
+  } catch (err) {
+    return handleErrors(err);
+  }
 
-	if (!date) return Promise.resolve([{ title: strings.invalidDate }]);
+  if (taskArray.length === 0) {
+    if (contentSearch) return [{ title: strings.noFilteredTasksFound }];
+    else return [{ title: strings.noTodayTasks }];
+  }
 
-	//comporbar si hay algo más de texto, para buscar entre las tareas que obtengamos
-	const filterTextArray = subCommandtext.split(" ");
-	filterTextArray.shift();
-	const filterText = filterTextArray.join(" ");
+  // API restrictions - only call <= 10 times
+  if (taskArray.length <= 10) {
+    taskArray = await Promise.all(
+      taskArray.map(async (task) => {
+        let projectName = (await client.project.get(task.project_id)).name;
+        return { ...task, projectName };
+      })
+    );
+  }
 
-	//si es correcta procedemos a llamar al método de buscar en la api (ahorramos recursos ;) )
-	let fullTasksList;
-	try {
-		fullTasksList = await client.task.getAll();
-	} catch {
-		return [{ title: lang.TaskInfo.error }];
-	}
+  return taskArray.map((task) => {
+    return {
+      title: task.content,
+      onSelect: () => completeTask(client, task),
+      getPreview: () => (
+        <TaskInfo task={task} client={client} actions={actions} />
+      ),
+    };
+  });
+};
 
-	//filtrarlas por fecha y contenido
-	let dayTasksArray = filterByDate(fullTasksList, date);
-	if (filterText) {
-		dayTasksArray = filterByContent(dayTasksArray, filterText);
-		if (dayTasksArray.length === 0)
-			return [{ title: strings.noFilteredTasksFound }];
-	}
+const filterTaskArrayGenerator = async ({ client, term, actions }: Options) => {
+  const filter = getSubCommandText(term);
 
-	if (dayTasksArray.length === 0) return [{ title: strings.noXDayTasks }];
+  if (!filter) return Promise.resolve([{ title: strings.noFilterFound }]);
 
-	let newTaskArray = [];
+  let fullTasksList: APITaskObject[];
 
-	await Promise.all(
-		dayTasksArray.map(async (task) => {
-			let projectName = (await client.project.get(task.project_id)).name;
-			newTaskArray.push({
-				...task,
-				projectName,
-			});
-		})
-	);
+  try {
+    fullTasksList = await client.task.search({ filter });
+  } catch (err) {
+    return handleErrors(err);
+  }
 
-	return newTaskArray.map((task) => {
-		return {
-			title: task.content,
-			onSelect: () => completeTask(client, task),
-			getPreview: () => (
-				<TaskInfo task={task} client={client} actions={actions} />
-			),
-		};
-	});
+  if (fullTasksList.length === 0)
+    return [{ title: strings.noFilteredTasksFound }];
+
+  if (fullTasksList.length <= 10) {
+    fullTasksList = await Promise.all(
+      fullTasksList.map(async (task) => {
+        let projectName = (await client.project.get(task.project_id)).name;
+        return { ...task, projectName };
+      })
+    );
+  }
+
+  return fullTasksList.map((task) => ({
+    title: task.content,
+    onSelect: () => completeTask(client, task),
+    getPreview: () => (
+      <TaskInfo task={task} client={client} actions={actions} />
+    ),
+  }));
+};
+
+const handleErrors = (err) => {
+  if (err?.response?.data?.includes("filter")) {
+    return [{ title: strings.filterError }];
+  }
+
+  return [{ title: lang.TaskInfo.error }];
 };
 
 const debouncedTaskArrayGenerator = pDebounce(ItaskArrayGenerator, 275);

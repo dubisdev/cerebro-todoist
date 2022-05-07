@@ -21,9 +21,11 @@
 - `tds new` ➡️ Creates a new task (natural language syntax supported)
 - `tds today` ➡️ Returns a list with tasks for today and overdue tasks
   - Navigate between them to see details
-- `tds view` + date ➡️ Returns tasks of that date
+- `tds view` + filter ➡️ Returns tasks matching the filter (ex: 18/05, tomorrow, today, search: buy, ...). For more information about this filters see [Todoist Documentation](https://todoist.com/help/articles/introduction-to-filters)
 
-😎 You can search between tasks just by typing ➡️ `tds today milk` - Filters the tasks and returns the ones that have "milk" in their name (same with `tds view 12/10 milk`)
+😎 You can search between tasks just by typing ➡️ `tds today milk` - Filters the tasks and returns the ones that have "milk" in their name (same with `tds view 12/10 & search:milk`)
+
+⚡ Due to performance issues and API restrictions, project names will only appear if the number of matching tasks is less than 10
 
 💡 You can configure the command names in the plugin settings page ➡️ `plugins todoist settings`
 

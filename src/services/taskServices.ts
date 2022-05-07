@@ -20,13 +20,13 @@ export async function createTask(Client: TDSClient, { text = "" } = {}) {
 }
 
 export const getTaskHour = (task: APITaskObject) => {
-  if (!task.due.datetime) return;
-
-  const hour = new Date(task.due.datetime)
-    .toTimeString()
-    .split(" ")[0]
-    .slice(0, 5);
-  return "⌛ " + hour;
+  if (task?.due?.datetime) {
+    const hour = new Date(task.due.datetime)
+      .toTimeString()
+      .split(" ")[0]
+      .slice(0, 5);
+    return "⌛ " + hour;
+  } else return;
 };
 
 export const completeTask = async (Client: TDSClient, task: APITaskObject) => {
