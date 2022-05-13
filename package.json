@@ -1,9 +1,8 @@
 {
   "name": "cerebro-todoist",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "Manage your todoist tasks from CerebroApp",
   "author": "dubisdev",
-  "type": "module",
   "license": "MIT",
   "repository": "dubisdev/cerebro-todoist",
   "files": [
@@ -29,9 +28,9 @@
     "todoist"
   ],
   "scripts": {
-    "start": "node ./esbuild/dev.js",
-    "build": "node ./esbuild/build.js",
-    "clear": "node ./esbuild/clear.js",
+    "start": "node ./esbuild/dev.mjs",
+    "build": "node ./esbuild/build.mjs",
+    "clear": "node ./esbuild/clear.mjs",
     "prepublish": "yarn clear && yarn build"
   }
 }
