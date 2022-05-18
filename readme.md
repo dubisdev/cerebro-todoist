@@ -11,8 +11,11 @@
 - Set your Todoist API token in the plugin settings --> `plugins todoist` - Select `settings` - `token`
 
 <p align="center">
-  <img src="https://github.com/dubisdev/cerebro-todoist/raw/master/readme_files/settings_token.png">
+  <img src="https://user-images.githubusercontent.com/77246331/169042136-e94d61a0-9bac-4992-80f3-0c62396a616d.png"
 </p>
+
+
+
 
 ## Usage
 
