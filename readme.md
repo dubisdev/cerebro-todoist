@@ -29,6 +29,10 @@
 
 💡 You can configure the command names in the plugin settings page ➡️ `plugins todoist settings`
 
+## Need Support?
+
+You can [open an issue](https://github.com/dubisdev/cerebro-todoist/issues/new) in this repository or [contact me by email](mailto:dubisdev@gmail.com)
+
 ## Related
 
 - [Cerebro](http://github.com/KELiON/cerebro) – main repo for CerebroApp
