@@ -14,9 +14,6 @@
   <img src="https://user-images.githubusercontent.com/77246331/169042136-e94d61a0-9bac-4992-80f3-0c62396a616d.png"
 </p>
 
-
-
-
 ## Usage
 
 ### Available commands
@@ -31,6 +28,11 @@
 ⚡ Due to performance issues and API restrictions, project names will only appear if the number of matching tasks is less than 10
 
 💡 You can configure the command names in the plugin settings page ➡️ `plugins todoist settings`
+
+## Not seeing the settings option in Cerebro-Todoist?
+
+It it possible that you have downloaded an outdated CerebroApp version. You can check your CerebroApp version by typing `version`.
+If your CerebroAp version is 0.3.1 or lower, check the [official releases page](https://github.com/cerebroapp/cerebro/releases) and download a more updated version for your computer (at least 0.3.2).
 
 ## Need Support?
 
