@@ -15,11 +15,8 @@
     "todoist-rest-client": "3.0.10"
   },
   "devDependencies": {
-    "css-tree": "1.1.3",
-    "esbuild": "0.14.39",
-    "esbuild-css-modules-plugin": "2.2.16",
-    "fs-extra": "10.1.0",
-    "react": "17.0.2"
+    "react": "17.0.2",
+    "cerebro-build": "1.0.0"
   },
   "main": "dist/index.js",
   "keywords": [
@@ -28,9 +25,9 @@
     "todoist"
   ],
   "scripts": {
-    "start": "node ./esbuild/dev.mjs",
-    "build": "node ./esbuild/build.mjs",
-    "clear": "node ./esbuild/clear.mjs",
+    "start": "cerebro-build dev",
+    "build": "cerebro-build build",
+    "clear": "cerebro-build clear",
     "prepublish": "yarn clear && yarn build"
   }
 }
