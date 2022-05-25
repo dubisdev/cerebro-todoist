@@ -17,12 +17,12 @@ const KeyboardNavItem = ({ children, ...props }) => {
   };
   const itemProps = { className, onClick, onKeyDown, tabIndex: 0 };
 
+  if (!children) return null;
+
   return (
-    children && (
-      <li {...props} {...itemProps} className={styles.item}>
-        <div className={styles.centerLayout}>{children}</div>
-      </li>
-    )
+    <li {...props} {...itemProps} className={styles.item}>
+      <div className={styles.centerLayout}>{children}</div>
+    </li>
   );
 };
 
