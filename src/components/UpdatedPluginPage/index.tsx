@@ -1,4 +1,4 @@
-import { KeyboardNavItem, KeyboardNav } from "../cerebro-ui";
+import { KeyboardNavItem, KeyboardNav } from "../";
 import { setFirstUpdateStartToFalse } from "../../services/startPageAfterUpdate";
 import styles from "./styles.module.css";
 import lang from "../../lang";

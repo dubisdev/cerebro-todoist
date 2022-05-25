@@ -18,3 +18,9 @@
   background: var(--selected-result-background);
   color: var(--selected-result-title-color);
 }
+
+.centerLayout {
+  display: inline-block;
+  width: 1000%;
+  text-align: center;
+}
