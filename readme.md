@@ -14,7 +14,7 @@
 - Set your Todoist API token in the plugin settings --> `plugins todoist` - Select `settings` - `token`
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/77246331/169042136-e94d61a0-9bac-4992-80f3-0c62396a616d.png"
+  <img width="600" src="https://user-images.githubusercontent.com/77246331/169042136-e94d61a0-9bac-4992-80f3-0c62396a616d.png"
 </p>
 
 ## Usage
@@ -55,4 +55,4 @@ No user data is collected. Once you install the plugin it makes requests directl
 
 ## License
 
-MIT © [Dubisdev](https://dubis.dev)
+MIT © [David Jiménez](https://dubis.dev)
