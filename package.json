@@ -1,8 +1,8 @@
 {
   "name": "cerebro-cerebro-todoist",
-  "version": "2.6.6",
+  "version": "2.7.0",
   "description": "Manage your Todoist tasks from CerebroApp",
-  "author": "dubisdev",
+  "author": "David Jiménez <dubisdev@gmail.com> (https://dubis.dev)",
   "license": "MIT",
   "repository": "dubisdev/cerebro-todoist",
   "files": [
