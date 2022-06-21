@@ -15,7 +15,7 @@
     "todoist-rest-client": "3.0.10"
   },
   "devDependencies": {
-    "@types/react": "18.0.9",
+    "@types/react": "18.0.14",
     "cerebro-build": "1.0.0",
     "react": "15.7.0"
   },
