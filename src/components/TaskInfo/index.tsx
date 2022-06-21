@@ -18,14 +18,20 @@ const TasksInfoPreview = ({ task, actions, client }) => {
     actions.hideWindow();
   };
 
+  const goToProject = (task) => {
+    actions.replaceTerm("tds view ##" + task.projectName);
+  };
+
   return (
     <div className={styles.wrapper}>
       <h2 style={{ textAlign: "center" }}>{task.content}</h2>
       <KeyboardNav>
         <ul className={styles.list}>
-          <KeyboardNavItem>{getTaskHour(task) || null}</KeyboardNavItem>
-          <KeyboardNavItem>{task.description || null}</KeyboardNavItem>
-          <KeyboardNavItem>{task.projectName}</KeyboardNavItem>
+          <KeyboardNavItem>{getTaskHour(task)}</KeyboardNavItem>
+          <KeyboardNavItem>{task.description}</KeyboardNavItem>
+          <KeyboardNavItem onSelect={() => goToProject(task)}>
+            {task.projectName}
+          </KeyboardNavItem>
           <KeyboardNavItem onSelect={() => complete(task)}>
             {strings.completeTaskButton}
           </KeyboardNavItem>
