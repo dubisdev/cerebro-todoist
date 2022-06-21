@@ -1,0 +1,17 @@
+{
+    "include": [
+        "src",
+        "typings"
+    ],
+    "compilerOptions": {
+        "lib": [
+            "ES2016"
+        ],
+        "outDir": "dist",
+        "allowJs": true,
+        "checkJs": true,
+        "jsx": "preserve",
+        "esModuleInterop": true,
+        "baseUrl": "src"
+    }
+}
