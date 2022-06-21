@@ -1,4 +1,7 @@
+<img width="300" align="right" alt="cerebro-todoist logo" src="https://user-images.githubusercontent.com/77246331/174854937-535dccc9-6d27-4bf8-927f-f4e664ca0a0f.png"/>
+
 # cerebro-todoist &nbsp; ![npm](https://img.shields.io/npm/v/cerebro-cerebro-todoist?color=green) ![download number](https://img.shields.io/npm/dt/cerebro-cerebro-todoist)
+
 
 > [Cerebro](https://cerebroapp.com) plugin to create and manage Todoist tasks.
 
