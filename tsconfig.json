@@ -5,7 +5,8 @@
     ],
     "compilerOptions": {
         "lib": [
-            "ES2016"
+            "ES2016",
+            "DOM"
         ],
         "outDir": "dist",
         "allowJs": true,
