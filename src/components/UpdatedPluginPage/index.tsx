@@ -1,7 +1,7 @@
-import { KeyboardNavItem, KeyboardNav } from "../";
-import { setFirstUpdateStartToFalse } from "../../services/startPageAfterUpdate";
+import { KeyboardNavItem, KeyboardNav } from "@cerebroapp/cerebro-ui";
+import { setFirstUpdateStartToFalse } from "services/startPageAfterUpdate";
 import styles from "./styles.module.css";
-import lang from "../../lang";
+import lang from "lang";
 const strings = lang.afterUpdate;
 
 const updatedPlugin = ({ actions, config }) => {
@@ -18,11 +18,17 @@ const updatedPlugin = ({ actions, config }) => {
       <h1>{strings.pluginUpdated}</h1>
       <KeyboardNav>
         <ul className={styles.list}>
-          <KeyboardNavItem onSelect={() => handleClick("view")}>
+          <KeyboardNavItem
+            style={{ justifyContent: "center" }}
+            onSelect={() => handleClick("view")}
+          >
             {strings.viewChangelog}
           </KeyboardNavItem>
 
-          <KeyboardNavItem onSelect={() => handleClick("close")}>
+          <KeyboardNavItem
+            style={{ justifyContent: "center" }}
+            onSelect={() => handleClick("close")}
+          >
             {strings.clickToHideWindow}
           </KeyboardNavItem>
         </ul>

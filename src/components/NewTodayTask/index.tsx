@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-import lang from "../../lang";
+import lang from "lang";
 const strings = lang.NewTodayTask;
 
 const NewTaskInterface = () => (

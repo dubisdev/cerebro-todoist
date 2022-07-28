@@ -1,4 +1,4 @@
-import PluginUpdated from "../components/UpdatedPluginPage";
+import PluginUpdated from "components/UpdatedPluginPage";
 import icon from "../icons";
 import { settings } from "../settings";
 import lang from "../lang";
