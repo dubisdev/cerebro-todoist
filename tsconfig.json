@@ -13,6 +13,7 @@
         "checkJs": true,
         "jsx": "preserve",
         "esModuleInterop": true,
-        "baseUrl": "src"
+        "baseUrl": "src",
+        "resolveJsonModule": true
     }
 }
