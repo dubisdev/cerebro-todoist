@@ -12,9 +12,9 @@ export async function createTask(Client: TDSClient, { text = "" } = {}) {
     await quickAdd(taskText, Client.apiToken);
     notification({ body: lang.notifications.taskCreated });
   } catch (err) {
-    if (!err.response)
+    if (!err.status)
       notification({ body: lang.notifications.createTaskErrorInternet });
-    else if (err.response.status === 403)
+    else if (err.status === 403)
       notification({ body: lang.notifications.createTaskErrorToken });
   }
 }
