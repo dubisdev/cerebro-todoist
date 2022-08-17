@@ -11,7 +11,7 @@
         "outDir": "dist",
         "allowJs": true,
         "checkJs": true,
-        "jsx": "preserve",
+        "jsx": "react-jsx",
         "esModuleInterop": true,
         "baseUrl": "src",
         "resolveJsonModule": true
