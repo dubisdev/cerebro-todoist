@@ -1,5 +1,5 @@
 export const quickAdd = (text: string, token: string) => {
-  return fetch("https://api.todoist.com/sync/v8/quick/add", {
+  return fetch("https://api.todoist.com/sync/v9/quick/add", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
