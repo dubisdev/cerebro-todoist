@@ -1,6 +1,6 @@
 import CerebroRouter from "cerebro-command-router";
 import { TodoistApi } from "@doist/todoist-api-typescript";
-import { createTask, updateChecker, startPageAfterUpdate } from "./services";
+import { createTask, startPageAfterUpdate } from "./services";
 import icon from "./icons";
 import { NewTodayTask } from "./components";
 import strings from "./lang";
@@ -8,8 +8,6 @@ import { name, keyword, settings } from "./settings";
 import taskArrayGenerator from "./services/displayArrayGenerator";
 
 if (!Notification.permission) Notification.requestPermission();
-
-const initialize = () => updateChecker();
 
 const plugin = ({ term, display, actions, settings, config, hide }) => {
   if (!term.toLowerCase().includes("tds")) return;
@@ -84,4 +82,4 @@ const plugin = ({ term, display, actions, settings, config, hide }) => {
   });
 };
 
-export { icon, name, keyword, plugin as fn, settings, initialize };
+export { icon, name, keyword, plugin as fn, settings };
