@@ -1,5 +1,5 @@
 import CerebroRouter from "cerebro-command-router";
-import TDSClient from "todoist-rest-client";
+import { TodoistApi } from "@doist/todoist-api-typescript";
 import { createTask, updateChecker, startPageAfterUpdate } from "./services";
 import icon from "./icons";
 import { NewTodayTask } from "./components";
@@ -23,7 +23,7 @@ const plugin = ({ term, display, actions, settings, config, hide }) => {
       getPreview: () => <h3>{strings.noTokenFound}</h3>,
     });
   }
-  const client = TDSClient(token);
+  const client = new TodoistApi(token);
 
   const myRouter = new CerebroRouter({ command: "tds", term, display, hide });
 
@@ -34,7 +34,7 @@ const plugin = ({ term, display, actions, settings, config, hide }) => {
     icon: icon,
     title: strings.workflow_new,
     getPreview: () => <NewTodayTask />,
-    onSelect: () => createTask(client, { text: term }),
+    onSelect: () => createTask(token, { text: term }),
   });
 
   myRouter.route(

@@ -10,16 +10,16 @@
   ],
   "dependencies": {
     "@cerebroapp/cerebro-ui": "1.0.4",
+    "@doist/todoist-api-typescript": "2.1.2",
     "cerebro-command-router": "2.0.0",
     "p-debounce": "4.0.0",
-    "semver": "7.3.7",
-    "todoist-rest-client": "3.0.10"
+    "semver": "7.3.8"
   },
   "devDependencies": {
-    "@types/react": "18.0.15",
-    "cerebro-build": "1.1.1",
+    "@types/react": "16.14.34",
+    "cerebro-build": "1.2.0",
     "electron": "19.0.10",
-    "react": "15.7.0"
+    "react": "16.14.0"
   },
   "main": "dist/index.js",
   "keywords": [

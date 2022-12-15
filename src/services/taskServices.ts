@@ -1,15 +1,15 @@
 import { notification } from "../components";
-import { TDSClient, APITaskObject } from "todoist-rest-client/dist/definitions";
+import type { TodoistApi, Task } from "@doist/todoist-api-typescript";
 
 import { getSubCommandText } from "cerebro-command-router";
 import lang from "../lang";
 import { quickAdd } from "./quickAdd";
 
-export async function createTask(Client: TDSClient, { text = "" } = {}) {
+export async function createTask(token: string, { text = "" } = {}) {
   let taskText = getSubCommandText(text);
 
   try {
-    await quickAdd(taskText, Client.apiToken);
+    await quickAdd(taskText, token);
     notification({ body: lang.notifications.taskCreated });
   } catch (err) {
     if (!err.status)
@@ -19,7 +19,7 @@ export async function createTask(Client: TDSClient, { text = "" } = {}) {
   }
 }
 
-export const getTaskHour = (task: APITaskObject) => {
+export const getTaskHour = (task: Task) => {
   if (task?.due?.datetime) {
     const hour = new Date(task.due.datetime)
       .toTimeString()
@@ -29,14 +29,14 @@ export const getTaskHour = (task: APITaskObject) => {
   } else return;
 };
 
-export const completeTask = async (Client: TDSClient, task: APITaskObject) => {
+export const completeTask = async (Client: TodoistApi, task: Task) => {
   if (!task) return;
-  await Client.task.close(task.id);
+  await Client.closeTask(task.id);
   notification({ body: lang.notifications.taskCompleted });
 };
 
-export const deleteTask = async (Client: TDSClient, task: APITaskObject) => {
+export const deleteTask = async (Client: TodoistApi, task: Task) => {
   if (!task) return;
-  await Client.task.delete(task.id);
+  await Client.deleteTask(task.id);
   notification({ body: lang.notifications.taskDeleted });
 };
