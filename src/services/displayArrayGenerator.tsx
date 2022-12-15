@@ -4,13 +4,13 @@ import pDebounce from "p-debounce";
 import { TaskInfo } from "../components";
 
 import lang from "../lang";
-import { APITaskObject, TDSClient } from "todoist-rest-client/dist/definitions";
+import type { TodoistApi, Task } from "@doist/todoist-api-typescript";
 const strings = lang.displayArrayGenerator;
 import { CerebroScreen } from "cerebro-command-router/dist/definitions";
 
 type Options = {
   type?: "today" | "view";
-  client: TDSClient;
+  client: TodoistApi;
   term: string;
   actions: object;
   showOverdue?: boolean;
@@ -35,7 +35,7 @@ const todayTaskArrayGenerator: tTAG = async ({
   term,
   actions,
 }) => {
-  let taskArray: APITaskObject[];
+  let taskArray: Task[];
 
   const contentSearch = getSubCommandText(term);
   let filter = contentSearch
@@ -44,8 +44,8 @@ const todayTaskArrayGenerator: tTAG = async ({
 
   try {
     taskArray = showOverdue
-      ? await client.task.search({ filter })
-      : await client.extras.getTodayTaskJSON();
+      ? await client.getTasks({ filter })
+      : await client.getTasks({ filter: "today" });
   } catch (err) {
     return handleErrors(err);
   }
@@ -59,7 +59,7 @@ const todayTaskArrayGenerator: tTAG = async ({
   if (taskArray.length <= 10) {
     taskArray = await Promise.all(
       taskArray.map(async (task) => {
-        let projectName = (await client.project.get(task.project_id)).name;
+        let projectName = (await client.getProject(task.projectId)).name;
         return { ...task, projectName };
       })
     );
@@ -81,10 +81,10 @@ const filterTaskArrayGenerator = async ({ client, term, actions }: Options) => {
 
   if (!filter) return Promise.resolve([{ title: strings.noFilterFound }]);
 
-  let fullTasksList: APITaskObject[];
+  let fullTasksList: Task[];
 
   try {
-    fullTasksList = await client.task.search({ filter });
+    fullTasksList = await client.getTasks({ filter });
   } catch (err) {
     return handleErrors(err);
   }
@@ -95,7 +95,7 @@ const filterTaskArrayGenerator = async ({ client, term, actions }: Options) => {
   if (fullTasksList.length <= 10) {
     fullTasksList = await Promise.all(
       fullTasksList.map(async (task) => {
-        let projectName = (await client.project.get(task.project_id)).name;
+        let projectName = (await client.getProject(task.projectId)).name;
         return { ...task, projectName };
       })
     );

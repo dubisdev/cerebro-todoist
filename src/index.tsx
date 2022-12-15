@@ -1,6 +1,6 @@
 import CerebroRouter from "cerebro-command-router";
-import TDSClient from "todoist-rest-client";
-import { createTask, updateChecker, startPageAfterUpdate } from "./services";
+import { TodoistApi } from "@doist/todoist-api-typescript";
+import { createTask, startPageAfterUpdate } from "./services";
 import icon from "./icons";
 import { NewTodayTask } from "./components";
 import strings from "./lang";
@@ -8,8 +8,6 @@ import { name, keyword, settings } from "./settings";
 import taskArrayGenerator from "./services/displayArrayGenerator";
 
 if (!Notification.permission) Notification.requestPermission();
-
-const initialize = () => updateChecker();
 
 const plugin = ({ term, display, actions, settings, config, hide }) => {
   if (!term.toLowerCase().includes("tds")) return;
@@ -23,7 +21,7 @@ const plugin = ({ term, display, actions, settings, config, hide }) => {
       getPreview: () => <h3>{strings.noTokenFound}</h3>,
     });
   }
-  const client = TDSClient(token);
+  const client = new TodoistApi(token);
 
   const myRouter = new CerebroRouter({ command: "tds", term, display, hide });
 
@@ -34,7 +32,7 @@ const plugin = ({ term, display, actions, settings, config, hide }) => {
     icon: icon,
     title: strings.workflow_new,
     getPreview: () => <NewTodayTask />,
-    onSelect: () => createTask(client, { text: term }),
+    onSelect: () => createTask(token, { text: term }),
   });
 
   myRouter.route(
@@ -84,4 +82,4 @@ const plugin = ({ term, display, actions, settings, config, hide }) => {
   });
 };
 
-export { icon, name, keyword, plugin as fn, settings, initialize };
+export { icon, name, keyword, plugin as fn, settings };
