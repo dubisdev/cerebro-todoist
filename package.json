@@ -9,17 +9,18 @@
     "dist"
   ],
   "dependencies": {
-    "@cerebroapp/cerebro-ui": "1.0.4",
-    "@doist/todoist-api-typescript": "2.1.2",
+    "@cerebroapp/cerebro-ui": "2.0.0-alpha.5",
+    "@doist/todoist-api-typescript": "3.0.0",
     "cerebro-command-router": "2.0.0",
     "p-debounce": "4.0.0",
-    "semver": "7.3.8"
+    "semver": "7.5.4"
   },
   "devDependencies": {
     "@types/react": "16.14.34",
     "cerebro-build": "1.2.0",
     "electron": "19.0.10",
-    "react": "16.14.0"
+    "react": "16.14.0",
+    "react-dom": "16.14.0"
   },
   "main": "dist/index.js",
   "keywords": [
