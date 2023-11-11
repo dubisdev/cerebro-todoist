@@ -32,23 +32,25 @@ export const setFirstUpdateStartToFalse = (config: CerebroConfig) => {
 
   //delete old version entries --> filter for keys in settings.js
   let result = {};
-  let key;
-  for (key in jsonConfig["cerebro-cerebro-todoist"]) {
+
+  for (let key in jsonConfig["cerebro-cerebro-todoist"]) {
     if (settings.hasOwnProperty(key)) {
       result[key] = jsonConfig["cerebro-cerebro-todoist"][key];
     }
   }
 
+  // save previous settings
   jsonConfig["cerebro-cerebro-todoist"] = result;
 
+  // update firstUpdateStart
   jsonConfig["cerebro-cerebro-todoist"][`firstUpdateStart${pkgJson.version}`] =
     false;
 
   config.set("plugins", jsonConfig);
 };
 
-export const getFirstUpdateStart = (config) => {
-  return config.get(["plugins"])["cerebro-cerebro-todoist"]?.[
+export const getFirstUpdateStart = (config: CerebroConfig) => {
+  return config.get("plugins")["cerebro-cerebro-todoist"]?.[
     `firstUpdateStart${pkgJson.version}`
   ];
 };

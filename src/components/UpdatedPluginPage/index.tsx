@@ -5,12 +5,16 @@ import lang from "lang";
 const strings = lang.afterUpdate;
 
 const updatedPlugin = ({ actions, config }) => {
-  const handleClick = (action) => {
-    action === "view"
-      ? actions.open("https://github.com/dubisdev/cerebro-todoist/releases")
-      : null;
-    setFirstUpdateStartToFalse(config);
-    actions.hideWindow();
+  const handleClick = (action: "view" | "close") => {
+    if (action === "close") {
+      setFirstUpdateStartToFalse(config);
+      actions.replaceTerm("tds")
+    }
+
+    if (action === "view") {
+      actions.open("https://github.com/dubisdev/cerebro-todoist/releases")
+      actions.hideWindow();
+    }
   };
 
   return (
