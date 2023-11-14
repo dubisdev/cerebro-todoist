@@ -17,11 +17,11 @@ jobs:
       - run: npm run prepublish
 
       - id: publish
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
 
-      - if: ${{ steps.publish.outputs.type != 'none' }}
+      - if: ${{ steps.publish.outputs.type }}
         name: "Create GH Release"
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
