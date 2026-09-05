@@ -5,7 +5,7 @@
 
 > [Cerebro](https://cerebroapp.com) plugin to create and manage Todoist tasks.
 
-⚠️ Cerebro-Todoist is an extension that IS NOT created by, affiliated with, or supported by @Doist
+⚠️ Cerebro-Todoist is an extension that IS NOT created by, affiliated with, or supported by [Todoist](https://github.com/doist)
 
 ## Installation
 
